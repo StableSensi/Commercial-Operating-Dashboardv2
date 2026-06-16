@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit Follow-Up (14 May 2026) | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/cod.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">Aryze<small>Board &amp; Management Reports</small></span>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#reports">Reports</a>
+    <a href="../../index.html#materials">Board materials</a>
+    <a href="../../index.html#onboarding">Onboarding</a>
+    <a href="../../index.html#tools">Tools</a>
+  </nav>
+</header>
+<p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Analyses</a> / Audit follow-up · 14 May 2026</p>
+
+<main class="wrap">
+  <article class="doc">
+    <header class="doc-head">
+      <p class="eyebrow">Audit · 14 May 2026</p>
+      <h1>Audit follow-up — 14 May 2026</h1>
+      <p class="lede">Status check against the prioritised roadmap in the 13 May audit: what is verifiably resolved, what still needs manual action, and what cannot be checked from inside the file system.</p>
+      <p class="meta">Last updated: 14 May 2026 · Confidential</p>
+      <div class="doc-links">
+        <a href="index.html">↩ Analyses</a>
+        <a href="../../../../Documents/Reports/Audit-Follow-Up-2026-05-14.md">Source .md</a>
+        <a href="audit-modsigelser-2026-05-13.html">Original audit (13 May)</a>
+      </div>
+    </header>
+
+    <div class="doc-body">
+      <blockquote>Status check against the prioritised roadmap in <code>Audit-Modsigelser-2026-05-13.md</code>. Reviewed during the 14 May 2026 workspace cleanup. Items marked <strong>done</strong> are verifiable in the current workspace; items marked <strong>outstanding</strong> still need action; items marked <strong>unverifiable</strong> can't be checked from inside the file system (binary file content, external systems, in-print materials).</blockquote>
+
+      <h2>Status legend</h2>
+      <ul>
+        <li>✅ <strong>Done</strong> — verified resolved</li>
+        <li>🟡 <strong>Outstanding</strong> — still requires manual action</li>
+        <li>⚪ <strong>Unverifiable</strong> — needs human eyes (printed material, binary file content, external system)</li>
+        <li>⛔ <strong>Not applicable</strong> — situation has changed since the audit</li>
+      </ul>
+
+      <h2>Acute (week of 14 May) — customer-facing risk</h2>
+      <table class="content">
+        <thead><tr><th>#</th><th>Item</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Stop sending <code>Sales/Pay by Bank/Strategy/*-v3.pdf</code> — replace with v4 PDFs</td><td>✅ Done</td><td>Strategy folder now contains only <code>Ideal-Customer-Profiles-v4.pdf</code>, <code>Value-Proposition-Canvas-v4.pdf</code>, <code>Product-Suite-Master-Description-v4.pdf</code></td></tr>
+          <tr><td>2</td><td>Stop print of NBC Stockholm one-pagers — fix "Aryze Factory" → "Stablecoin Factory", "Digital Currency" → "Digital Cash", verify date</td><td>🟡 Date fixed in marketing-plan docx; product-name fix in print materials still outstanding</td><td><code>Marketing/Events/NBC Stockholm/Aryze_NBC_Stockholm_Marketing_Plan_1.docx</code> updated to 2026 (three instances of "2025"). Print-collateral side still needs check before sending to printer.</td></tr>
+          <tr><td>3</td><td>Stop deployment of Stablecoin Factory website (Homepage.pdf + Contact.pdf with Lorem ipsum)</td><td>⛔ Not applicable</td><td><code>Website/Stablecoin Factory/Version 1/</code> does not exist in current workspace. Either removed previously or never moved here. If the live website still has Lorem ipsum, confirm with whoever owns deployment.</td></tr>
+          <tr><td>4</td><td>Remove Lorem ipsum from three Digital Assets &amp; RWA Factory decks (page 6)</td><td>✅ Done</td><td>All three decks moved to <code>_archive/TIL-SLETNING-from-restructuring-2026-05-13/Old-Agent-Materials/</code></td></tr>
+          <tr><td>5</td><td>Never send <code>Workshop Aryze.pptx</code> or <code>Workshop-Aryze-Mastercard.pptx</code> unchanged to customers</td><td>🟡 Outstanding</td><td><code>Workshop-Aryze-Mastercard.pptx</code> still lives in <code>Sales/Pay by Bank/Assets/</code>. Recommendation: add a <code>_INTERNAL_DO_NOT_SEND.md</code> flag in the same folder, or rename file with <code>Internal-</code> prefix.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Week of 18 May — customer-facing correction</h2>
+      <table class="content">
+        <thead><tr><th>#</th><th>Item</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>6</td><td>Fix both Pay by Bank one-pagers — remove "UK licensed" hero, fix/remove "up to 3.5%" claim, fix "Higher Checkout Conversion" claim, delete duplicate</td><td>⚪ Unverifiable from the .md source; PDF text not parsed</td><td><code>Pay-by-Bank-ICP1-Onepager.md</code> reads on-voice (UK + EU, fixed-fee positioning, no unsourced 3.5%). The two PDFs (<code>Pay-by-Bank-ICP1-Onepager.pdf</code>, <code>Pay By Bank Aryze Deck.pdf</code>) need PDF-extract verification — recommend regenerating from the canonical <code>.md</code> file.</td></tr>
+          <tr><td>7</td><td>Casino-deck slide 7 vs 8 inconsistency (19 vs 20 markets)</td><td>⚪ Unverifiable</td><td>Binary <code>.pptx</code> — <code>Aryze-Pay-by-Bank-Casino-Deck.pptx</code> still in <code>Sales/Pay by Bank/Assets/</code>. Slide content needs manual check. v4 canon is <strong>19 markets total, UK + 18 EU/EEA</strong>.</td></tr>
+          <tr><td>8</td><td>White-Label Enablement deck contradiction (page 4 vs page 6 on who issues)</td><td>✅ Done</td><td>Deck moved to <code>_archive/TIL-SLETNING-from-restructuring-2026-05-13/Old-Agent-Materials/</code>. New deck not yet produced.</td></tr>
+          <tr><td>9</td><td>Standardise Digital Assets routes' hero text (currently identical)</td><td>✅ Done by removal</td><td>All three one-pagers moved to <code>_archive/TIL-SLETNING-from-restructuring-2026-05-13/Old-Digital-Assets-Onepagers/</code>. New ones for Stablecoin Factory not yet produced.</td></tr>
+          <tr><td>10</td><td>Differentiate Digital Assets one-pagers page 1 (route-specific)</td><td>✅ Done by removal</td><td>Same as #9.</td></tr>
+          <tr><td>11</td><td>Remove "No third-party dependencies" claim from all Digital Assets materials</td><td>✅ Done by removal</td><td>All carrier-files archived. New materials must avoid this phrase — captured in <code>Brain/Personas/Writer/CLAUDE.md</code> §5.2 <em>Aryze-specifikke promotional-glidninger</em>.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Strategic (requires leadership decision)</h2>
+      <table class="content">
+        <thead><tr><th>#</th><th>Item</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>12</td><td>Clarify "Digital Assets &amp; RWA Factory" positioning</td><td>✅ Done</td><td>Renamed throughout: workspace folder is now <code>Sales/Stablecoin Factory/</code>, v4-master-docs use the canonical name. RWA-specific capabilities flagged as "verify with product" in specialist persona.</td></tr>
+          <tr><td>13</td><td>Consolidate internally on persona — Payments Operations Lead as consistent primary across Pay by Bank materials</td><td>✅ Done</td><td>All Pay by Bank persona files, ICP, and Product Description name Payments Operations Lead as primary, with secondaries (Head of Payments, CFO, COO) listed below.</td></tr>
+          <tr><td>14</td><td>Reconcile Q1 report vs SBC report pipeline narrative (Digital Cash dominant vs Pay by Bank-focused)</td><td>🟡 Outstanding</td><td>Both reports still exist in <code>Documents/Reports/</code>. Recommendation: either add a cross-product split (% of pipeline by product) to the Q1 report, or write a single reconciliation memo explaining the difference.</td></tr>
+          <tr><td>15</td><td>Standardise Rabii's title across documents</td><td>🟡 Outstanding</td><td>Audit flagged "Sales &amp; Marketing Director" (SBC report) vs "Sales Director" (Tink/Visa proposal) — needs single canonical title agreed. Recommend: <strong>Director Sales &amp; Marketing</strong> (matches OneTok-followup-breakup-email signature, the most recent customer-facing artifact).</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Hygiene — internal</h2>
+      <table class="content">
+        <thead><tr><th>#</th><th>Item</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>16</td><td>Move <code>2026_Market opportunities_Digital assets.pdf</code> out of Sales folder</td><td>✅ Done</td><td>Now lives in <code>Documents/Programs/Tech-for-Fin-Digital-Assets/</code> — Copenhagen Fintech mentor-programme reference, not Aryze material.</td></tr>
+          <tr><td>17</td><td>Delete duplicate files (Workshop Aryze.pptx + Workshop-Aryze-Mastercard.pptx identical; two Pay by Bank one-pagers identical)</td><td>🟡 Partial</td><td>One Workshop deck remains (<code>Workshop-Aryze-Mastercard.pptx</code>) — the duplicate appears removed. The two one-pagers (<code>Pay-by-Bank-ICP1-Onepager.pdf</code> + <code>Pay By Bank Aryze Deck.pdf</code>) both still exist — verify content identity and remove one.</td></tr>
+          <tr><td>18</td><td>Verify legal declarations (de minimis + LV-status) are completed before submission</td><td>⚪ Unverifiable</td><td><code>Documents/Programs/Tech-for-Fin-Digital-Assets/De minimis declaration RFPRO-25-0132.pdf</code> and <code>Erklaering om LV-status.pdf</code> — PDF content needs manual check that company name (Aryze ApS), CVR, P-nummer, beløb, dato, signatory are filled.</td></tr>
+          <tr><td>19</td><td>Update <code>Internal/Aryze-Team.pdf</code> — Stablecoin Factory naming + Digital Cash owner</td><td>⚪ Unverifiable</td><td>Binary PDF — cannot edit from sandbox. Recommend regenerating from source.</td></tr>
+          <tr><td>20</td><td>Rename "Sales Update Q1 - 2026 .pdf" (remove trailing space)</td><td>✅ Done</td><td>File now <code>Sales-Update-Q1-2026.pdf</code> in <code>Documents/Reports/Salgsrapport Q1/</code>.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Summary</h2>
+      <table class="content">
+        <thead><tr><th>Category</th><th>Done</th><th>Outstanding</th><th>Unverifiable</th><th>Not applicable</th></tr></thead>
+        <tbody>
+          <tr><td>Acute (5)</td><td>2</td><td>2</td><td>0</td><td>1</td></tr>
+          <tr><td>Week of 18 May (6)</td><td>4</td><td>0</td><td>2</td><td>0</td></tr>
+          <tr><td>Strategic (4)</td><td>2</td><td>2</td><td>0</td><td>0</td></tr>
+          <tr><td>Hygiene (5)</td><td>2</td><td>1</td><td>2</td><td>0</td></tr>
+          <tr><td><strong>Total (20)</strong></td><td><strong>10</strong></td><td><strong>5</strong></td><td><strong>4</strong></td><td><strong>1</strong></td></tr>
+        </tbody>
+      </table>
+      <p>50% of the original audit roadmap is confirmed resolved by the 14 May 2026 cleanup. Five items need manual action (mostly print/PDF regeneration and a leadership decision on Q1/SBC report reconciliation). Four items can't be verified from inside the file system — they require either binary-file inspection (slide content, PDF text) or external confirmation (live website status).</p>
+
+      <h2>Recommended next actions (in order)</h2>
+      <ol>
+        <li><strong>Resolve Workshop-Aryze-Mastercard.pptx confusion</strong> — rename to <code>Internal-Workshop-Mastercard-2026-02-03.pptx</code> and add to <code>Sales/Pay by Bank/Assets/_INTERNAL.md</code> index so it doesn't ship to customers by mistake.</li>
+        <li><strong>Verify Pay by Bank one-pager PDFs</strong> — compare against canonical <code>.md</code> source, regenerate if they still carry "UK licensed" hero or unsourced "3.5%" claim.</li>
+        <li><strong>Verify casino-deck slide 7 vs 8</strong> — open the <code>.pptx</code>, confirm whether the 19/20 markets count is consistent. If not, fix and re-export.</li>
+        <li><strong>Standardise Rabii's title</strong> — recommend "Director Sales &amp; Marketing" as canonical, applied retroactively to any customer-facing document still showing variants.</li>
+        <li><strong>Reconcile Q1 vs SBC report</strong> — add cross-product split to next quarterly board pack, or write a 200-word reconciliation memo.</li>
+        <li><strong>Verify legal declarations</strong> are completed before next Copenhagen Fintech submission.</li>
+        <li><strong>Regenerate <code>Internal/Aryze-Team.pdf</code></strong> with corrected product naming and Digital Cash owner named.</li>
+      </ol>
+
+      <p class="meta"><strong>Last updated:</strong> 14 May 2026 · <strong>Original audit:</strong> <a href="audit-modsigelser-2026-05-13.html">Audit-Modsigelser-2026-05-13</a></p>
+
+      <nav class="doc-links" style="margin-top:28px;border-top:1px solid var(--line);padding-top:16px">
+        <a href="audit-modsigelser-2026-05-13.html">← Original audit (13 May)</a>
+        <a href="index.html">Analyses</a>
+        <a href="audit-fuld-revision-2026-05-16.html">Full revision audit (16 May) →</a>
+      </nav>
+    </div>
+  </article>
+
+  <footer><p>Aryze &middot; Board &amp; Management Reports &middot; Audit follow-up &middot; Confidential &middot; 14 May 2026</p></footer>
+</main>
+</body>
+</html>

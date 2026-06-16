@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit — Modsigelser &amp; Brand-overtrædelser (13 May 2026) | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/cod.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">Aryze<small>Board &amp; Management Reports</small></span>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#reports">Reports</a>
+    <a href="../../index.html#materials">Board materials</a>
+    <a href="../../index.html#onboarding">Onboarding</a>
+    <a href="../../index.html#tools">Tools</a>
+  </nav>
+</header>
+<p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Analyses</a> / Audit · 13 May 2026</p>
+
+<main class="wrap">
+  <article class="doc">
+    <header class="doc-head">
+      <p class="eyebrow">Audit · 13 May 2026</p>
+      <h1>Audit: Modsigelser &amp; Brand-overtrædelser på tværs af Aryze-dokumenter</h1>
+      <p class="lede">Full contradiction-and-brand audit across the workspace — geography drift, wrong product names, Lorem ipsum templates, issuer-glide, and a prioritised fix roadmap.</p>
+      <p class="meta">Auditeret af: Claude (StableSensei) · 13. maj 2026 · Confidential</p>
+      <div class="doc-links">
+        <a href="index.html">↩ Analyses</a>
+        <a href="../../../../Documents/Reports/Audit-Modsigelser-2026-05-13.md">Source .md</a>
+      </div>
+    </header>
+
+    <div class="doc-body">
+      <p><strong>Source of truth:</strong> <code>Documents/Analyser/Ideal-Customer-Profiles-v4.md</code>, <code>Product-Suite-Master-Description-v4.md</code>, <code>Value-Proposition-Canvas-v4.md</code>, <code>Brand/Brand-Guide-2026.pdf</code> (v1.0), master <code>CLAUDE.md</code></p>
+
+      <h2>TL;DR</h2>
+      <p><strong>Største systematiske problemer:</strong></p>
+      <ol>
+        <li><strong>Geografi:</strong> Alle fire v3-strategy-PDF'er i <code>Sales/Pay by Bank/Strategy/</code> siger fortsat "UK only" — direkte modsiger v4 (UK + EU/EEA via Mastercard Open Banking på 19 markeder, 2.900+ banker). Begge Pay by Bank one-pagers gentager "UK licensed" som hero-signal.</li>
+        <li><strong>Forkerte produktnavne i kundevendt materiale:</strong> NBC Stockholm marketingplan trykker "Aryze Factory" (skal være Stablecoin Factory) og "Digital Currency" (skal være Digital Cash) på one-pager-plan og booth-narrativ.</li>
+        <li><strong>Stablecoin Factory website er ikke rebrandet:</strong> Homepage.pdf og Contact.pdf er rene Shadcnblocks-templates med Lorem ipsum, falske stats (10x, 10.000+ devs, 25%), og fiktive kontakt-data ("John Doe", <code>your-email@example.com</code>).</li>
+        <li><strong>Digital Assets &amp; RWA Factory-materialer modsiger sig selv:</strong> White-Label-decket siger "Issue under your own brand" på side 4, men "customer-issued" på side 6. Lorem ipsum stadig synlig i alle tre decks (side 6). Hero-tekst i alle tre one-pagers er identisk — ingen route-differentiering.</li>
+        <li><strong>"Digital Assets &amp; RWA Factory" er et fjerde produktnavn</strong> der ikke findes i v4-taxonomien (de tre produkter er Pay by Bank, Stablecoin Factory, Digital Cash). Slører hele produkthistorien.</li>
+        <li><strong>Issuer-glidning gennemgående:</strong> Ingen Digital Assets-materialer skriver eksplicit at kunden forbliver issuer og licensed operator. Aryze-rolle som infrastruktur-leverandør er ikke ankret.</li>
+        <li><strong>Persona-disciplin manglende i v3:</strong> Ingen v3-PDF udpeger Payments Operations Lead som primær persona — alle lister buying committee bredt og ligeligt.</li>
+        <li><strong>Datokonflikt:</strong> Marketingplanen siger NBC Stockholm 26.-27. maj <strong>2025</strong>. Sponsorship-aftalen (underskrevet 23. april 2026) hedder "NBC26" — dvs. event er <strong>2026</strong>.</li>
+      </ol>
+      <p><strong>Højeste-risiko-filer (kundevendt og forkert):</strong></p>
+      <ul>
+        <li><code>Website/Stablecoin Factory/Version 1/Homepage.pdf</code> + <code>Contact.pdf</code> (kan ikke gå live)</li>
+        <li><code>Sales/Pay by Bank/Assets/Pay-by-Bank-ICP1-Onepager.pdf</code> + <code>Pay By Bank - 2026.pdf</code> (UK-only + uunderbygget 3,5% claim)</li>
+        <li><code>Sales/Agent Materials/Digital Assets Factory/.../Sales Decks .../*.pdf</code> (Lorem ipsum + interne modsigelser)</li>
+        <li><code>Marketing/Events/NBC Stockholm/Aryze_NBC_Stockholm_Marketing_Plan_1.docx</code> (forkerte produktnavne)</li>
+      </ul>
+
+      <h2>Sådan læser du rapporten</h2>
+      <p>For hver finding:</p>
+      <ul>
+        <li><strong>FIL</strong> — relativ sti i <code>StableSensei/</code></li>
+        <li><strong>LOKATION</strong> — side/slide/sektion</li>
+        <li><strong>CITAT</strong> — eksakt eller paraphraseret tekst</li>
+        <li><strong>PROBLEM</strong> — hvad er forkert, og hvorfor (mod v4)</li>
+        <li><strong>KATEGORI</strong> — geografi / persona / capability / brand-forbud / produkt-confusion / tal-claim / positioning / juridisk / andet</li>
+        <li><strong>SEVERITY</strong> — HØJ (kundevendt, akut) / MEDIUM (intern, vigtigt) / LAV (nuance)</li>
+        <li><strong>RETTELSE</strong> — konkret forslag forankret i v4</li>
+      </ul>
+
+      <h2>DEL 1 — Pay by Bank</h2>
+
+      <h3>1.1 v3 Strategy-PDF'er (Sales/Pay by Bank/Strategy/)</h3>
+      <p>Alle fire v3-PDF'er er kendte outdated (jf. <code>Documents/Analyser/README.md</code>). Men de ligger i Sales-mappen og kan stadig blive brugt i pitches. Specifikke problemer:</p>
+
+      <p><strong><code>Ideal-Customer-Profiles-v3.pdf</code></strong></p>
+      <ul>
+        <li><strong>Side 1, Executive Summary</strong> — "UK payment-driven merchants" som ICP-definition. <strong>Skal være</strong> "UK and EU/EEA merchants". (HØJ, geografi)</li>
+        <li><strong>Side 3, Best-Fit Company Profile</strong> — "operates in the UK" som fit-kriterium. (HØJ)</li>
+        <li><strong>Side 4, Poor-Fit Signals</strong> — "not operating in the UK" listet som diskvalifikation. (HØJ — udelukker hele EU-markedet)</li>
+        <li><strong>Side 4, Likely Buyer Titles</strong> — lang ligestillet liste af 13 titler uden at udpege Payments Operations Lead som primær. <strong>Skal være</strong> Payments Operations Lead = primær; sekundære: Head of Payments, CFO, COO/Payment Ops Director. (HØJ, persona)</li>
+        <li><strong>Side 5, Positioning Angle</strong> — "A direct UK account-to-account payment rail". <strong>Skal være</strong> v4-sætningen: "A better way for UK and European merchants to get paid." (HØJ, positioning)</li>
+        <li><strong>Side 5, One-Line ICP</strong> — "UK payment-driven merchants…". (HØJ)</li>
+      </ul>
+
+      <p><strong><code>Product-Suite-Master-Description-v3.pdf</code></strong></p>
+      <ul>
+        <li><strong>Pay by Bank-sektion, intro</strong> — beskriver Pay by Bank som "UK account-to-account payment infrastructure". <strong>Skal være</strong> UK + European. (HØJ)</li>
+        <li><strong>"Who It Is For"</strong> — "Pay by Bank is built for UK merchants…". (HØJ)</li>
+        <li><strong>Aryze Value Proposition / Strongest Positioning</strong> — "A better way for UK merchants to get paid." Mangler <strong>"and European"</strong>. (HØJ, positioning)</li>
+        <li><strong>Short Description</strong> — UK-only formulering. (HØJ)</li>
+        <li><strong>Commercial Motion</strong> — bred buyer-liste uden primær-persona-prioritering. (MEDIUM)</li>
+      </ul>
+
+      <p><strong><code>Customer-Segment-Analysis-v3.pdf</code></strong></p>
+      <ul>
+        <li><strong>Segment 1, "Regulatory and Operational Constraints"</strong> — siger eksplicit:
+          <blockquote>"Pay by Bank should not be positioned as a global or pan-European product unless the relevant licensing and market position support that claim. The current UK focus is not a weakness. It is part of the commercial discipline."</blockquote>
+          Dette er den <strong>mest skadelige sætning i hele audit-bunken</strong> — den instruerer eksplicit i ikke at positionere som pan-europæisk, som er præcis det vi nu gør per maj 2026. (HØJ)</li>
+        <li><strong>Hele segmentering</strong> — definerer "UK merchants" som segmentet. (HØJ)</li>
+        <li><strong>Buyer Titles</strong> — manglende persona-prioritet. (MEDIUM)</li>
+      </ul>
+
+      <p><strong><code>Value-Proposition-Canvas-v3.pdf</code></strong></p>
+      <ul>
+        <li><strong>Hele VPC 1</strong> — definerer customer segment som "UK merchants". (HØJ)</li>
+        <li><strong>VPC Summary tabel / One-Line Version</strong> — "Pay by Bank gives UK merchants a faster, lower-friction, and more controllable way to get paid." Mangler "and European". (HØJ)</li>
+        <li><strong>Verticals</strong> — nævnt korrekt, men mangler eksplicit prioritetsrækkefølge (iGaming → Trading → High-risk → Card-under-served). (LAV)</li>
+      </ul>
+      <p><strong>Anbefaling:</strong> Disse fire filer bør <strong>flyttes til</strong> <code>Sales/Pay by Bank/Strategy/Archive/</code> (eller endda slettes fra Sales-mappen) og erstattes med PDF-eksport af v4-markdown-filerne. Lige nu ligger v3 i den mappe hvor sælgere går hen efter strategi.</p>
+
+      <h3>1.2 Pay by Bank one-pagers</h3>
+      <p><strong><code>Pay-by-Bank-ICP1-Onepager.pdf</code> + <code>Pay By Bank - 2026.pdf</code></strong></p>
+      <p>Indholdet er identisk — sandsynligvis duplikat. Begge har:</p>
+      <ul>
+        <li><strong>Hero-blok</strong> — "UK licensed — Operating under a UK license via partnership. Serving regulated merchants." → markedsfører som UK-license-only. <strong>Skal</strong> fremhæve europæisk dækning via Mastercard Open Banking (19 markeder). UK-licens må gerne nævnes som regulatorisk fakta, men ikke som geografisk scope. (HØJ, geografi)</li>
+        <li><strong>"Is your checkout costing you?"</strong> — "High card processing fees (up to 3.5% + transaction fees)" → tallet <strong>3,5%</strong> er ikke i v4-verificerede tal. v4 nævner "~4% snit på kort" og "scheme fees +75% siden 2021". Bør erstattes eller verificeres med kilde. (MEDIUM, tal-claim)</li>
+        <li><strong>"Higher Checkout Conversion"</strong> (hero) — generelt conversion-claim uden tal eller kilde. CLAUDE.md forbyder eksplicit konkrete conversion-løft uden data. Bør erstattes med v4-verificeret fakta: "RememberMe — ~50% færre clickthrough-steps for repeat depositors" eller "No card details, no 3DS pop-up". (MEDIUM, tal-claim)</li>
+        <li><strong>"Near-Zero Chargebacks"</strong> — acceptabelt (A2A er irrevocable), men kunne forankres bedre med "no scheme dispute path". (LAV)</li>
+      </ul>
+      <p><strong>Anbefaling:</strong> Konsolidér de to one-pagers til én canonical version i <code>Sales/Pay by Bank/Assets/</code>. Slet duplikatet.</p>
+
+      <h3>1.3 Pay by Bank decks</h3>
+      <p><strong><code>Aryze-Pay-by-Bank-Casino-Deck.pptx</code> — modeleksempel</strong></p>
+      <p>Decket følger v4 præcist på de fleste punkter (positiv kontrol). Men:</p>
+      <ul>
+        <li><strong>Slide 7 vs Slide 8 — intern markedstal-inkonsistens</strong> — Slide 7 siger "19 European markets in coverage". Slide 8 siger "20 markets — UK + 19 EU/EEA countries". v4 og Mastercard-decket siger 19 totalt (UK inkluderet). Et af tallene er forkert. (HØJ, tal-claim)
+          <ul><li><strong>Rettelse:</strong> Tjek om "19" er inkl. UK. Hvis ja: slide 8 skal være "19 markets — UK + 18 EU/EEA" eller markedstabellen skal reduceres med ét marked.</li></ul></li>
+        <li><strong>Slide 8 markedstabel</strong> — listed 20 lande (UK + Germany, Netherlands, France, Spain, Italy, Belgium, Austria, Ireland, Portugal, Poland, Denmark, Sweden, Norway, Finland, Czechia, Estonia, Lithuania, Latvia, Slovakia). <strong>Bør valideres</strong> med Mastercard Open Banking-team før decket sendes ud. (MEDIUM, verifikation)</li>
+        <li><strong>Slide 9, "Not in scope today"</strong> — modeleksempel. Lister eksplicit hvad Aryze IKKE leverer: payouts, standalone recurring, AIS, refunds. Matcher v4 perfekt. (Ingen rettelse)</li>
+        <li><strong>Slide 2 &amp; 3</strong> — alle tal (75% scheme fee inflation, 2-4% chargebacks, VAMP 1,5% april 2026) matcher v4. (Ingen rettelse)</li>
+      </ul>
+
+      <p><strong><code>Workshop Aryze.pptx</code> + <code>Workshop-Aryze-Mastercard.pptx</code></strong></p>
+      <p><strong>Disse to filer er identiske kopier</strong> (samme MD5) af <strong>Mastercard's eget deck</strong> med Mastercard-fortrolighedstekst på slide 2. (MEDIUM, file management)</p>
+      <ul>
+        <li><strong>Anbefaling:</strong> Slet duplikatet. Behold kun én canonical reference med tydeligt navn (fx <code>Mastercard-OpenBanking-Workshop-2026-02-03.pptx</code>).</li>
+        <li><strong>Slide 8</strong> — lister features Aryze IKKE leverer som productized (Pay-Outs, Refunds, AIS-baserede flows). (HØJ — hvis decket sendes til kunde uændret)</li>
+        <li><strong>Slide 45 — Account Owner Verification</strong> — hele AOV-sektionen er AIS-baseret. Aryze leverer ikke AOV. (HØJ — hvis decket sendes til kunde)</li>
+        <li><strong>Slide 40 — "+15% increase in conversion" fra theming</strong> — Mastercards eget tal. Hvis Aryze citerer det til kunder uden kontekst, er det Aryze-claim uden Aryze-data. (MEDIUM)</li>
+        <li><strong>Regel:</strong> Mastercard's deck må aldrig sendes uændret til en Aryze-merchant. Brug Aryze-Casino-decket eller egen pitch-version.</li>
+      </ul>
+
+      <p><strong><code>Aryze-x-Tink-Visa.pdf</code></strong></p>
+      <p>Partner-proposal til Tink/Visa, ikke kundevendt merchant-materiale. Acceptabelt i den kontekst, men:</p>
+      <ul>
+        <li><strong>Side 2, modelleringstal</strong> — "4,000+ Licensed iGaming brand &amp; merchant opportunities", "140 Target regulated brands live by end of December 2026", "7M Modelled monthly Pay by Bank transactions", "84M Modelled annualised PbB transaction run-rate". Tal er Aryze-interne modelleringsantagelser (kilde citeret). I partner-kontekst ok. <strong>MÅ ALDRIG genbruges i kundevendt materiale uden disclaimer.</strong> (MEDIUM)</li>
+        <li><strong>Side 5, UK FCA-tal</strong> — "16M+ UK open banking users", "+53% YoY growth", "16% Variable recurring payments as share". Kilde citeret (FCA Open Banking-rapport), men <strong>bør verificeres mod faktisk FCA-publikation</strong> før proposal sendes. (MEDIUM)</li>
+        <li><strong>Anbefaling:</strong> Filen bør mærkes "Partner-facing — not for merchant outreach" i mappestruktur eller filnavn.</li>
+      </ul>
+
+      <h3>1.4 Sales/Pay by Bank/CLAUDE.md — positiv kontrol</h3>
+      <p>Dokumentet er konsistent med v4 og master CLAUDE.md. Geografi, persona, vertikaler, kompetencegrænser, og konkurrenter er alle korrekt angivet. Modeleksempel for hvordan andre subprojekt-CLAUDE.md'er bør se ud.</p>
+      <p><strong>Lille verifikationspunkt:</strong> Tesco Bank-tal ("~40% volume share, ~25% rolling 12-måneders vækst") bør sporbar til Mastercard-officielt materiale. (LAV)</p>
+
+      <h2>DEL 2 — Digital Assets &amp; RWA Factory</h2>
+
+      <h3>2.1 Strukturel hovedproblem</h3>
+      <p><strong>"Digital Assets &amp; RWA Factory" findes ikke i v4.</strong> v4 har tre produkter: Pay by Bank, Stablecoin Factory, Digital Cash. "Digital Assets &amp; RWA Factory" er et fjerde navn der ligger uden for taxonomien.</p>
+      <p>Materialerne lyder mest som <strong>Digital Cash-positionering</strong> (institutionel, regulated, infrastructure for operators) — men har "Factory" i navnet (som ligner Stablecoin Factory). Det slører hele produkthistorien.</p>
+      <p><strong>Anbefaling (kræver leadership-beslutning):</strong></p>
+      <ul>
+        <li>Er "Digital Assets &amp; RWA Factory" = Digital Cash? → Omdøb eller mærk eksplicit.</li>
+        <li>Er det = Stablecoin Factory med RWA-extension? → Mærk eksplicit, og brug Stablecoin Factory-positionering.</li>
+        <li>Er det noget tredje (et fjerde produkt)? → Tilføj til v4 og dokumenter formelt.</li>
+      </ul>
+      <p>Indtil den beslutning er truffet, vil hver ny pitch skabe risiko for produkt-confusion hos kunden.</p>
+
+      <h3>2.2 Fil i forkert mappe</h3>
+      <p><strong><code>2026_Market opportunities_Digital assets.pdf</code></strong></p>
+      <p><strong>Dette er IKKE Aryze-materiale.</strong> Det er Copenhagen Fintech's "Tech for fin" / Springboard-session-deck om digital assets generelt. Det ligger fejlplaceret i <code>Sales/Digital Assets &amp; RWA Factory/</code>. Filen lister bl.a. "QIVALIS" som stablecoin-eksempel sammen med USDT/USDC — hvis Aryze-sælgere bruger dette deck og QIVALIS er Aryze-relateret, kan det fejlfortolkes som issuer-claim. (MEDIUM)</p>
+      <p><strong>Rettelse:</strong> Flyt filen til <code>References/Industry/</code> eller <code>References/External-decks/</code> — ikke Sales-mappen.</p>
+
+      <h3>2.3 One-pagers (alle 3 routes)</h3>
+      <p><strong>Identiske hero-problemer på tværs af alle tre routes:</strong></p>
+      <ul>
+        <li><strong>Side 1 hero</strong> — alle tre one-pagers har identisk hero-tekst: "Issue and operate stablecoins, digital assets, and tokenised RWAs through a scalable infrastructure model". Læseren der får alle tre kan ikke skelne dem ud fra side 1. (HØJ, konsistens)</li>
+        <li><strong>Tvetydigt subjekt</strong> — "Issue and operate..." kan læses som "Aryze issues and operates". Subjektet skal være kunden. (HØJ, issuer-claim)</li>
+        <li><strong>"No third-party dependencies"</strong> — falsk claim. Aryze ER en third party set fra kundens perspektiv. Påstanden gentages i alle 6 filer. (HØJ, tal-claim)</li>
+      </ul>
+      <p><strong>Route-specifikke problemer:</strong></p>
+      <p><strong>Own Programme Deployment one-pager:</strong></p>
+      <ul>
+        <li>"Designed for institutions and organisations" — overlapper sprogligt med Digital Cash. Mangler eksplicit "your institution remains the issuer and licensed operator". (HØJ)</li>
+        <li>"You keep control of the programme" → behold formuleringen, men tilføj "You remain the issuer and licensed operator." (MEDIUM)</li>
+      </ul>
+      <p><strong>White-Label Enablement one-pager:</strong></p>
+      <ul>
+        <li>Side 1 ord-for-ord identisk med Own Programme. <strong>Skal</strong> differentieres: "Infrastructure that lets your customers issue and operate... under your brand." (HØJ)</li>
+        <li>"for banks, regulated institutions, programme operators, and platforms" — mangler disclaimer om at slut-kunde også skal være licenseret hvor relevant. (MEDIUM)</li>
+      </ul>
+      <p><strong>Partner-Led Distribution one-pager:</strong></p>
+      <ul>
+        <li>Side 1 identisk med de to andre — særligt problematisk her, fordi partneren typisk IKKE issuer. (HØJ)</li>
+        <li>"for software companies, platforms..." — overlapper med Stablecoin Factory's builders. Uklart om Partner-Led distribuerer Stablecoin Factory eller Digital Cash. (HØJ)</li>
+        <li><strong>Indre modsigelse mod White-Label-onepager:</strong> Partner-Led siger Aryze leverer "infrastructure and operational model". White-Label siger Aryze leverer "infrastructure" og kunden ejer "operating framework". Hvor sidder "operating model" — hos Aryze eller hos kunden? <strong>Standardisér:</strong> Aryze leverer altid "infrastructure". (HØJ, konsistens)</li>
+      </ul>
+
+      <h3>2.4 Sales decks (alle 3 routes)</h3>
+      <p><strong>Generelle problemer på tværs:</strong></p>
+      <ul>
+        <li><strong>Lorem ipsum stadig synlig</strong> i alle tre decks (side 6). Production defect — kundevendt. (HØJ)
+          <blockquote>"orem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliua…"</blockquote></li>
+        <li><strong>Side 7 — identisk "Why"-liste</strong> på tværs af alle tre decks: "White-label issuance / Native interoperability / Asset mobility across chains / On-chain FX / No third-party dependencies". Routerne har ikke deres egen Why. (HØJ)</li>
+        <li><strong>"White-label issuance"</strong> optræder som benefit i Own Programme- og Partner-Led-decks, men hører kun til White-Label-routen. (HØJ, konsistens)</li>
+      </ul>
+      <p><strong>Route-specifikke problemer:</strong></p>
+      <p><strong>Own Programme Deployment deck:</strong></p>
+      <ul>
+        <li><strong>Side 1</strong> — "Built for banks, financial institutions, <strong>corporates</strong>, and regulated organisations." En corporate er ikke nødvendigvis licenseret issuer. Modsiger Digital Cash-positioneringen om at det kun sælges til allerede-licenserede institutioner. <strong>Skal</strong> fjernes eller kvalificeres ("regulated corporates with an existing issuance licence"). (HØJ)</li>
+        <li><strong>Side 4</strong> — "Issue under your own brand. Keep control of the programme, operating model, and value flow." Tilføj "and licence". (MEDIUM)</li>
+        <li><strong>Trin 1 i how-it-works</strong> — tekst-duplikation med trin 2. (LAV)</li>
+      </ul>
+      <p><strong>White-Label Enablement deck:</strong></p>
+      <ul>
+        <li><strong>Intern modsigelse:</strong> Side 4 siger "Issue under your own brand" (= institutionen issuer). Side 6 siger "Support customer-issued digital asset programmes" (= slut-kunden issuer). Decket modsiger sig selv. (HØJ)</li>
+        <li><strong>Rettelse:</strong> Side 4 headline → "Enable customer-issued programmes — under your brand."</li>
+      </ul>
+      <p><strong>Partner-Led Distribution deck:</strong></p>
+      <ul>
+        <li><strong>Side 1</strong> — "Built for software platforms, infrastructure partners, and distribution-led organisations" — overlapper med Stablecoin Factory's builders. Uklart placeret i produkt-suite. (HØJ)</li>
+        <li><strong>Side 7</strong> — arver "White-label issuance" som benefit, hvilket ikke giver mening for en distributionspartner. (HØJ)</li>
+      </ul>
+
+      <h3>2.5 Tværgående brand-voice</h3>
+      <ul>
+        <li>Ingen direkte forbudte fraser ("revolutionising", "game-changing", "seamless" etc.) fundet i Digital Assets-materialerne. Positivt.</li>
+        <li>Men: "stronger control", "Built for serious deployment", "faster path to deployment" — alle uden reference-punkt. Bryder "literal/accountable"-voice-reglen. (MEDIUM)</li>
+        <li><strong>Mangler eksplicit forankring</strong> i de tre brand values (Transparency, Compliance, Excellence). Særligt Compliance bør gentages ("Your institution remains the licensed issuer"). (HØJ)</li>
+      </ul>
+
+      <h2>DEL 3 — Tech for Fin, Reports, Website</h2>
+
+      <h3>3.1 Website/Stablecoin Factory/Version 1/Homepage.pdf</h3>
+      <p><strong>Hele homepage er en uudfyldt Shadcnblocks-template.</strong> Kan ikke gå live i nuværende form. (HØJ — kundevendt)</p>
+      <p>Konkrete problemer:</p>
+      <ul>
+        <li>Footer: "Shadcnblocks.com — A collection of components for your startup business or side project. ©️2024 Shadcnblocks.com."</li>
+        <li>Hero: "A Smarter Way to Build New Products — Lorem ipsum dolor sit amet…"</li>
+        <li><strong>Falske stats:</strong> "10x Faster Develpment | 10,000+ Developers | 25% Conversion Boost" (også stavefejl: "Develpment")</li>
+        <li>Social proof: "Used by the world's leading companies" — Stablecoin Factory er nyt produkt, claim er ubeviset</li>
+        <li>Feature-cards: "Build stunning websites with ease", "Redefine your industry leadership. Shop now" — fundamentalt forkert positionering, bruger forbudte fraser, og e-commerce CTAs</li>
+        <li>"Our Process"-sektion beskriver et consultancy-engagement, ikke et self-serve produkt — modsiger Stablecoin Factory's kerne-positionering</li>
+        <li>Tekst-korruption: "e begin", "Develope", "wors", "per formance", "feedbac"</li>
+        <li>Top-navigation: "Company — Our mission is to innovate and empower the world" → præcis den empty-rhetoric voice forbyder</li>
+      </ul>
+      <p><strong>Rettelse:</strong> Total rebrand + rewrite påkrævet. Erstat hero med v4-konsistent positionering: "Deploy a simple stablecoin without enterprise complexity." Fjern alle uunderbyggede stats. Hvis stats skal vises, brug kun verificerede tal med kilde.</p>
+
+      <h3>3.2 Website/Stablecoin Factory/Version 1/Contact.pdf</h3>
+      <ul>
+        <li>Footer + kontakt-info er Shadcnblocks placeholder: "(123) 34567890", "your-email@example.com", "shadcnblocks.com", "John Doe"</li>
+        <li>Testimonial er Lorem ipsum: "Shaping ideas with clarity and impact — Lorem ipsum dolor sit amet..."</li>
+        <li>Top-navigation gentager "innovate and empower the world"</li>
+      </ul>
+      <p><strong>Rettelse:</strong> Erstat med Aryze's faktiske kontakt-info og ægte (eller fjern) testimonial. (HØJ)</p>
+
+      <h3>3.3 Sales/Tech for Fin/Aryze-Mentor-Preread.pdf — modeleksempel</h3>
+      <p>Konsistent med v4. Issuer-positionering eksplicit ("the customer remains the issuer and operator under its own licence"). Pay by Bank korrekt udeladt fra digital-cash-sparring. Stablecoin Factory og Digital Cash beskrevet præcist som i v4. (Ingen rettelse — modeleksempel)</p>
+      <p>Mindre note: Markedsstatements i "What we are seeing"-sektion bør markeres som "Based on our customer conversations" snarere end faktiske industri-data. (LAV)</p>
+
+      <h3>3.4 Sales/Tech for Fin/Aryze - Tech for Fin Mentor Agenda.pdf</h3>
+      <p>Konsistent med v4. (Ingen rettelse)</p>
+      <ul>
+        <li>Mindre layout-issue: time-allocation på sidste agenda-punkt er uklar. (LAV)</li>
+      </ul>
+
+      <h3>3.5 Sales/Tech for Fin — juridiske erklæringer</h3>
+      <p><strong><code>De minimis declaration RFPRO-25-0132.pdf</code></strong></p>
+      <p>Standard Erhvervsstyrelsen-skabelon. <strong>Alle felter er blanke</strong> — ikke udfyldt med Aryze-data. (HØJ — juridisk dokument)</p>
+      <p><strong><code>Erklaering om LV-status.pdf</code></strong></p>
+      <p>Standard SMV-erklæring. <strong>Alle felter blanke.</strong> Bemærk fodnoten: hvis støtte modtages som de minimis, skal SMV-erklæring IKKE udfyldes — tjek for dobbelt-indsendelse. (HØJ — juridisk dokument)</p>
+      <p><strong>Rettelse:</strong> Bekræft om filerne er tomme skabeloner eller udfyldte erklæringer der mangler tekst-extraction. Hvis indsendt, sørg for korrekt udfyldelse: virksomhedens navn (Aryze ApS), CVR, P-nummer, beløb, dato, tegningsberettiget. Verificér SMV-kriterium (≤50 ansatte, ≤10 mio. EUR omsætning/balance, ejerstruktur) før underskrift.</p>
+
+      <h3>3.6 Documents/Reports/SBC summit/SBC_Summit_Bestyrelsesrapport.pdf</h3>
+      <p>Produktnavngivning ("Aryze Pay by Bank") er konsistent med v4. Ingen capability-overskridelser. (Modeleksempel)</p>
+      <p>Mindre problemer:</p>
+      <ul>
+        <li><strong>4.2 Markedsvalidering</strong> — "Positiv respons på Aryzes pris, setup og produktpositionering." Promotional-claim uden støttedata. Bør forankres i konkrete citater eller blødgøres. (MEDIUM)</li>
+        <li><strong>6.1 Højeste prioritet-tabel</strong> — Line Ho Young Peteri optræder under firma "ATFX". Uklart om ATFX er en Pay by Bank-lead eller om Line bare er ansat dér. (MEDIUM)</li>
+        <li><strong>Forfatter-title-inkonsistens:</strong> Rabii angivet som "Sales &amp; Marketing Director" her, men "Sales Director, Aryze" i Aryze-x-Tink-Visa.pdf. (MEDIUM — bliver HØJ hvis ekstern)</li>
+      </ul>
+
+      <h3>3.7 Documents/Reports/Salgsrapport Q1/Sales Update Q1 - 2026 .pdf</h3>
+      <ul>
+        <li><strong>Executive summary</strong> — "Aryze currently has 27 opportunities in the pipeline" — men 27 inkluderer 1 "Not Interested". Bryder Transparency-værdien at tælle disqualified med i aktiv pipeline. <strong>Rettelse:</strong> "26 active opportunities, with 1 disqualified." (MEDIUM)</li>
+        <li><strong>"Digital Cash is the dominant commercial theme"</strong> — modsiger SBC-rapporten fra samme kvartal som beskriver pipeline som overvejende Pay by Bank-fokuseret. Enten dækker de forskellige segmenter eller der er reel intern inkonsistens. Bestyrelsen får ikke en samlet konsistent produkt-prioritering. <strong>Rettelse:</strong> Tilføj cross-product split (X% Digital Cash / Y% Pay by Bank / Z% Stablecoin Factory). (MEDIUM)</li>
+        <li><strong>Armenia CBDC</strong> — "stablecoin technology provider" er korrekt positionering (Aryze = infra, centralbank = issuer). (Ingen rettelse)</li>
+        <li><strong>HeliPay</strong> — "cross-border payments use case, particularly around flows between Hong Kong and Vietnam". HK↔VN falder uden for Pay by Bank's UK+EU/EEA geografi. <strong>Skal</strong> klassificeres: Pay by Bank (kræver geografisk udvidelse) eller Digital Cash/stablecoin? (HØJ intern)</li>
+        <li><strong>Bank Frick</strong> — "issuance-related track" bør have eksplicit note: "Bank Frick would issue under its own licence; Aryze provides infrastructure." (LAV)</li>
+        <li><strong>Jan Høj / Uganda real-estate tokenisering</strong> — hverken Pay by Bank-geografi eller klar Stablecoin/Digital Cash-fit. Bør klassificeres eller de-prioriteres. (MEDIUM)</li>
+        <li><strong>Maryland 2-of-3 approvals</strong> — uden specifikation. Bør angive hvilke approvals. (MEDIUM)</li>
+        <li><strong>ECB/Banque de France/Banco de España</strong> — "strengthen Aryze's credibility and positioning" → promotional/vague. Bør være accountable: "regulatory and institutional dialogue access". (LAV)</li>
+        <li><strong>Filnavn:</strong> "Sales Update Q1 - 2026 .pdf" har ekstra space før extension. (LAV)</li>
+      </ul>
+
+      <h2>DEL 4 — Marketing</h2>
+
+      <h3>4.1 NBC Stockholm Marketing Plan (docx + pdf)</h3>
+      <p><strong>Forkerte produktnavne (HØJ — trykt på kundevendt one-pager)</strong></p>
+      <ul>
+        <li>"Aryze Factory" → <strong>Stablecoin Factory</strong></li>
+        <li>"Digital Currency" → <strong>Digital Cash</strong></li>
+      </ul>
+      <p>Optræder i Event Overview-tabel ("Products"-rækken) og i "Physical Assets → Print" hvor de bliver til trykte one-pagers ved booth. <strong>Skal rettes før print.</strong></p>
+      <p><strong>Datokonflikt (HØJ)</strong></p>
+      <ul>
+        <li>Marketingplanen siger: "NBC Stockholm | 26–27 May 2025"</li>
+        <li>Sponsorship-aftalen (underskrevet 23. april 2026, filnavn "NBC26") indikerer event er 2026</li>
+      </ul>
+      <p><strong>Rettelse:</strong> Verificér datoen. Hvis 2026 er korrekt, ret marketingplanens titel + footer ("Aryze ApS — Confidential — NBC Stockholm 2025") → 2026.</p>
+      <p><strong>Målgruppe og persona (MEDIUM)</strong></p>
+      <ul>
+        <li>"Target Audience: iGaming operators, crypto exchanges, fintech / payment decision-makers" → mangler <strong>Payments Operations Lead</strong> som primær persona-anchor.</li>
+        <li><strong>Rettelse:</strong> "Payments Operations Leads og decision-makers hos operatører, exchanges og fintech-virksomheder."</li>
+      </ul>
+      <p><strong>Tone-problemer (LAV)</strong></p>
+      <ul>
+        <li>"leave a lasting impression as the most exciting booth at the conference" → superlativ uden bevis, playful tone</li>
+        <li>"create visible energy that pulls in passersby" → abstract framing</li>
+        <li><strong>Mini Golf "The Aryze Way"</strong> — selvpromoverende slogan. Obstaclerne ("delays, fees, failed transactions") burde være faktuelle ("Card scheme fees", "Multi-day FX settlement", "Chargeback windows")</li>
+      </ul>
+      <p><strong>Demo-claim (MEDIUM)</strong></p>
+      <ul>
+        <li>"Visitors can input a real scenario and see settlement speed vs. traditional rails side by side" → demo skal kunne bevise det med reelle tal og kilder. Hvis "traditional rails" er en simuleret langsom animation, er det uunderbygget claim.</li>
+      </ul>
+      <p><strong>Mangler brand-values-ankring</strong></p>
+      <ul>
+        <li>Ingen reference til Transparency / Compliance / Excellence. Mission "Turning money movement into reliable, controllable infrastructure" mangler også.</li>
+      </ul>
+
+      <h3>4.2 Internal/Aryze-Team.pdf (MEDIUM — intern, men driver ekstern tale)</h3>
+      <ul>
+        <li>Sektionstitel "MARKETING &amp; STABLECOIN" → <strong>MARKETING &amp; STABLECOIN FACTORY</strong></li>
+        <li>"stablecoin-salg" → <strong>Stablecoin Factory-salg</strong></li>
+        <li><strong>Digital Cash mangler</strong> fra teamopdelingen — ingen ejer nævnt.</li>
+      </ul>
+
+      <h3>4.3 Documents/Sponsorships/Aryze NBC26 - Sponsorship Agreement - signed.pdf</h3>
+      <p>Ingen produkt-inkonsistens (legal doc nævner kun "Aryze ApS"). Datokonflikt med marketingplan flagget under 4.1.</p>
+
+      <h3>4.4 Positiv kontrol</h3>
+      <p>Ingen forekomster af forbudte fraser fundet i marketing-materialerne ("seamless", "revolutionising", "game-changing", "disrupting", "industry-leading", "best-in-class", "future of money", "new financial paradigm"). Pay by Bank konsistent navngivet.</p>
+
+      <h2>DEL 5 — Prioriteret rettelses-roadmap</h2>
+
+      <h3>Akut (denne uge) — kundevendt risiko</h3>
+      <ol>
+        <li><strong>Stop udsendelse af</strong> <code>Sales/Pay by Bank/Strategy/*-v3.pdf</code>. Erstat med PDF-eksport af v4-markdown.</li>
+        <li><strong>Stop print af</strong> NBC Stockholm one-pagers indtil "Aryze Factory" → "Stablecoin Factory" og "Digital Currency" → "Digital Cash" er rettet. Verificér event-dato (2025 vs 2026).</li>
+        <li><strong>Stop deployment af</strong> Stablecoin Factory website (Homepage.pdf + Contact.pdf). Total rebrand + rewrite påkrævet.</li>
+        <li><strong>Fjern Lorem ipsum</strong> fra alle tre Digital Assets &amp; RWA Factory-decks (side 6).</li>
+        <li><strong>Aldrig send</strong> <code>Workshop Aryze.pptx</code> eller <code>Workshop-Aryze-Mastercard.pptx</code> uændret til kunde (Mastercard-fortroligt + lister features Aryze ikke leverer).</li>
+      </ol>
+
+      <h3>Næste uge — kundevendt korrektion</h3>
+      <ol start="6">
+        <li>Ret begge Pay by Bank one-pagers: fjern "UK licensed" som hero-signal, ret/fjern "up to 3.5%" og "Higher Checkout Conversion" claims, slet duplikat.</li>
+        <li>Ret Casino-decket slide 7 vs 8 markeds-inkonsistens (19 vs 20).</li>
+        <li>Ret White-Label Enablement-decket (side 4 vs side 6 modsigelse om hvem der issuer).</li>
+        <li>Standardisér Digital Assets-routers hero-tekst — én pr. route, ikke identisk på tværs.</li>
+        <li>Differentier Digital Assets one-pagers side 1 (matchede route-specifikke decks).</li>
+        <li>Fjern "No third-party dependencies"-claim fra alle Digital Assets-materialer.</li>
+      </ol>
+
+      <h3>Strategisk (kræver leadership-beslutning)</h3>
+      <ol start="12">
+        <li><strong>Afklar "Digital Assets &amp; RWA Factory"-positioneringen:</strong> Er det Digital Cash? Stablecoin Factory? Begge? Et fjerde produkt? Indtil afklart, vil hver pitch skabe produkt-confusion.</li>
+        <li><strong>Konsolidér internt på persona:</strong> Payments Operations Lead skal være konsistent primær persona på tværs af alle Pay by Bank-materialer.</li>
+        <li>Erstat eller redigér Q1-rapport og SBC-rapport så pipeline-narrativ er konsistent (eller forklarer forskellen eksplicit).</li>
+        <li>Standardisér Rabii's title på tværs af alle dokumenter (Sales Director vs Sales &amp; Marketing Director).</li>
+      </ol>
+
+      <h3>Hygiejne — internt</h3>
+      <ol start="16">
+        <li>Flyt 2026_Market opportunities_Digital assets.pdf ud af Sales-mappen (det er Copenhagen Fintech's deck, ikke Aryze's).</li>
+        <li>Slet duplikat-filer (Workshop Aryze.pptx + Workshop-Aryze-Mastercard.pptx er identiske; de to Pay by Bank one-pagers er identiske).</li>
+        <li>Verificér juridiske erklæringer (de minimis + LV-status) er udfyldt før indsendelse.</li>
+        <li>Opdater <code>Internal/Aryze-Team.pdf</code> med Stablecoin Factory-naming og Digital Cash-ejer.</li>
+        <li>Omdøb "Sales Update Q1 - 2026 .pdf" (fjern ekstra space).</li>
+      </ol>
+
+      <h2>Verifikationsnoter</h2>
+      <ul>
+        <li>Pay by Bank-auditten (DEL 1) er baseret på direkte læsning af alle 11 filer via pdftotext + OCR hvor nødvendigt.</li>
+        <li>Digital Assets-auditten (DEL 2) krævede OCR på image-baserede PDF'er (Quartz-eksporterede). Fund er verificeret direkte i decks.</li>
+        <li>Website-auditten (DEL 3.1-3.2): PDF'erne er sandsynligvis printer-eksport af templates; det er muligt at den live-version på et tidspunkt har været rebrandet. Verificér mod live-site.</li>
+        <li>Brand Guide-PDF (<code>Brand/Brand-Guide-2026.pdf</code>) er image-baseret — brand-voice-reglerne er trukket fra master CLAUDE.md (som citerer Brand Guide v1.0).</li>
+        <li>Q1-rapport vs SBC-rapport inkonsistens er en observation; det kan være de dækker forskellige segmenter — kræver verifikation med Rabii.</li>
+      </ul>
+
+      <h2>Kilder</h2>
+      <ul class="sources">
+        <li><code>Documents/Analyser/Ideal-Customer-Profiles-v4.md</code></li>
+        <li><code>Documents/Analyser/Product-Suite-Master-Description-v4.md</code></li>
+        <li><code>Documents/Analyser/Value-Proposition-Canvas-v4.md</code></li>
+        <li><code>Documents/Analyser/README.md</code></li>
+        <li><code>CLAUDE.md</code> (master)</li>
+        <li><code>Sales/Pay by Bank/CLAUDE.md</code></li>
+        <li><code>Brand/Brand-Guide-2026.pdf</code> (v1.0) — via CLAUDE.md</li>
+      </ul>
+
+      <nav class="doc-links" style="margin-top:28px;border-top:1px solid var(--line);padding-top:16px">
+        <a href="index.html">↩ Analyses</a>
+        <a href="audit-follow-up-2026-05-14.html">Audit follow-up (14 May) →</a>
+      </nav>
+    </div>
+  </article>
+
+  <footer><p>Aryze &middot; Board &amp; Management Reports &middot; Audit — Modsigelser &amp; Brand-overtrædelser &middot; Confidential &middot; 13 May 2026</p></footer>
+</main>
+</body>
+</html>

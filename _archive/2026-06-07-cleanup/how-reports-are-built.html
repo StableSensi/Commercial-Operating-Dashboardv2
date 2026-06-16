@@ -1,0 +1,75 @@
+<!doctype html>
+<!-- Aryze · Board & Management Reports — methodology page (reader version of docs/Reporting-System-Design.md) -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How These Reports Are Built | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/cod.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">Aryze<small>Board &amp; Management Reports</small></span>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../index.html#reports">Reports</a>
+    <a href="../index.html#materials">Board materials</a>
+    <a href="../index.html#onboarding">Onboarding</a>
+    <a href="../index.html#tools">Tools</a>
+  </nav>
+</header>
+<p class="crumb"><a href="../index.html">Home</a> / How these are built</p>
+
+<main class="wrap">
+  <div class="doc">
+    <div class="doc-head">
+      <p class="eyebrow">Methodology</p>
+      <h1>How these reports are built</h1>
+      <p class="lede">The standard behind every report in this archive — so the board can trust that the numbers are defined the same way each month and that a page reads correctly no matter when it is opened.</p>
+      <p class="meta">Owner: Sales &middot; Maintained in <code>docs/Reporting-System-Design.md</code> &middot; Updated 7 June 2026</p>
+    </div>
+
+    <div class="doc-body">
+      <h2>The archive principle</h2>
+      <p>This is a <strong>point-in-time archive</strong>, not a live dashboard. Every item is dated; the figures live <em>inside</em> each dated report, never on the home page. A published report is closed at publication: corrections happen as restatements in the next report's appendix, never as edits to a published page.</p>
+
+      <div class="callout"><span>The two-weeks-later test</span>
+        <p style="margin:0">Every page must read correctly two weeks after publication without being touched. Dated facts only — never "next week", "upcoming" or "we are about to". Next steps are commitments recorded at month close, with a date ("Hold the 2 June call"). Each report carries a snapshot stamp, and its Priorities section states where outcomes are reported: in the <em>next</em> report. That is what lets the archive sit untouched without ever looking dead.</p>
+      </div>
+
+      <h2>The report spine</h2>
+      <p>Every monthly report follows the same order — the order is the standard. Three tiers serve three audiences in one document:</p>
+      <table class="content">
+        <tr><th>Tier</th><th>Sections</th><th>For</th></tr>
+        <tr><td>1 — Executive</td><td>Cover with one-line verdict · executive summary with the asks · scorecard (5 KPIs + stage funnel)</td><td>Board / CEO — the two-minute read</td></tr>
+        <tr><td>2 — Operating detail</td><td>Pipeline movement and advancing deals · marketing &amp; events · partnerships · findings · priorities with owner + date</td><td>The commercial team</td></tr>
+        <tr><td>3 — Appendix</td><td>Full deal book · early/nurture and backlog tables · CRM snapshot image · sources and restatements</td><td>The analyst</td></tr>
+      </table>
+
+      <h2>The rules every report passes</h2>
+      <ul>
+        <li><strong>Two-minute test</strong> — verdict, state and ask are readable from the first screen alone.</li>
+        <li><strong>Two-weeks-later test</strong> — dated commitments, no relative time, snapshot stamp present.</li>
+        <li><strong>Traceability</strong> — every number maps to a <a href="metric-definitions.html">metric definition</a> and a dated CRM snapshot.</li>
+        <li><strong>Thin-month honesty</strong> — a section with nothing real carries one honest line ("No new partnerships advanced in June."), never filler.</li>
+        <li><strong>Brand voice</strong> — dry, operational, literal; the three products never blurred; no unsourced numbers.</li>
+        <li><strong>Restraint</strong> — every element either changes a decision or is a tracked monthly metric; otherwise it is cut.</li>
+      </ul>
+
+      <h2>The monthly rhythm</h2>
+      <p>Manual-first by design — no build step, no render engine, no live connector. Producing a month means: snapshot the CRM board → copy the template → fill it from the snapshot, CRM notes, event reports and weekly updates → QA against the rules above → export the PDF to <code>Documents/Reports/</code> → add the report to the home page. Marketing owns the events/campaigns block and delivers it to a monthly deadline; if it doesn't arrive, the section says so in one line.</p>
+
+      <h2>Delta now, targets later</h2>
+      <p>Scorecards show value + month-over-month delta only. RAG status and "vs target" switch on once monthly commercial targets are set — not before. Current-looking numbers never appear outside a dated report.</p>
+
+      <hr>
+      <p class="sources">Full build standard: <code>docs/Reporting-System-Design.md</code> (the canonical design document) and <code>docs/Monthly-Production-Checklist.md</code> (the runbook). Definitions: <a href="metric-definitions.html">Metric definitions</a>.</p>
+    </div>
+  </div>
+
+  <footer><p>Aryze &middot; Board &amp; Management Reports &middot; Methodology &middot; Confidential</p></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automations plan | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/cod.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">Aryze<small>Sales &amp; Marketing</small></span>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#reports">Reports</a>
+    <a href="../../index.html#reference">Reference</a>
+    <a href="../../index.html#tools">Tools</a>
+  </nav>
+</header>
+<p class="crumb"><a href="../../index.html">Home</a> / <a href="../../index.html#reference">Reference</a> / <a href="index.html">Strategies &amp; plans</a> / Automations plan</p>
+
+<main class="wrap">
+  <article class="doc">
+    <header class="doc-head">
+      <p class="eyebrow">Plan · Automation</p>
+      <h1>Automations plan</h1>
+      <p class="lede">Prioriteret plan over hvad der kan automatiseres i StableSensei-træet og Cowork — et beslutningsgrundlag for hvad der skal bygges først, hvor meget tid det vinder, og hvilke connectors der skal kobles på undervejs.</p>
+      <p class="meta">Owner: Commercial · 23 May 2026 · Confidential</p>
+      <div class="doc-links">
+        <a href="index.html">↩ Strategies &amp; plans</a>
+        <a href="ai-sales-workflow-architecture.html">Companion: AI sales workflow architecture →</a>
+      </div>
+    </header>
+
+    <div class="doc-body">
+      <div class="callout"><span>TL;DR</span>
+        <p style="margin:0 0 10px">25+ aktive cases over 18 dage, fast ugentlig update-rytme, fire definerede skabeloner (CRM-Note, Discovery-Call, Account-Plan, Post-Mortem) — men nul skemalagte opgaver, nul live artifacts, og ingen connectors er authentiseret endnu.</p>
+        <p style="margin:0 0 10px"><strong>Den store opdagelse:</strong> det meste af det højeste afkast kan bygges <em>i dag</em> alene på fil-strukturen. Du behøver ikke vente på Gmail/Calendar/Fireflies for at få det første lag automation i luften. Connectors åbner det andet lag (morning brief, transskript → CRM-note, kalender-drevet meeting prep), men de er ikke en blokade for at komme i gang.</p>
+        <p style="margin:0">Anbefalet rækkefølge: <strong>Tier 1 først (uge 1) → connectors (uge 1–2) → Tier 2 (uge 2–3) → Tier 3 (når Tier 1+2 har sat sig).</strong></p>
+      </div>
+
+      <h2>Hvad vi fandt i dag</h2>
+      <table class="content">
+        <thead><tr><th>Område</th><th>Status</th><th>Konsekvens for plan</th></tr></thead>
+        <tbody>
+          <tr><td>Skemalagte opgaver</td><td>0 stk.</td><td>Frisk start — vi vælger med omhu hvad der skal køre</td></tr>
+          <tr><td>Live artifacts</td><td>0 stk.</td><td>Pipeline-dashboard er en åbenlys første kandidat</td></tr>
+          <tr><td>Connectors authentiseret</td><td>0 stk.</td><td>Tier 2-automationer afventer at du kobler på</td></tr>
+          <tr><td>Aktive cases</td><td>25 (Pay by Bank 18, Stablecoin Factory 3, Digital Cash 2+)</td><td>Stale-case-detektor får øjeblikkeligt afkast</td></tr>
+          <tr><td>CRM-noter sidste 18 dage</td><td>25+</td><td>Fast nok rytme til at en uge-auto-draft har data at arbejde med</td></tr>
+          <tr><td>Ugentlige updates</td><td>1 stk. (2026-05-17), format er stabilt</td><td>Format er ren skabelon til auto-draft</td></tr>
+          <tr><td>Definerede skabeloner</td><td>4 (CRM-Note, Account-Plan, Discovery-Call, Post-Mortem)</td><td>Skill-baserede én-klik-handlinger er lige til at bygge</td></tr>
+          <tr><td>Brain/Frameworks</td><td>4 (Qualification, VPC, Buyer-Committee, Trigger-Event)</td><td>Klar til at fodre meeting-prep og account-plan-generering</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Tier 1 — Byg i denne uge (file-based, ingen connectors)</h2>
+
+      <h3>1. Stale-case-detektor (live artifact) ⭐ TOP-PRIO</h3>
+      <p><strong>Hvad:</strong> Et levende HTML-dashboard der scanner alle <code>Sales/*/Cases/*/CRM-Notes/</code> og viser cases sorteret efter dage siden seneste touch. Farvekodet: grøn &lt;7d, gul 7–14d, rød &gt;14d. Klik en case → seneste note + næste task vises inline.</p>
+      <p><strong>Hvorfor:</strong> Du skrev selv i ugens update at "silence stack på Pay by Bank" er det største problem. Dette er præcis hvad et artifact er bygget til — sider du genåbner, hvor underliggende data ændrer sig.</p>
+      <ul>
+        <li><strong>Type:</strong> Live artifact (HTML der genscanner filer ved hver åbning)</li>
+        <li><strong>Tidsbesparelse:</strong> 20–30 min/uge (det du ellers manuelt scanner igennem hver søndag)</li>
+        <li><strong>Byggetid:</strong> ~1–2 timer</li>
+        <li><strong>Afhængigheder:</strong> Ingen</li>
+      </ul>
+
+      <h3>2. Weekly-update auto-draft (skemalagt opgave) ⭐ TOP-PRIO</h3>
+      <p><strong>Hvad:</strong> Hver søndag kl. 17:30 CEST: scanner alle CRM-noter fra de sidste 7 dage, grupperer pr. produkt, og producerer et udkast i samme format som <code>Documents/Reports/Weekly/2026-05-17-weekly-update.md</code>. Lægges som <code>[dato]-weekly-update-DRAFT.md</code> til din review/redigering før udsendelse.</p>
+      <p><strong>Hvorfor:</strong> Du har allerede formatet locket. 30–45 min søndagsarbejde forsvinder; du kun redigerer og sender.</p>
+      <ul>
+        <li><strong>Type:</strong> Skemalagt opgave (<code>0 17 * * 0</code> cron)</li>
+        <li><strong>Tidsbesparelse:</strong> 30–45 min/uge</li>
+        <li><strong>Byggetid:</strong> ~1,5 timer</li>
+        <li><strong>Afhængigheder:</strong> Ingen — Tier 1 #1 kan også fodre dette (hvis du bygger stale-case-detektor først har vi allerede parseren)</li>
+      </ul>
+
+      <h3>3. Pipeline-dashboard (live artifact)</h3>
+      <p><strong>Hvad:</strong> Alle cases på tværs af produkter i ét view: customer, produkt, stage, dage siden seneste touch, seneste "Latest"-linje, åben task med deadline. Filtre pr. produkt og pr. stage. Klik → åbner case-folder.</p>
+      <p><strong>Hvorfor:</strong> Komplementerer #1 (som er rød-flag-orienteret); dette giver dig hele rørledningen i ét blik. Brugbar i ugens forecasting og hvis du nogensinde skal vise pipeline til Wiberg/Peter.</p>
+      <ul>
+        <li><strong>Type:</strong> Live artifact</li>
+        <li><strong>Tidsbesparelse:</strong> Indirekte — bedre beslutninger om hvor du bruger din tid</li>
+        <li><strong>Byggetid:</strong> ~2–3 timer</li>
+        <li><strong>Afhængigheder:</strong> Vi skal beslutte hvordan stage markeres. To muligheder: (a) front-matter i et <code>case.md</code> på case-niveau (eksplicit, kræver vedligehold), eller (b) inferred fra seneste CRM-notes "Latest"-linje (automatisk men mindre præcist). Anbefaling: (a) — du angiver stage én gang i et lille <code>_case.yml</code>, vi sætter en skabelon op.</li>
+      </ul>
+
+      <h3>4. CRM-note fra rå noter (skill / slash command)</h3>
+      <p><strong>Hvad:</strong> <code>/crm-note [customer]</code> eller bare paste 2 min rå call-noter; output er en CRM-Note.md i præcis det format <code>Brain/Templates/CRM-Note.md</code> definerer (Latest ≤3 linjer, Open questions, Task, Deadline). Gemmes automatisk til <code>Sales/[Product]/Cases/[Customer]/CRM-Notes/[YYYY-MM-DD].md</code>.</p>
+      <p><strong>Hvorfor:</strong> Du skriver 25+ CRM-noter på 18 dage. Hvis hver tager 5 min at formatere efter et call, vinder du ~2 timer/uge. Skabelonen er allerede streng — den er let at håndhæve maskinelt.</p>
+      <ul>
+        <li><strong>Type:</strong> Skill (én-klik-handling)</li>
+        <li><strong>Tidsbesparelse:</strong> 1,5–2 timer/uge</li>
+        <li><strong>Byggetid:</strong> ~45 min (det er primært at pege en eksisterende skill mod <code>CRM-Note.md</code>)</li>
+        <li><strong>Afhængigheder:</strong> Ingen — bliver bedre med Fireflies-connector (Tier 2 #7)</li>
+      </ul>
+
+      <h2>Tier 2 — Næste 1–2 uger (kræver at du authentiserer connectors)</h2>
+
+      <h3>5. Morning-brief (skemalagt opgave)</h3>
+      <p><strong>Hvad:</strong> Hverdage kl. 07:00 CEST: scanner kalender (i dag + i morgen), unread e-mails fra kundedomæner, og cases med åben task der forfalder i dag/i overmorgen. Output: 1-sides brief til <code>Documents/Reports/Daily-Briefs/[dato].md</code>.</p>
+      <p><strong>Hvorfor:</strong> Du har et stort, distribueret katalog af cases. En morgen-scan der prioriterer dagen sparer 15–20 min/dag — det er en time/uge.</p>
+      <ul>
+        <li><strong>Type:</strong> Skemalagt opgave (<code>0 7 * * 1-5</code>)</li>
+        <li><strong>Tidsbesparelse:</strong> 60–75 min/uge</li>
+        <li><strong>Byggetid:</strong> ~2 timer (efter connectors er sat op)</li>
+        <li><strong>Afhængigheder:</strong> Gmail (eller Outlook/MS365 — se §Connectors) + Google Calendar (eller Outlook Calendar)</li>
+      </ul>
+
+      <h3>6. Meeting-prep skill (kalender-drevet)</h3>
+      <p><strong>Hvad:</strong> "Prep mig til mit call med [Customer]" → henter case-folder + kalender-invite + seneste e-mail-tråd + relevante framework-sider. Output: 1-side prep med mål, seneste CRM-note, open questions, foreslået agenda.</p>
+      <p><strong>Hvorfor:</strong> Du har allerede <code>sales:call-prep</code> skill installeret, men den arbejder bedst når den kan se din kalender og inbox. Connector-opgradering gør den 3× så nyttig.</p>
+      <ul>
+        <li><strong>Type:</strong> Eksisterende skill (<code>sales:call-prep</code>) + connector-opgradering</li>
+        <li><strong>Tidsbesparelse:</strong> 10–15 min pr. call. Med 16+ aktive cases → 30–45 min/uge</li>
+        <li><strong>Byggetid:</strong> ~30 min (det er konfiguration, ikke bygning)</li>
+        <li><strong>Afhængigheder:</strong> Google Calendar + Gmail</li>
+      </ul>
+
+      <h3>7. Fireflies → CRM-note (skemalagt eller webhook)</h3>
+      <p><strong>Hvad:</strong> Når en Fireflies-optagelse er færdig, hentes transskript, ekstraheres til CRM-note-format, gemmes på rette sti, foreslås næste task. Du får en notifikation der beder dig review'e.</p>
+      <p><strong>Hvorfor:</strong> Combineret med #4 fjerner det det sidste manuelle led mellem "call slutter" og "CRM-noten er i mappen". Tidsmæssigt det største enkelt-spring.</p>
+      <ul>
+        <li><strong>Type:</strong> Skemalagt opgave (tjekker Fireflies hver 30 min) eller webhook</li>
+        <li><strong>Tidsbesparelse:</strong> 5 min/call. Med 4–6 calls/uge → 20–30 min/uge — men <em>kvaliteten</em> af noten bliver højere fordi den er trækket fra ordret transskript</li>
+        <li><strong>Byggetid:</strong> ~2 timer (efter Fireflies-connector er authentiseret)</li>
+        <li><strong>Afhængigheder:</strong> Fireflies-connector</li>
+      </ul>
+
+      <h2>Tier 3 — Polish, når Tier 1+2 har sat sig (skills, små automationer)</h2>
+
+      <h3>8. Follow-up draft skill</h3>
+      <p><strong>Hvad:</strong> I en case-folder, kommando <code>/follow-up</code> læser CRM-noterne + open questions + seneste draft, og producerer næste e-mail i din stemme (Brand Guide voice dialer + persona) der adresserer åbne spørgsmål og foreslår næste konkrete skridt.</p>
+      <ul>
+        <li><strong>Tidsbesparelse:</strong> 10 min pr. draft. Med 5–8 follow-ups/uge → 50–80 min/uge</li>
+        <li><strong>Byggetid:</strong> ~1 time</li>
+      </ul>
+
+      <h3>9. Post-mortem auto-draft (når case lukkes som lost/parked)</h3>
+      <p><strong>Hvad:</strong> Marker en case som lost (front-matter, file-rename, eller eksplicit kommando) → automatik samler alle CRM-noter + drafts + account-plan og udfylder <code>Brain/Templates/Post-Mortem.md</code> til et udkast i <code>Documents/Reports/Post-Mortems/</code>. Du finpudser de to spørgsmål ("what were we hearing — really?" og "what did we miss?") manuelt.</p>
+      <ul>
+        <li><strong>Tidsbesparelse:</strong> 30–45 min pr. post-mortem. Lille volumen, men løfter institutionel læring fra noget der ofte glemmes.</li>
+        <li><strong>Byggetid:</strong> ~1,5 time</li>
+      </ul>
+
+      <h3>10. Content-kalender artifact</h3>
+      <p><strong>Hvad:</strong> Live HTML af <code>Marketing/Content/Blog/</code> + <code>Marketing/Content/Social/</code> sorteret efter forfald (planlagt udgivelsesdato fra filnavn). Viser status (draft/scheduled/published), platform, og næste action.</p>
+      <ul>
+        <li><strong>Tidsbesparelse:</strong> Lille (5 min/uge), men giver god oversigt og kan deles internt.</li>
+        <li><strong>Byggetid:</strong> ~1 time</li>
+      </ul>
+
+      <h2>Connectors der skal authentiseres (prioriteret)</h2>
+      <table class="content">
+        <thead><tr><th>Connector</th><th>Låser op for</th><th>Prioritet</th><th>Bemærkning</th></tr></thead>
+        <tbody>
+          <tr><td>Google Calendar (eller Outlook)</td><td>Morning-brief, meeting-prep, daglige tasks</td><td>HØJ</td><td>Vælg den du faktisk bruger — i Cowork ser jeg både Google og MS365 plugins tilgængelige</td></tr>
+          <tr><td>Gmail (eller Outlook/MS365)</td><td>Morning-brief, meeting-prep, inbox-triage</td><td>HØJ</td><td>Samme valg som Calendar — hold dig til ét økosystem</td></tr>
+          <tr><td>Fireflies</td><td>Auto-CRM-note fra transskripter</td><td>MEDIUM</td><td>Største kvalitetsløft for note-tagning hvis du allerede bruger Fireflies; ellers spring over</td></tr>
+          <tr><td>Close.com / Outreach / Apollo</td><td>Pipeline-sync (hvis du flytter væk fra ren markdown)</td><td>LAV</td><td>I dag er case-foldere "the system" — connector kommer på når du beslutter om CRM-of-record skal flytte</td></tr>
+          <tr><td>Slack</td><td>Internal pings, statusopdateringer</td><td>LAV</td><td>Kun hvis du vil have automation til at skrive til en kanal</td></tr>
+          <tr><td>Notion</td><td>Hvis I bruger Notion til docs</td><td>LAV</td><td>Springover hvis alt allerede ligger her i træet</td></tr>
+          <tr><td>Common Room</td><td>Account research signals</td><td>LAV–MEDIUM</td><td>Plugin er installeret; vurder om signaldata er værd at integrere i morning-brief</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Anbefaling:</strong> Authentisér Google Calendar + Gmail (eller Outlook + MS365 — vælg ét) i uge 1. Det åbner ~60% af Tier 2-værdien. Fireflies tilføjes når du er klar til at lade automation skrive CRM-noter på dine vegne.</p>
+
+      <h2>Forslag til byggerækkefølge</h2>
+      <p><strong>Uge 1 (denne uge):</strong></p>
+      <ul>
+        <li>Dag 1: Byg Stale-case-detektor (#1). 1–2 timer. Vinst er umiddelbar.</li>
+        <li>Dag 2: Authentisér Calendar + Gmail/Outlook.</li>
+        <li>Dag 3: Byg Weekly-update auto-draft (#2). Test den på de 25 noter vi allerede har.</li>
+        <li>Dag 4: Sæt CRM-note-skill (#4) op.</li>
+      </ul>
+      <p><strong>Uge 2:</strong></p>
+      <ul>
+        <li>Byg Pipeline-dashboard (#3). Brug parseren fra #1.</li>
+        <li>Sæt Morning-brief (#5) op. Test 3 hverdage før den får lov at køre selv.</li>
+      </ul>
+      <p><strong>Uge 3:</strong></p>
+      <ul>
+        <li>Opgradér meeting-prep (#6).</li>
+        <li>Vurder om Fireflies (#7) skal kobles på.</li>
+      </ul>
+      <p><strong>Uge 4+:</strong></p>
+      <ul>
+        <li>Tier 3 efter behov: Follow-up draft (#8) når du mærker behovet, Post-mortem (#9) næste gang du taber en deal, Content-kalender (#10) hvis Marketing-stakken vokser.</li>
+      </ul>
+
+      <h2>Åbne spørgsmål jeg skal bruge svar på før vi bygger</h2>
+      <ol>
+        <li><strong>Mail/kalender-stak:</strong> Google Workspace eller Microsoft 365? (Begge har plugins; du skal vælge ét spor.)</li>
+        <li><strong>Stage-markering på cases:</strong> Front-matter (manuelt vedligehold, præcist) eller inferred fra CRM-notes (automatisk, mindre præcist)? Det påvirker pipeline-dashboard.</li>
+        <li><strong>Fireflies:</strong> Bruger I det i dag, eller er det Gong/Granola? Vi har plugins til alle tre — vælg den I faktisk har optagelser i.</li>
+        <li><strong>Weekly-update format:</strong> Skal auto-draft strengt følge <code>2026-05-17</code>-strukturen (Locked next 10 days / Pay by Bank moves / Other products / Help I need), eller skal vi løsne det efter behov?</li>
+        <li><strong>Hvor skal daily-briefs gemmes:</strong> <code>Documents/Reports/Daily-Briefs/</code> (foreslået) eller et nyt sted?</li>
+      </ol>
+
+      <h2>Hvad vi ikke bygger (og hvorfor)</h2>
+      <ul>
+        <li><strong>Auto-send af follow-up-emails:</strong> Vi drafter, du sender. Brand- og kvalitetskontrol kræver et menneske i loopet. Auto-send er en optimering for senere, hvis nogensinde.</li>
+        <li><strong>Auto-CRM-stage-flytninger:</strong> Stage-ændringer betyder noget — de markerer at noget kvalitativt er skiftet. Lad det blive en bevidst handling, ikke en regel.</li>
+        <li><strong>Marketing-performance dashboards uden data-kilder:</strong> Vi har ingen analytics-connector koblet på endnu. Når Klaviyo / Supermetrics / Amplitude (alle installeret som plugins) får data, er det en oplagt Tier 2-tilføjelse.</li>
+      </ul>
+
+      <hr>
+      <p><strong>Næste skridt:</strong> Når du har svar på de 5 åbne spørgsmål, kan jeg starte med #1 (Stale-case-detektor). Det er ~1–2 timers arbejde og giver dig en levende side du kan tjekke hver morgen før du går i gang.</p>
+
+      <nav class="doc-links doc-foot">
+        <a href="index.html">↩ Strategies &amp; plans</a>
+        <a href="ai-sales-workflow-architecture.html">AI sales workflow architecture →</a>
+      </nav>
+    </div>
+  </article>
+
+  <footer><p>Aryze &middot; Sales &amp; Marketing &middot; Automations plan &middot; Confidential &middot; 23 May 2026</p></footer>
+</main>
+</body>
+</html>

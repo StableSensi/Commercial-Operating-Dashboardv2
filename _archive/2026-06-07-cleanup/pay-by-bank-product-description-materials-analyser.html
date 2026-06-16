@@ -1,0 +1,111 @@
+<!doctype html>
+<!-- Aryze · Sales & Marketing — Pay by Bank product description. Canonical source: Documents/Analyser/Pay-by-Bank/Product-Description.md (Danish). English reader version; keep in sync. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pay by Bank — Product Description | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/cod.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">Aryze<small>Sales &amp; Marketing</small></span>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#reports">Reports</a>
+    <a href="../../index.html#reference">Reference</a>
+    <a href="../../index.html#tools">Tools</a>
+  </nav>
+</header>
+<p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">ICP &middot; VPC &middot; Product description</a> / Pay by Bank product description</p>
+
+<main class="wrap">
+  <article class="doc">
+    <header class="doc-head">
+      <p class="eyebrow">Pay by Bank &middot; Product description</p>
+      <h1>What Pay by Bank is — and is not</h1>
+      <p class="lede">UK and EU account-to-account payment infrastructure for merchants: a more direct way to receive customer payments, on Mastercard Open Banking rails instead of card rails. This page is the source of truth on what the product does.</p>
+      <p class="meta">Owner: Commercial &middot; Confidential</p>
+    </header>
+
+    <div class="doc-body">
+      <h2>Overview</h2>
+      <p>Pay by Bank lets a business <strong>receive incoming customer payments</strong> through Open Banking payment flows on Mastercard's rails instead of traditional card rails. The customer approves the payment directly in their own bank (strong customer authentication), and the money moves bank to bank — not through a card scheme.</p>
+      <p><strong>Flow direction — important:</strong> Pay by Bank covers <strong>customer → merchant</strong> only: checkout, deposits, top-ups, instant customer funding. The opposite direction (payouts, withdrawals, standalone refunds) is not productised at Aryze.</p>
+      <p>For the merchant the value is not another checkout option. The value is a cleaner, faster, more controllable payment flow.</p>
+
+      <h2>Where it runs</h2>
+      <ul>
+        <li><strong>Scope:</strong> UK + EU/EEA merchants on Mastercard Open Banking rails — 19 European markets, 2,900+ banks.</li>
+        <li><strong>Staged rollout:</strong> the UK is live and sellable via the Volt.io partnership. The EU/EEA rollout begins late Q2 2026 — the Volt partnership is being extended to cover the EU, with the contract awaiting signature. Until it is signed, EU conversations are pre-sales, not commit-to-go-live.</li>
+        <li><strong>Bank depth varies by country</strong> — confirmed per customer.</li>
+      </ul>
+
+      <h2>Who it is for</h2>
+      <p>A UK or European merchant or payment-driven business where incoming payments affect margin, cash flow, customer experience, risk and daily operations. Strongest near-term fit: iGaming, casinos and betting; trading platforms; high-risk and card-under-served merchants; businesses with high chargeback exposure; and businesses where deposits, top-ups or instant customer funding are commercially important. Over time: wallets, remittance and payment-heavy e-commerce. Full profile: <a href="pay-by-bank-icp.html">the ICP</a>.</p>
+
+      <h2>The problem it solves</h2>
+      <p>Card-based flows can be expensive, indirect, slow to settle and operationally heavy. For payment-driven businesses that is not a back-office issue — it hits margin, liquidity, customer experience, fraud exposure, reconciliation and internal workload. Concretely:</p>
+      <ul>
+        <li>Card costs reduce margin — scheme fees up 75%+ since 2021 for large merchants</li>
+        <li>Settlement is slower than the business wants</li>
+        <li>Refunds and reconciliation create manual work</li>
+        <li>Chargebacks and disputes create cost and risk — iGaming runs 2–4% chargeback rates against 0.5–1% in normal e-commerce; EUR 20–100 per dispute, loaded cost around 2.5× the transaction value</li>
+        <li>Payment status is not transparent enough</li>
+        <li>The customer journey carries unnecessary friction</li>
+      </ul>
+      <p>The more payment-driven the business, the more a better rail is worth.</p>
+
+      <h2>The value proposition</h2>
+      <blockquote>"A better way for UK and European merchants to get paid."</blockquote>
+      <p>Pay by Bank helps merchants reduce dependence on card flows, improve the route from initiation to settlement, lower payment friction, see incoming payments clearly, reconcile cleanly, cut the operational burden of payment handling, and serve use cases where card rails are expensive, fragile or restricted. The customer needs a better payment operating model — the conversation stays on cost, settlement, friction, chargebacks, refunds, reconciliation, visibility and control.</p>
+
+      <h2>What we deliver — confirmed</h2>
+      <table class="content">
+        <tr><th>Capability</th><th>What it means</th></tr>
+        <tr><td>A2A payments on Mastercard rails</td><td>Customer → merchant: checkout, deposits, top-ups. The customer approves directly in their bank.</td></tr>
+        <tr><td>Fixed fee per transaction</td><td>Our main argument against cards: the same price regardless of amount.</td></tr>
+        <tr><td>Near-zero chargebacks</td><td>A2A is irrevocable and SCA-approved in the customer's bank. No scheme dispute path.</td></tr>
+        <tr><td>RememberMe</td><td>A token valid for 15 months. Repeat depositors approve in roughly half the clicks of a first deposit — a direct conversion gain on repeat flows.</td></tr>
+        <tr><td>Theming / custom branding</td><td>Logo, colours and font at checkout, so the merchant's brand carries through.</td></tr>
+        <tr><td>Structured onboarding</td><td>Map the flow → KYB → integration &amp; test → go live, with callbacks, reporting and transaction monitoring built in.</td></tr>
+        <tr><td>Platform reliability</td><td>99.99%+ uptime on the Mastercard Open Banking platform: geo-redundancy, automatic failover, 24/7 support.</td></tr>
+      </table>
+
+      <h2>What we do not deliver — be explicit</h2>
+      <p>Aryze operates <strong>PIS only</strong>, on the <strong>customer → merchant</strong> direction. The following exists on Mastercard's platform or on a roadmap, but is not productised at Aryze:</p>
+      <ul>
+        <li><strong>AIS features:</strong> account owner verification, balance checks, account aggregation, spending insights, KYC via open banking, combined AIS+PIS flows.</li>
+        <li><strong>Payouts (merchant → customer):</strong> withdrawals and standalone refunds are not live at Aryze. If a customer asks: we cover the incoming direction today; outgoing is on the roadmap.</li>
+        <li><strong>Standalone recurring:</strong> not possible under PSD2 — only via Mastercard Payment Services DK/NO. Standalone expected with PSD3 (estimated 2027–28).</li>
+        <li><strong>Refunds:</strong> always check with product before promising refund flows.</li>
+      </ul>
+      <p class="note">If a customer refers to a Mastercard feature we do not have live — say so directly and log it as an open question in the CRM note.</p>
+
+      <h2>How it is sold</h2>
+      <p>A commercial, merchant-focused motion: direct merchant conversations, warm introductions, payment-focused partnerships, the website and savings calculator, LinkedIn, targeted outreach, and product demos with sandbox access. The buying group typically spans finance (cost and cash flow), payments and product (the payment journey), risk and fraud (disputes and chargebacks), operations (reconciliation and reporting) and engineering (the integration). The primary buyer is the <strong>Payments Operations Lead</strong>; secondary buyers are the Head of Payments, CFO and COO. The product is sold on payment performance — not technical novelty.</p>
+
+      <h2>Pricing</h2>
+      <p>Fixed fee per transaction — the opposite of card rails, which scale with the amount. The concrete price depends on volume, markets and scope; confirm with product before quoting. <strong>Seller rule:</strong> run the customer's own numbers through the <a href="https://digitalonepager.aryze.io/pay-by-bank">savings calculator</a> before quoting, and show the saving against their current setup.</p>
+
+      <h2>Customer-facing resources</h2>
+      <ul>
+        <li>One-pager: <a href="https://digitalonepager.aryze.io/pay-by-bank">digitalonepager.aryze.io/pay-by-bank</a></li>
+        <li>Sandbox access: <a href="https://digitalonepager.aryze.io/sandbox-access">digitalonepager.aryze.io/sandbox-access</a></li>
+        <li>Booking link: <a href="https://cal.com/rabiiahmadesteitie/lets-connect">cal.com/rabiiahmadesteitie/lets-connect</a></li>
+      </ul>
+
+      <nav class="doc-links doc-foot">
+        <a href="index.html">↩ All analyses</a>
+        <a href="pay-by-bank-icp.html">← Pay by Bank ICP</a>
+        <a href="pay-by-bank-vpc.html">← Pay by Bank VPC</a>
+      </nav>
+    </div>
+  </article>
+
+  <footer><p>Aryze &middot; Sales &amp; Marketing &middot; Pay by Bank product description &middot; Confidential</p></footer>
+</main>
+</body>
+</html>

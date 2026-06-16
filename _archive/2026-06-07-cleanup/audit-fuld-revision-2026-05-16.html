@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit — Fuld revision af StableSensei (16 May 2026) | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/cod.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">Aryze<small>Board &amp; Management Reports</small></span>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#reports">Reports</a>
+    <a href="../../index.html#materials">Board materials</a>
+    <a href="../../index.html#onboarding">Onboarding</a>
+    <a href="../../index.html#tools">Tools</a>
+  </nav>
+</header>
+<p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Analyses</a> / Audit · 16 May 2026</p>
+
+<main class="wrap">
+  <article class="doc">
+    <header class="doc-head">
+      <p class="eyebrow">Audit · 16 May 2026</p>
+      <h1>Audit: Fuld revision af StableSensei (brand, struktur, indhold)</h1>
+      <p class="lede">Full workspace revision two days after the restructure — four acute customer-facing errors, the licensing-position fix that became canonical, and structural drift caught within 48 hours.</p>
+      <p class="meta">Auditeret af: Claude (Stablesensei) · 16. maj 2026 · Confidential</p>
+      <div class="doc-links">
+        <a href="index.html">↩ Analyses</a>
+        <a href="../../../../Documents/Reports/Audit-Fuld-Revision-2026-05-16.md">Source .md</a>
+      </div>
+    </header>
+
+    <div class="doc-body">
+      <p><strong>Scope:</strong> Alle mapper undtagen <code>Dev/</code> og <code>_archive/</code>. Brand voice + kapacitetsdisciplin + struktur + indhold + kildehenvisninger.<br>
+      <strong>Source of truth:</strong> Master <code>CLAUDE.md</code>, <code>Documents/Analyser/*/Product-Description.md</code>, Brand Guide v1.0.<br>
+      <strong>Tidligere audits:</strong> <a href="audit-modsigelser-2026-05-13.html">Audit-Modsigelser-2026-05-13</a>, <a href="audit-follow-up-2026-05-14.html">Audit-Follow-Up-2026-05-14</a>.</p>
+
+      <h2>Live status — opdateringer udført 2026-05-16 (efter rapport-publish)</h2>
+      <p>Følgende akutte fixes er gennemført samme dag som rapporten blev skrevet. Hvis du læser rapporten retrospektivt, er disse items lukkede:</p>
+
+      <h3>Licensing-positionen er nu canonical (✅ done)</h3>
+      <p>Stablesensei bekræftede 16. maj 2026: <strong>UK live via Volt.io-partnerskab; EU/EEA udruller slut Q2 2026 via Volt-extension, kontrakt afventer underskrift.</strong> Følgende filer er opdateret til at trække fra én canonical kilde:</p>
+      <ul>
+        <li><strong><code>Sales/Pay by Bank/CLAUDE.md</code></strong> — ny §"Licensing status (canonical)" tilføjet som single source of truth (v2.1, 2026-05-16). Indeholder "do say"-formuleringer, "do not say"-forbudte fraser, og historik.</li>
+        <li><strong><code>Sales/Pay by Bank/Cases/Whitebit/Drafts/2026-05-13_telegram_michael_eu-expansion-restart.md</code></strong> — v4 erstatter v3. Body siger nu <em>"Pay by Bank is live in the UK today through our partnership with Volt.io. EU rollout begins late Q2 2026, pending contract finalisation with our licensing partner."</em> "no chargebacks" → "near-zero chargebacks". "19 EU markets" → "19 European markets". Notes opdateret med canonical reference.</li>
+        <li><strong><code>Sales/Pay by Bank/Cases/Whitebit/CRM-Notes/2026-05-13.md</code></strong> — opdateret med licensing-reference og v4 draft-status. Deadline pushed 14 → 18 maj.</li>
+        <li><strong><code>Sales/Pay by Bank/Cases/Maksupay/CRM-Notes/2026-05-13.md</code></strong> — "EU er gated på dansk EMI" erstattet med canonical formulering (UK live via Volt; EU pipeline mode indtil kontrakt). Task-beskrivelse opdateret.</li>
+        <li><strong><code>Sales/Pay by Bank/Assets/Claude-Design-Corrections-Round-1.md</code></strong> — SUPERSEDED-banner tilføjet i toppen. §2 (EU-framing) markeret med advarsel + strikethrough på historisk formulering + canonical erstatning.</li>
+        <li><strong>Master <code>CLAUDE.md</code></strong> — Pay by Bank capability-disciplin opdateret med staged-rollout-note og link til canonical.</li>
+        <li><strong><code>Documents/Analyser/Pay-by-Bank/CLAUDE.md</code>, <code>ICP.md</code>, <code>Product-Description.md</code></strong> — alle tre har nu "staged rollout"-blok med Volt.io + Q2-formulering.</li>
+        <li><strong><code>Brain/Personas/Sales/CLAUDE.md</code>, <code>Sales-Pay-by-Bank/CLAUDE.md</code>, <code>Marketing/CLAUDE.md</code>, <code>Writer/CLAUDE.md</code></strong> — geografi-bullets opdateret med canonical reference.</li>
+        <li><strong><code>Brain/Templates/CRM-Note.md</code></strong> — eksempel-template renset for "Danish EMI"-formulering.</li>
+      </ul>
+
+      <h3>Slettede filer (✅ done)</h3>
+      <ul>
+        <li><code>_TIL-SLETNING/</code> + <code>.DS_Store</code> — slettet (var carry-over fra 13. maj-restrukturering).</li>
+        <li><code>assistant/SALES.md</code> — slettet (generisk <code>&lt;FILL IN&gt;</code>-template, ikke Aryze-tilpasset).</li>
+        <li><code>Writer-Workspace/Drafts/2026-05-15_press-release_pre-series-a_v2.md</code> — slettet (tombstone).</li>
+        <li><code>Writer-Workspace/Drafts/2026-05-19_press-release_pre-series-a_v2.md</code> — slettet (tombstone).</li>
+        <li><code>Writer-Workspace/Published/2026-05-15_press-release_pre-series-a_v1-EIN-canonical.md</code> — slettet (tombstone).</li>
+        <li><code>Writer-Workspace/Published/2026-05-19_press-release_pre-series-a_v1-EIN-canonical.md</code> — slettet (tombstone).</li>
+        <li><code>Writer-Workspace/_INDEX.md</code> — opdateret med "Rolled back / withdrawn"-sektion der dokumenterer press-release-rollback'en.</li>
+      </ul>
+
+      <h3>Stadig outstanding fra rapporten herunder</h3>
+      <p>Følgende items fra DEL 1–8 nedenfor er <strong>ikke</strong> lukket og kræver fortsat manuel handling: $RYZE-issuer-afklaring (Crypto Pizza Day), Digital Cash one-pager (Phase 1 4–6 måneder + 99.99% uptime), Maksupay-deck-review, BridgerPay afsender/signatur, Stablecoin Factory sandbox-claim, v4 vs v5 versionering, Mastercard cross-product spillover, Brand/CLAUDE.md Rabii-duplikat, Internal/HR ARYZE-caps i 4 filnavne, Documents/Reports/Post-Mortems/ mappe oprettelse, Documents/Plans <code>.pages</code>-konvertering, Marketing/Content subfolders, Marketing/Events trailing-space mappe, og resten af hygiejne-listen.</p>
+
+      <hr>
+
+      <h2>Executive summary</h2>
+      <p>Workspace'et er fundamentalt sundt efter 13.–14. maj-restruktureringen. Forbudte produktnavne ("Digital Assets &amp; RWA Factory", "Aryze Factory", "Digital Currency"), Lorem ipsum-templates, og duplikerede personas er væk fra aktive mapper. Forbudte hype-fraser ("revolutionising", "game-changing", "cutting-edge", "world-class", "future of money") forekommer ikke i nogen ny markdown-fil.</p>
+      <p>Men: i de 48 timer siden 14. maj-restruktureringen er der opstået ny drift, og <strong>fire kundevendte artefakter har akutte fejl der bør stoppes inden afsendelse</strong>:</p>
+      <ol>
+        <li><strong>Whitebit Telegram-draft (13. maj)</strong> lover EU er åbent — kontra Maksupay-noten samme dag der siger EU er gated på dansk EMI.</li>
+        <li><strong>Digital Cash cold-outreach one-pager</strong> lover "Phase 1 live within 4 to 6 months" — direkte kontra 6–18 måneders gospel.</li>
+        <li><strong>Crypto Pizza Day blog v4 + landing v2</strong> uddeler $RYZE-tokens uden at afklare hvem der issuer dem — risikerer issuer-glide.</li>
+        <li><strong>Maksupay-deck sendt 12. maj</strong> er ikke reviewet for scope-overskridelser efter EU-licensing-twist.</li>
+      </ol>
+      <p><strong>Største systematiske problemer (på tværs):</strong></p>
+      <ol>
+        <li><strong>Licensing-positionen er internt modstridende.</strong> UK-only vs UK+EU-åbent fortælles forskelligt i tre filer fra samme dag (Round-1 design-brief, Maksupay, Whitebit). Indtil dette løses i skrift, vil hver ny kundevendt outreach være en ny risiko.</li>
+        <li><strong>Versionerings-uklarhed.</strong> README.md siger master-routing-docs er v4. Pay-by-Bank/CLAUDE.md siger v5. Filerne hedder <code>-v4.md</code> men frontmatter siger "Version 5.0". Tre kilder, tre svar.</li>
+        <li><strong>Strukturel drift på 48 timer.</strong> <code>Writer-Workspace/</code> er en aktivt brugt top-level mappe der ikke står i master-folder-mappet. <code>_TIL-SLETNING/</code> skulle være væk men findes stadig. <code>assistant/SALES.md</code> er en generisk <code>&lt;FILL IN&gt;</code>-skabelon der aldrig blev Aryze-tilpasset (modsiger Production-Restructure §"zero matches").</li>
+        <li><strong>Mastercard-partnership lækker på tværs af produkter.</strong> Bruges som credibility-anchor i Stablecoin Factory og Digital Cash hvor den ingen operativ rolle har — præcis den "tre produkter adskilt"-disciplin master <code>CLAUDE.md</code> advarer mod.</li>
+        <li><strong>Specifikke tal uden kilde gentager sig</strong> på tværs af one-pager, newsletter, og blog: 5–8% correspondent banking, 99.99%+ uptime, 2.900+ banker, 12–24 måneders internt build, 5+ FTEs. Alle plausible — ingen citeret til en primær kilde.</li>
+      </ol>
+      <p><strong>Højeste-risiko-filer (kundevendt og forkert):</strong></p>
+      <ul>
+        <li><code>Sales/Pay by Bank/Cases/Whitebit/Drafts/2026-05-13_telegram_michael_eu-expansion-restart.md</code> (HØJ — EU-claim ikke verificeret + "no chargebacks")</li>
+        <li><code>Sales/Digital Cash/Assets/Digital-Cash-Onepager-Cold-Outreach.md</code> (HØJ — Phase 1 4–6 mdr + 99.99% uptime uden kilde)</li>
+        <li><code>Writer-Workspace/Drafts/2026-05-15_blog_crypto-pizza-day-2026_v4.md</code> + <code>..._landing_..._v2.md</code> (HØJ — $RYZE issuer uafklaret + MiCA-eksponering)</li>
+        <li><code>Sales/Pay by Bank/Cases/BridgerPay/Drafts/BridgerPay-Matthew-Boundy-reply-2026-05-13.md</code> (MEDIUM — afsender/signatur-mismatch på første kontakt)</li>
+      </ul>
+
+      <h2>Sådan læser du rapporten</h2>
+      <p>Samme format som 13. maj-auditten:</p>
+      <ul>
+        <li><strong>FIL</strong> — relativ sti</li>
+        <li><strong>LOKATION</strong> — linjenummer eller sektion</li>
+        <li><strong>CITAT</strong> — eksakt tekst (hvor relevant)</li>
+        <li><strong>PROBLEM</strong> — hvad er forkert, og hvorfor</li>
+        <li><strong>KATEGORI</strong> — brand-voice / capability / product-name / issuer-glide / persona / number-claim / structure / consistency / file-placement / naming / language / other</li>
+        <li><strong>SEVERITY</strong> — HØJ (kundevendt, akut) / MEDIUM (intern, vigtigt) / LAV (nuance)</li>
+        <li><strong>RETTELSE</strong> — konkret forslag</li>
+      </ul>
+
+      <h2>DEL 1 — Akutte kundevendte fejl (ret denne uge)</h2>
+
+      <h3>1.1 Whitebit Telegram-draft modsiger Maksupay-noten samme dag</h3>
+      <p><strong><code>Sales/Pay by Bank/Cases/Whitebit/Drafts/2026-05-13_telegram_michael_eu-expansion-restart.md</code></strong></p>
+      <ul>
+        <li><strong>LOKATION:</strong> Linje 14<br><strong>CITAT:</strong> <em>"We've extended Pay by Bank coverage to the rest of the EU since we last spoke, so both UK and EU are open now."</em><br><strong>PROBLEM:</strong> Maksupay CRM-noten fra samme dag (<code>Cases/Maksupay/CRM-Notes/2026-05-13.md</code> linje 8) siger: <em>"Aryze Pay-by-Bank kun sellable i UK i dag; EU er gated på dansk EMI."</em> Round-1 design-brief siger: <em>"EU live by end of Q2 2026, gated on Aryze's Danish EMI grant."</em> Tre interne kilder, tre svar. Draftens egen "Notes for sender" beder om verifikation — som ikke er sket i filen. Hvis EU faktisk er gated og dette ryger på Telegram, bryder vi master <code>CLAUDE.md</code> regel #1: <em>"Honesty over over-promising."</em><br><strong>KATEGORI:</strong> capability / consistency · <strong>SEVERITY:</strong> HØJ<br><strong>RETTELSE:</strong> Stop draftet. Afgør licensing-positionen skriftligt med Rabii/leadership. Hvis EU er åbent: send. Hvis ikke: omformuler til <em>"UK live today; EU expanding shortly — happy to share the timeline on a call."</em> Opdater Maksupay-noten og Round-1-briefet samtidig så alle tre filer fortæller samme historie.</li>
+        <li><strong>LOKATION:</strong> Linje 16<br><strong>CITAT:</strong> <em>"Quick refresher: customers push funds direct from their bank, fixed fee per transaction, no chargebacks."</em><br><strong>PROBLEM:</strong> Product-Description.md siger <em>"Near-zero chargebacks"</em> — A2A er irrevocable, men bank-channel-disputes findes. "No chargebacks" er maksimalist; "near-zero" er den verificerede gospel.<br><strong>KATEGORI:</strong> capability / number-claim · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> "near-zero chargebacks" — kort nok til Telegram, præcis nok til gospel.</li>
+        <li><strong>LOKATION:</strong> Linje 16<br><strong>CITAT:</strong> <em>"Built on Mastercard Open Banking rails (2,900+ banks across 19 EU markets)."</em><br><strong>PROBLEM:</strong> "19 EU markets" — Product-Description siger 19 europæiske markeder, UK + EU/EEA. UK er ikke et EU-marked. Sætningen lige inden siger "both UK and EU are open now." Intern modsigelse på én linje.<br><strong>KATEGORI:</strong> capability · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> "19 European markets" eller "UK + 18 EU/EEA markets".</li>
+      </ul>
+
+      <h3>1.2 Digital Cash cold-outreach one-pager: speed-creep + unsourced numbers</h3>
+      <p><strong><code>Sales/Digital Cash/Assets/Digital-Cash-Onepager-Cold-Outreach.md</code></strong></p>
+      <ul>
+        <li><strong>LOKATION:</strong> Hovedtekst<br><strong>CITAT:</strong> <em>"Phase 1 live within 4 to 6 months on a narrow, in-scope use case."</em><br><strong>PROBLEM:</strong> Digital Cash gospel: cyklus er 6–18 måneder. "Live om 6 uger" er eksplicit forbudt; "4 to 6 months" er den nye, blødere version af samme fejl. Specialist persona §3.3 siger: <em>"Don't sell speed. 'Live in weeks' destroys credibility instantly."</em> Dette er præcis det mønster 13. maj-auditten flaggede.<br><strong>KATEGORI:</strong> capability / number-claim · <strong>SEVERITY:</strong> HØJ<br><strong>RETTELSE:</strong> Erstat med: <em>"Discovery and architecture in the first quarter; phased deployment thereafter, on an institutional cycle of 6 to 18 months total."</em></li>
+        <li><strong>LOKATION:</strong> Hovedtekst<br><strong>CITAT:</strong> <em>"On-ramps via the Mastercard Open Banking partnership (2,900+ banks across 19 European markets, 99.99%+ uptime)"</em><br><strong>PROBLEM:</strong> Tre specifikke tal: 2.900+ banker (verificerbar mod Mastercard, men ingen inline-citat), 19 markeder (verificeret), 99.99%+ uptime (<strong>ikke en standard offentlig Mastercard-figur</strong> — risikabel uden primær kilde). Master regel: specifikke tal uden kilde er forbudt.<br><strong>KATEGORI:</strong> number-claim · <strong>SEVERITY:</strong> HØJ<br><strong>RETTELSE:</strong> Fjern 99.99%+ uptime indtil primær Mastercard-SLA-kilde er knyttet. Forankr "2.900+ banker" til en specifik Mastercard-rapport eller blød til "Europe-wide banking network".</li>
+        <li><strong>LOKATION:</strong> Hovedtekst<br><strong>CITAT:</strong> <em>"12 to 24 months of programme time, five or more dedicated FTEs"</em> / <em>"Cross-border correspondent banking still costs 5 to 8 percent in many corridors, on T+2 settlement."</em><br><strong>PROBLEM:</strong> Alle specifikke tal ("Aryze industry research, May 2026" = ikke en citat, en placeholder). 5–8% er plausibel (World Bank Remittance Prices Worldwide). T+2 er debatabelt — mange korridorer er T+3 til T+5.<br><strong>KATEGORI:</strong> number-claim · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Inline-cite World Bank/BIS, eller blød til prosa uden konkrete tal. Fjern T+2 medmindre verificeret.</li>
+        <li><strong>LOKATION:</strong> Fodnote/CTA<br><strong>CITAT:</strong> <code>[email — confirm] · [booking link — confirm institutional vs. Pay by Bank link]</code><br><strong>PROBLEM:</strong> Placeholders i kundevendt asset. Status-tag mangler.<br><strong>KATEGORI:</strong> other · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Tilføj <code>status: draft — fill placeholders before send</code> i frontmatter, eller udfyld.</li>
+      </ul>
+
+      <h3>1.3 Crypto Pizza Day: $RYZE-issuer uafklaret + MiCA-eksponering</h3>
+      <p><strong><code>Writer-Workspace/Drafts/2026-05-15_blog_crypto-pizza-day-2026_v4.md</code> + <code>landing_v2.md</code></strong></p>
+      <ul>
+        <li><strong>LOKATION:</strong> Blog §3 + Landing §4<br><strong>CITAT:</strong> <em>"win a share of $100 in $RYZE. Five winners. Twenty dollars each."</em> / <em>"The $RYZE amount per winner is calculated using the spot price of $RYZE in USD on the day of payout."</em><br><strong>PROBLEM:</strong> Blog og landing-side reklamerer et $RYZE-token-giveaway uden at afklare hvem der issuer $RYZE. Tre muligheder: (a) Aryze er issuer → modsiger "infrastructure, not issuer"-disciplin på tværs af hele workspace'et; (b) tredjepart issuer → skal navngives; (c) det er forvirret. Plus: under MiCA kan promotering af en token's spot-pris udløse regulated-communication-krav. 1. juli 2026 MiCA-deadline citeret i selve newsletter v3.<br><strong>KATEGORI:</strong> capability / issuer-glide / compliance · <strong>SEVERITY:</strong> HØJ — bloker publish<br><strong>RETTELSE:</strong> Få one-liner afklaring fra leadership: hvem issuer $RYZE? Hvis Aryze: det skifter hele positioneringen i workspace'et og kræver større opdatering. Hvis tredjepart: navngiv i blog og rules. Få legal review før 22. maj.</li>
+        <li><strong>LOKATION:</strong> Landing header<br><strong>CITAT:</strong> <em>"Organiser: Aryze ApS, Bredgade 3, Copenhagen, Denmark &lt;CONFIRM ENTITY + REGISTERED ADDRESS&gt;"</em><br><strong>PROBLEM:</strong> Placeholder for legal entity i konkurrenceregler. Under dansk markedsføringslov er manglende organiser-data ikke-compliant og skaber ansvarsrisiko hvis giveawayet udfordres.<br><strong>KATEGORI:</strong> compliance · <strong>SEVERITY:</strong> HØJ<br><strong>RETTELSE:</strong> Verificér registreret entity-navn og adresse (registreret kontor afviger ofte fra operativ). Fyld ind før publish.</li>
+        <li><strong>LOKATION:</strong> Blog footer + landing<br><strong>CITAT:</strong> Telegram-URL <code>t.me/ARYZEofficial</code><br><strong>PROBLEM:</strong> "ARYZE" all-caps. Master regel: altid "Aryze". X-handlet er rettet i v4 fra <code>@ARYZEofficial</code> til <code>@AryzeOfficial</code>; Telegram er ikke. Telegram-handles er typisk case-insensitive — kan formentlig rendres som <code>Aryzeofficial</code>.<br><strong>KATEGORI:</strong> brand-voice (caps) · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Bekræft med Telegram-admin om handle kan re-rendres mixed-case. Hvis ja: opdater overalt. Hvis nej: tag note om at det er en platform-constraint.</li>
+      </ul>
+
+      <h3>1.4 Maksupay-deck er allerede sendt — ikke reviewet</h3>
+      <p><strong><code>Sales/Pay by Bank/Cases/Maksupay/CRM-Notes/2026-05-13.md</code></strong></p>
+      <ul>
+        <li><strong>LOKATION:</strong> Linje 12<br><strong>CITAT:</strong> <em>"Skal reviewes inden mere materiale forlader huset: tjek om scope-claims (markeder, recurring, payouts, AOV/AIS) matcher licensing-realiteten."</em><br><strong>PROBLEM:</strong> Note flagger korrekt at decket sendt 12. maj (<code>Cases/Maksupay/Assets/Pay-by-Bank-built-for-Maksu-Aryze-2026.pdf</code>) ikke er reviewet for scope-overskridelser. Hvis decket lover EU-go-live eller payouts/AIS/recurring i strid med PIS-only-positionen, er overpromise allerede i kundens inbox.<br><strong>KATEGORI:</strong> capability · <strong>SEVERITY:</strong> HØJ<br><strong>RETTELSE:</strong> Prioriter deck-review denne uge. Hvis fejl: forbered korrektion-vinkel til næste Alekos-interaktion.</li>
+      </ul>
+
+      <h3>1.5 BridgerPay-reply: afsender/signatur-mismatch</h3>
+      <p><strong><code>Sales/Pay by Bank/Cases/BridgerPay/Drafts/BridgerPay-Matthew-Boundy-reply-2026-05-13.md</code></strong></p>
+      <ul>
+        <li><strong>PROBLEM:</strong> Header "From: rae@aryze.io" — signeret "Rabii" — kalenderlink er <code>cal.com/rabiiahmadesteitie</code>. Tre forskellige personer i én mail på første kontakt. Credibility-risiko.<br><strong>KATEGORI:</strong> consistency / other · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Enten send fra rabii@aryze.io og signer "Rabii", eller send fra rae@aryze.io og signer "Rae" + tilføj én linje: "Rabii on my team will host the call — calendar above."</li>
+      </ul>
+
+      <h2>DEL 2 — Strukturel drift på 48 timer</h2>
+
+      <h3>2.1 Writer-Workspace/ findes men er ikke i master folder map</h3>
+      <p><strong><code>/Users/stablesensei/Desktop/StableSensei/CLAUDE.md</code> (master)</strong></p>
+      <ul>
+        <li><strong>LOKATION:</strong> "Top-level folder map" (linje ~96–130)<br><strong>PROBLEM:</strong> <code>Writer-Workspace/</code> har eget <code>CLAUDE.md</code>, <code>_INDEX.md</code>, <code>Drafts/</code>, <code>Published/</code> med live indhold fra 14.–15. maj. Mappen står ikke i master-mappet. Master Writer-persona ligger korrekt under <code>Brain/Personas/Writer/</code>, men selve drafting-mappen er ikke registreret.<br><strong>KATEGORI:</strong> structure · <strong>SEVERITY:</strong> HØJ<br><strong>RETTELSE:</strong> Tilføj <code>Writer-Workspace/</code> til folder map'et mellem <code>assistant/</code> og <code>_archive/</code> med one-liner: <em>"Writer-Workspace/ — Writer persona's drafting area; pieces ship to canonical homes elsewhere (<code>Marketing/Content/</code>, <code>Documents/Reports/</code>, <code>Sales/[Product]/Cases/</code>)."</em></li>
+      </ul>
+
+      <h3>2.2 _TIL-SLETNING/ findes stadig</h3>
+      <ul>
+        <li><strong>PROBLEM:</strong> Mappen indeholder kun <code>.DS_Store</code>. Production-Restructure-2026-05-14 §"Outstanding" #1 flagger at sandbox ikke kunne slette; manuel Finder-sletning kræves og er ikke sket. Master <code>CLAUDE.md</code> siger mappen er cleaned op.<br><strong>KATEGORI:</strong> structure · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Slet via Finder (right-click → Move to Trash).</li>
+      </ul>
+
+      <h3>2.3 assistant/SALES.md er generisk template med &lt;FILL IN&gt;-placeholders</h3>
+      <ul>
+        <li><strong>PROBLEM:</strong> Filen er en uncustomiseret sales-template med dusinvis af <code>&lt;FILL IN&gt;</code>-markører (linje 10, 13–15, 18, 19, 21, 23, 25, 33–35, 38, 40, 43–47, 67–76, 84–86, 89, 91–92, 95–96, 144–149). Aryze har allerede produkt-specifikke sales-personas i <code>Brain/Personas/Sales-*/</code>. Production-Restructure §"Phase 4 — Final audit" hævder <em>"<code>&lt;FILL IN&gt;</code> outside <code>_archive/</code> | Zero matches | ✅ Clean"</em> — det er forkert; grep'en missede <code>assistant/</code>.<br><strong>KATEGORI:</strong> structure / capability discipline · <strong>SEVERITY:</strong> HØJ<br><strong>RETTELSE:</strong> Slet <code>assistant/SALES.md</code>, eller erstat med one-liner: <em>"See <code>Brain/Personas/Sales/CLAUDE.md</code> and product-specialist personas under <code>Brain/Personas/Sales-*/</code>."</em> Opdater Production-Restructure-tabellen til "🟡 Outstanding".</li>
+      </ul>
+
+      <h3>2.4 Documents/Reports/Post-Mortems/ refereret af to CLAUDE.md — eksisterer ikke</h3>
+      <ul>
+        <li><strong>PROBLEM:</strong> <code>Documents/CLAUDE.md</code> siger <em>"Post-mortems → <code>Documents/Reports/Post-Mortems/</code>"</em>. <code>Sales/CLAUDE.md</code> siger det samme. Mappen findes ikke.<br><strong>KATEGORI:</strong> structure · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Opret <code>Documents/Reports/Post-Mortems/</code> med en kort <code>README.md</code>. Brug den til Writer-Workspace press-release-rollback (se 2.7 herunder).</li>
+      </ul>
+
+      <h3>2.5 Marketing/Content/Random Tweets/ er off-taxonomy</h3>
+      <ul>
+        <li><strong>PROBLEM:</strong> Master CLAUDE.md + Marketing/CLAUDE.md siger Content-taxonomien er <code>Blog/, Whitepapers/, Social/, Email/, Press/, Case-Studies/</code>. <code>Random Tweets/</code> er ikke i taxonomien. Indeholder to billeder, ét med typo: <code>Official Statmeent.png</code>.<br><strong>KATEGORI:</strong> structure / naming · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Flyt til <code>Marketing/Content/Social/Tweets/</code> eller <code>Marketing/Assets/Screenshots/</code>. Slet <code>Random Tweets/</code>. Ret typo til <code>2026-XX-XX-aryze-official-statement.png</code>.</li>
+      </ul>
+
+      <h3>2.6 Marketing/Content/ canonical subfolders findes ikke</h3>
+      <ul>
+        <li><strong>PROBLEM:</strong> Master + Marketing CLAUDE.md refererer <code>Blog/, Whitepapers/, Social/, Email/, Press/, Case-Studies/</code>. Ingen af dem findes på disk. Path-referencer i Writer-Workspace/CLAUDE.md ship-table virker derfor ikke.<br><strong>KATEGORI:</strong> structure · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Opret de seks tomme mapper med <code>.gitkeep</code> eller en kort <code>README.md</code>.</li>
+      </ul>
+
+      <h3>2.7 Marketing/Events/ event-liste er inkonsistent</h3>
+      <ul>
+        <li><strong>PROBLEM:</strong> Master siger "FIBE, NBC Stockholm, Pay360, SBC, Sibos, Token2049" (6 events). Marketing/CLAUDE.md tilføjer "Money20/20" (7). På disk findes kun tre mapper: <code>FIBE 2026/</code>, <code>NBC Stockholm/</code>, <code>SBC/</code>.<br><strong>KATEGORI:</strong> structure · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Align master og Marketing CLAUDE.md. Markér "planned" events eksplicit, eller opret stubs.</li>
+      </ul>
+
+      <h3>2.8 Trailing space i Marketing/Events/SBC/Edited(ready) /</h3>
+      <ul>
+        <li><strong>PROBLEM:</strong> Mappen hedder <code>Edited(ready)&nbsp;</code> — med både parentes og trailing space. Master <code>CLAUDE.md</code> naming-regel: <em>"No trailing spaces."</em><br><strong>KATEGORI:</strong> naming · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Omdøb til <code>Edited-Ready/</code> eller <code>Photos-Edited/</code>.</li>
+      </ul>
+
+      <h3>2.9 Marketing/Events/FIBE 2026/ hash-folder</h3>
+      <ul>
+        <li><strong>PROBLEM:</strong> Subfolder navngivet <code>2026041993889e495d38914e76f904683524eabad0cf9d8467bd46b418c1d25fa26f4948</code> (Flickr/CMS-hash). Indeholder hundredvis af fotos. Ikke-navigerbart for mennesker.<br><strong>KATEGORI:</strong> naming · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Omdøb til <code>Photos/</code> eller <code>2026-04-19-photos/</code>.</li>
+      </ul>
+
+      <h3>2.10 Writer-Workspace press-releases er tombstones uden post-mortem</h3>
+      <p><strong><code>Writer-Workspace/Published/</code> × 2 + <code>Writer-Workspace/Drafts/2026-05-{15,19}_press-release_pre-series-a_v2.md</code></strong></p>
+      <ul>
+        <li><strong>PROBLEM:</strong> Alle fire filer er tombstones: <em>"ARCHIVE: pressemeddelelse rolled back per Rae 2026-05-15. File intentionally empty."</em> Issues: (a) <code>Published/</code> indeholder tombstones, hvilket er misvisende; (b) 19. maj-filerne eksisterer overhovedet → en re-prep var i gang fire dage efter rollback uden audit-trail; (c) ingen post-mortem dokumenterer hvorfor.<br><strong>KATEGORI:</strong> structure / consistency · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Slet tombstones i Finder. Skriv kort post-mortem under det nyoprettede <code>Documents/Reports/Post-Mortems/</code> der forklarer rollback'en. Opdater Writer-Workspace/_INDEX.md (siger pt. <em>"No published pieces yet"</em> — usandt).</li>
+      </ul>
+
+      <h2>DEL 3 — Brand voice + capability discipline</h2>
+
+      <h3>3.1 Mastercard-partnership lækker på tværs af produkter</h3>
+      <p>Mastercard Open Banking-partnerskabet er kernen i Pay by Bank's rail. Det har ingen operativ rolle i Stablecoin Factory eller Digital Cash (deployment-infrastruktur og institutionel digital cash er separate stacks). Det bruges alligevel som credibility-anchor i begge:</p>
+      <ul>
+        <li><strong><code>Brain/Personas/Sales-Stablecoin-Factory/CLAUDE.md</code></strong> linje 387: <em>"lean on Aryze's Mastercard-partnership and Copenhagen-rooted credibility"</em> (MEDIUM)</li>
+        <li><strong><code>Documents/Analyser/Stablecoin-Factory/VPC.md</code></strong> linje 104, 163: Mastercard cited som gain (MEDIUM)</li>
+        <li><strong><code>Documents/Analyser/Digital-Cash/VPC.md</code></strong> linje 122: <em>"Mastercard-partnerskab giver on-ramp-credibility"</em> (LAV — defensibel for on-ramp)</li>
+        <li><strong><code>Documents/Analyser/Digital-Cash/Product-Description.md</code></strong> linje 95: On-ramps "via Mastercard Open Banking-partnerskab" listet som <em>"Capabilities — bekræftet leveret"</em> (MEDIUM — kun gyldig i UK+EU/EEA, ikke globalt)</li>
+      </ul>
+      <p><strong>KATEGORI:</strong> product-name / capability spillover · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Behold Mastercard som credibility-anchor for Pay by Bank only. For Digital Cash on-ramps: kvalificér geografi ("in markets where Mastercard Open Banking is operational — UK + EU/EEA, 19 markets"). For Stablecoin Factory: fjern eller substantiér en specifik produkt-tie-in.</p>
+
+      <h3>3.2 Sandbox-claim modsiger sig selv (Stablecoin Factory)</h3>
+      <ul>
+        <li><strong><code>Documents/Analyser/Stablecoin-Factory/CLAUDE.md</code></strong> linje 98: <em>"Sandbox / documentation links: currently unconfirmed"</em></li>
+        <li><strong><code>Stablecoin-Factory/ICP.md</code></strong> linje 107: <em>"Self-serve sandbox så teknisk team kan evaluere uden lange sales-samtaler"</em> listet som expected outcome</li>
+        <li><strong><code>Stablecoin-Factory/VPC.md</code></strong> linje 88, 115: Sandbox listet som expected gain og som delivered product</li>
+        <li><strong><code>Stablecoin-Factory/Product-Description.md</code></strong> linje 91, 99: Sandbox listet som <em>"Capabilities — bekræftet leveret"</em></li>
+      </ul>
+      <p><strong>PROBLEM:</strong> Den skarpeste kapacitets-modsigelse i workspace'et. Sælgere der læser Product-Description vil quote en sandbox; kunder vil opdage den ikke eksisterer.<br><strong>KATEGORI:</strong> capability · <strong>SEVERITY:</strong> HØJ<br><strong>RETTELSE:</strong> Bekræft sandbox-status med produkt. Hvis live: tilføj link til CLAUDE.md. Hvis ikke: downgrade til "Capabilities — IKKE leveret" / "Planned" i alle tre indholdsfiler.</p>
+
+      <h3>3.3 Specifikke timeline-claims i sælger-personas</h3>
+      <ul>
+        <li><strong><code>Brain/Personas/Sales-Stablecoin-Factory/CLAUDE.md</code></strong> linje 290: <em>"go from idea to live in weeks rather than months"</em> — kontra personaens eget §5 forbud mod "Live in 2 weeks"</li>
+        <li><strong><code>Brain/Personas/Sales-Digital-Cash/CLAUDE.md</code></strong> linje 396: <em>"phase-1 to be live in 4–6 months on a narrow scope"</em> — kontra 6–18 måneders cycle og personaens eget <em>"Don't sell speed"</em></li>
+      </ul>
+      <p><strong>PROBLEM:</strong> Speed-creep i de filer der skal forhindre speed-creep.<br><strong>KATEGORI:</strong> capability · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Blødgør med "depends on your stack" / "we confirm against your stack before committing".</p>
+
+      <h3>3.4 RememberMe-tal er inkonsistent på tværs af to canonical-filer</h3>
+      <ul>
+        <li><strong><code>Brain/Personas/Writer/CLAUDE.md</code></strong> §6 (linje 457): <em>"RememberMe: 15-month token validity; ~50% fewer clickthrough steps for repeat depositors."</em></li>
+        <li><strong><code>Brain/Personas/Sales-Pay-by-Bank/CLAUDE.md</code></strong> §3.3 (linje 198): <em>"~50% faster repeat flow; ~2× fewer clickthrough steps"</em></li>
+      </ul>
+      <p><strong>PROBLEM:</strong> "Faster flow" og "fewer clicks" måler forskellige ting. To verificerede-tal-lister er uenige.<br><strong>KATEGORI:</strong> number-claim / consistency · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Reconcile: pick én canonical (Pay by Bank one-pager bruger <em>"roughly half the clicks of a first-time flow"</em> — match Writer og Sales-Pay-by-Bank til den).</p>
+
+      <h3>3.5 Unsourced 5–8% correspondent banking gentages</h3>
+      <p>Optræder i:</p>
+      <ul>
+        <li><code>Brain/Personas/Writer/CLAUDE.md</code> linje 79</li>
+        <li><code>Brain/Frameworks/Trigger-Event-Catalogue.md</code> linje 42</li>
+        <li><code>Documents/Analyser/Digital-Cash/ICP.md</code> linje 197</li>
+        <li><code>Documents/Analyser/Digital-Cash/Product-Description.md</code> linje 223</li>
+        <li><code>Sales/Digital Cash/Assets/Digital-Cash-Onepager-Cold-Outreach.md</code></li>
+      </ul>
+      <p>Ingen primær kilde. Tallet er plausibelt (World Bank Remittance Prices Worldwide). Master regel: numbers have sources.</p>
+      <p><strong>KATEGORI:</strong> number-claim · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Tilføj kilde én gang (Writer §6 verified-numbers) og referér fra de andre filer.</p>
+
+      <h3>3.6 ISO 20022 / FATF / MiCA / sanctions-screening uden kilde</h3>
+      <ul>
+        <li><strong><code>Documents/Analyser/Digital-Cash/VPC.md</code></strong> linje 108 + <strong><code>Product-Description.md</code></strong> linje 107–108: <em>"Standards-conformance (ISO 20022, FATF, MiCA hvor relevant)"</em> og <em>"AML/KYC/sanctions-screening hooks indbygget"</em> — listet som bekræftet leveret.</li>
+      </ul>
+      <p><strong>PROBLEM:</strong> Institutionel buyer (MLRO/Compliance) vil bede om "vis mig jeres ISO 20022 attestation, hvilken sanctions-list, hvilken screening-vendor". Ingen kilde knyttet til claimet i nogen af filerne.<br><strong>KATEGORI:</strong> capability / source citation · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Verificér med produkt. Tilføj <code>&lt;NEEDS SOURCE&gt;</code> eller blødgør til "AML/KYC/sanctions-screening hooks supported via partner integration (verify per deal)".</p>
+
+      <h2>DEL 4 — Versionering, sprog, og strukturelle inkonsistenser</h2>
+
+      <h3>4.1 v4 vs v5 i Documents/Analyser/</h3>
+      <p>Tre filer er uenige:</p>
+      <ul>
+        <li><strong><code>Documents/Analyser/README.md</code></strong> linje 19–21, 50: master routing-docs er v4 (current)</li>
+        <li><strong><code>Pay-by-Bank/CLAUDE.md</code></strong> linje 95: master routing-docs <em>"carry the v5 update record"</em></li>
+        <li><strong>Filerne på disk</strong> hedder <code>-v4.md</code> men frontmatter siger <em>"Version 5.0 · 13. maj 2026"</em></li>
+        <li><strong><code>Stablecoin-Factory/ICP.md</code></strong> linje 226: refererer <em>"v4 master-dokumenterne"</em></li>
+      </ul>
+      <p><strong>KATEGORI:</strong> versioning · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Vælg én sandhed. Hvis v5: omdøb filer + opdater README. Hvis v4: ret Pay-by-Bank/CLAUDE.md linje 95. Workspace kan ikke have to versioner i flyvende drift.</p>
+
+      <h3>4.2 Documents/Analyser/ filerne er stadig på dansk</h3>
+      <ul>
+        <li>Master <code>CLAUDE.md</code> naming-discipline §: <em>"English for top-level folders and new files."</em></li>
+        <li>14. maj-restruktureringen migrerede personas til engelsk.</li>
+        <li>Documents/Analyser/README.md, og de seks indholdsfiler (<code>ICP.md</code>, <code>VPC.md</code>, <code>Product-Description.md</code> × 3) er stadig på dansk.</li>
+        <li>De respektive CLAUDE.md-filer ER på engelsk → mix-state.</li>
+      </ul>
+      <p><strong>KATEGORI:</strong> language · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Enten translate alle indholdsfiler til engelsk, eller dokumentér en eksplicit undtagelse i master <code>CLAUDE.md</code> ("Documents/Analyser/ content files are Danish-by-design pending translation sprint"). Mixed-state er ustabil.</p>
+
+      <h3>4.3 Versioneringspraksis i per-produkt-filer</h3>
+      <p>Pay-by-Bank/CLAUDE.md siger filer er <em>"versioned individually in their frontmatter"</em>. ICP/VPC/Product-Description har version i body-tekst, ikke YAML-frontmatter. Inkonsistent.</p>
+      <p><strong>KATEGORI:</strong> versioning / consistency · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Tilføj YAML-frontmatter til de seks indholdsfiler, eller blødgør CLAUDE.md til "versioned in body header".</p>
+
+      <h3>4.4 Stale stier til _TIL-SLETNING/</h3>
+      <ul>
+        <li><code>Documents/Analyser/README.md</code> linje 56: <em>"se <code>_TIL-SLETNING/</code> i tree-roden"</em></li>
+        <li><code>Documents/Analyser/Stablecoin-Factory/Product-Description.md</code> linje 259: <em>"gamle versioner er flyttet til <code>_TIL-SLETNING/</code>"</em></li>
+        <li><code>Sales/Stablecoin Factory/CLAUDE.md</code>: <em>"flyttet til <code>/StableSensei/_TIL-SLETNING/</code>"</em></li>
+      </ul>
+      <p>Korrekt sti er nu <code>_archive/TIL-SLETNING-from-restructuring-2026-05-13/</code>.</p>
+      <p><strong>KATEGORI:</strong> consistency / structure · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Search/replace <code>_TIL-SLETNING/</code> → <code>_archive/TIL-SLETNING-from-restructuring-2026-05-13/</code> i de tre filer.</p>
+
+      <h3>4.5 Stale "manuel cleanup needed"-flag</h3>
+      <ul>
+        <li><code>Brain/Personas/Writer/CLAUDE.md</code> linje 42–46: <em>"<code>Brain/Personas/Skribent/CLAUDE.md</code> … manual cleanup needed"</em> — allerede arkiveret.</li>
+        <li><code>Brain/Personas/Marketing/CLAUDE.md</code> linje 444 (open Q10): <em>"old <code>Brain/Personas/Marketing-specialist/CLAUDE.md</code> (Danish) is still in place"</em> — er det ikke.</li>
+      </ul>
+      <p><strong>KATEGORI:</strong> consistency · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Stryg flag og open questions; markér som "Done 2026-05-14".</p>
+
+      <h2>DEL 5 — Brand voice / capitalisation (ARYZE → Aryze)</h2>
+
+      <h3>5.1 Internal HR-filer har "ARYZE" all-caps i filnavnet</h3>
+      <p>Fire filer:</p>
+      <ul>
+        <li><code>Internal/HR/Handbook/ARYZE Personalehåndbog.pdf</code></li>
+        <li><code>Internal/HR/Contracts/ARYZE Ansættelsesaftale (Gry Emily Tønners).pdf</code></li>
+        <li><code>Internal/HR/Contracts/ARYZE Ansættelsesaftale (Tobias Ibaragi Glesner).pdf</code></li>
+        <li><code>Internal/HR/Agents/ARYZE RA (Lexi Yichen Liu).pdf</code></li>
+      </ul>
+      <p>Master regel: <em>"Aryze — capital A, lowercase r-y-z-e. Never all-caps ARYZE … This applies to every artifact in this tree: .md files, draft prose, decks, emails, landing copy, press releases, social posts, code comments — everywhere."</em></p>
+      <p><strong>KATEGORI:</strong> brand-voice (caps) · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Filenes indhold er underskrevne dokumenter (uændret), men metadata-rename er ufarligt. Omdøb filer. Skriv samtidigt en kort note i Internal/CLAUDE.md om at fremtidige HR-PDF'er bruger "Aryze".</p>
+
+      <h3>5.2 Internal/CLAUDE.md descriptive label</h3>
+      <ul>
+        <li><strong><code>Internal/CLAUDE.md</code></strong> linje 30: tabel-row med <em>"Handbook/&nbsp;&nbsp;&nbsp;(ARYZE Personalehåndbog)"</em></li>
+      </ul>
+      <p><strong>PROBLEM:</strong> Selve labellen er editorial tekst, ikke citation af et filnavn. Bør være "Aryze".<br><strong>KATEGORI:</strong> brand-voice · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Ret linje 30 til <em>"Handbook/&nbsp;&nbsp;&nbsp;(Aryze Personalehåndbog)"</em>.</p>
+
+      <h3>5.3 Telegram-URL (rapporteret 1.3 ovenfor)</h3>
+      <p><code>t.me/ARYZEofficial</code> — verificér mod Telegram-handle og opdater hvis muligt.</p>
+
+      <h3>5.4 Internal/Aryze-Team.pdf — outstanding fra 13. maj-audit</h3>
+      <p>Stadig flagget i Audit-Modsigelser §item 19 + Audit-Follow-Up §19 + Production-Restructure §"Outstanding" #2. Tre kendte fejl:</p>
+      <ul>
+        <li>"MARKETING &amp; STABLECOIN" → "MARKETING &amp; STABLECOIN FACTORY"</li>
+        <li>"stablecoin-salg" → "Stablecoin Factory-salg"</li>
+        <li>Digital Cash team-owner mangler</li>
+      </ul>
+      <p><strong>KATEGORI:</strong> product-name / capability · <strong>SEVERITY:</strong> MEDIUM (outstanding)<br><strong>RETTELSE:</strong> Regenerér PDF fra kilde. Indtil da: cirkulér ikke til ikke-ansatte.</p>
+
+      <h2>DEL 6 — Content fejl + navngivnings-hygiejne</h2>
+
+      <h3>6.1 Brand/CLAUDE.md duplikat</h3>
+      <ul>
+        <li><strong><code>Brand/CLAUDE.md</code></strong> linje 20: <em>"Bertram Seitz (CEO), Christopher Batchelor (COO), Rabii Ahmad Esteitie, Mikkel Kristensen, Jack Nikogosian, Klaus Jacobsen, Gabriel Franciscovich, <strong>Rabii Ahmad Esteitie</strong>, Jodi Usama Husain"</em></li>
+      </ul>
+      <p><strong>PROBLEM:</strong> Rabii listet to gange. <code>Brand/Team/</code> har 8 portrætter — listen skal matche.<br><strong>KATEGORI:</strong> content error · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Slet ét forekomst af Rabii.</p>
+
+      <h3>6.2 Brand/Logos/ har duplikater + legacy-filnavne</h3>
+      <p><code>Brand/Logos/</code> blander naming-conventions:</p>
+      <ul>
+        <li>Canonical SVG-familie: <code>Aryze-Logo-Wordmark.svg</code>, <code>-Dark.svg</code>, <code>-Light.svg</code>, <code>-Navy.svg</code></li>
+        <li>Legacy/junk: <code>Logo + Wordmark.png</code>, <code>Logo + Wordmark-kopi.png</code> (macOS-duplicate), <code>Property 1=Default.png</code>, <code>Property 1=Variant2.png</code> (Figma-export-defaults), <code>AryzeLogo.png</code>, <code>GreenVersion.png</code>, <code>Logo Green.png</code> (tre grønne logoer der måske er duplikater)</li>
+      </ul>
+      <p><strong>KATEGORI:</strong> naming / duplicates · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Behold SVG-familien. Dedupliker grønne PNG'er, slet <code>-kopi</code> og Figma-exports, omdøb resten i kebab-case.</p>
+
+      <h3>6.3 BridgerPay CRM-note filnavn</h3>
+      <ul>
+        <li><strong><code>Cases/BridgerPay/CRM-Notes/BridgerPay-2026-05-13.md</code></strong></li>
+      </ul>
+      <p><strong>PROBLEM:</strong> Maksupay, Paytrust, Whitebit bruger <code>2026-05-13.md</code> (ingen customer-prefix — mappestien giver allerede navnet). BridgerPay-filen har prefix.<br><strong>KATEGORI:</strong> naming · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Omdøb til <code>2026-05-13.md</code>.</p>
+
+      <h3>6.4 Documents/Plans/ filnavne</h3>
+      <ul>
+        <li><code>Aryze_NBC_Stockholm_Marketing_Plan_1.pdf</code> — underscores i stedet for kebab-case</li>
+        <li><code>PbB_Marketing_Plan_Updated_1.pages</code> — proprietary Apple-format + "PbB"-shorthand + "Updated_1" som opake revision-marker</li>
+      </ul>
+      <p><strong>KATEGORI:</strong> naming / file-format · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Eksporter <code>.pages</code> til PDF, slet originalen. Omdøb begge i kebab-case med ISO-dato: <code>Pay-by-Bank-Marketing-Plan-2026-05.pdf</code>, <code>NBC-Stockholm-Marketing-Plan-2026-05.pdf</code>.</p>
+
+      <h3>6.5 Sales/Pay by Bank/Strategy/ v4 PDFs</h3>
+      <ul>
+        <li><code>Ideal-Customer-Profiles-v4.pdf</code></li>
+        <li><code>Product-Suite-Master-Description-v4.pdf</code></li>
+        <li><code>Value-Proposition-Canvas-v4.pdf</code></li>
+      </ul>
+      <p>Ligger i aktiv Strategy-mappe. Hvis frontmatter "Version 5.0" er sand, er disse v4-PDFs stale.</p>
+      <p><strong>KATEGORI:</strong> naming / versioning · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Afgør v4/v5-spørgsmålet (se §4.1). Hvis v5: regenerer PDFs og arkivér v4 under <code>_archive/</code>.</p>
+
+      <h3>6.6 Sales/Pay by Bank/Assets/ undateret deck-fil</h3>
+      <ul>
+        <li><code>Pay by Bank Aryze Deck.pdf</code> — title-case, mellemrum, ingen dato, ingen version. Kan ikke skelnes fra <code>Pay-by-Bank-General-Deck-2026.pptx</code> og <code>Aryze-Pay-by-Bank-Casino-Deck.pptx</code> i samme mappe.</li>
+      </ul>
+      <p><strong>KATEGORI:</strong> naming · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Omdøb i kebab-case med dato eller arkivér hvis superseded.</p>
+
+      <h3>6.7 Sales/Digital Cash/ loose JPG-filer i root</h3>
+      <p>10 filer (<code>Frame*.jpg</code>, <code>Slide*.jpg</code>, <code>Front page.jpg</code>) ligger i <code>Sales/Digital Cash/</code>-root. Master regel: <em>"Never drop loose files at Sales/ root or Sales/[Product]/ root."</em></p>
+      <p><strong>KATEGORI:</strong> file-placement · <strong>SEVERITY:</strong> MEDIUM<br><strong>RETTELSE:</strong> Flyt til <code>Sales/Digital Cash/Assets/Reference-Imagery/</code>. Opdater Digital Cash CLAUDE.md.</p>
+
+      <h3>6.8 .DS_Store gennemgående</h3>
+      <p>28+ <code>.DS_Store</code>-filer i Brand/, Sales/, Marketing/, Documents/, _TIL-SLETNING/, mv. Master CLAUDE.md naming-hygiene: <em>"No <code>.DS_Store</code> left at root level if it can be avoided."</em></p>
+      <p><strong>KATEGORI:</strong> naming hygiene · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Tilføj <code>.gitignore</code> på workspace-niveau hvis git anvendes; ellers periodisk Finder-cleanup.</p>
+
+      <h3>6.9 Documents/Expenses/ UUID-filnavne</h3>
+      <p>Receipt-PDFs har UUID-style filnavne (<code>b11c96f5-...pdf</code>). <code>expense_reimbursement_overview.xlsx</code> er eneste kilde til hvad hver kvittering er. Folder hedder "CBC summit + FiBe Berlin" men inkluderer Malta (Valletta-booking).</p>
+      <p><strong>KATEGORI:</strong> naming · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Tilføj UUID→vendor-mapping i spreadsheet, eller batch-rename. Verificér om trip var Malta + Berlin og opdater mappenavn.</p>
+
+      <h3>6.10 Documents/Reports/ sub-mapper inkonsistent navngivning</h3>
+      <ul>
+        <li><code>Salgsrapport Q1/</code> — dansk</li>
+        <li><code>SBC summit/</code> — lowercase "summit"</li>
+        <li><code>Weekly/</code> — engelsk</li>
+      </ul>
+      <p>Master regel: <em>"English for top-level folders and new files. Title Case for folders."</em></p>
+      <p><strong>KATEGORI:</strong> naming / language · <strong>SEVERITY:</strong> LAV<br><strong>RETTELSE:</strong> Standardisér: <code>Quarterly/</code> (eller <code>Sales-Updates/</code>), <code>SBC-Summit/</code>, <code>Weekly/</code>.</p>
+
+      <h2>DEL 7 — Mindre brand-voice glides</h2>
+
+      <h3>7.1 Decorative metaphor i Brain/Personas/Sales/CLAUDE.md</h3>
+      <ul>
+        <li>Linje 82: <em>"the rails behind the rails"</em> — voice-dialer siger "literal, not metaphorical".</li>
+        <li><strong>SEVERITY:</strong> LAV — <strong>RETTELSE:</strong> <em>"Mastercard's 99.99%+ uptime across 2,900+ banks."</em></li>
+      </ul>
+
+      <h3>7.2 Dansk residue i engelske personaer</h3>
+      <ul>
+        <li><code>Brain/Personas/Sales/CLAUDE.md</code> linje 104, 138: <em>"dempet authority"</em> (dansk).</li>
+        <li><code>Brain/Frameworks/Trigger-Event-Catalogue.md</code> linje 71: <em>"Industri-triggere"</em>.</li>
+        <li><strong>SEVERITY:</strong> LAV — <strong>RETTELSE:</strong> Translate "quiet authority" / "Industry triggers".</li>
+      </ul>
+
+      <h3>7.3 Broken reference</h3>
+      <ul>
+        <li><code>Brain/Frameworks/VPC-Method.md</code> linje 33: refererer Writer §4.2 men det er §3.2.</li>
+        <li><strong>SEVERITY:</strong> LAV — <strong>RETTELSE:</strong> Ret reference.</li>
+      </ul>
+
+      <h3>7.4 "Aryze Pay by Bank one-pager"</h3>
+      <ul>
+        <li><code>Documents/Analyser/Pay-by-Bank/ICP.md</code> linje 236: <em>"Aryze Pay by Bank one-pager"</em>. Master forbyder "Aryze Pay"; "Aryze Pay by Bank" sidder i gråzone.</li>
+        <li><strong>SEVERITY:</strong> LAV — <strong>RETTELSE:</strong> <em>"Pay by Bank one-pager"</em> eller <em>"Aryze's Pay by Bank one-pager"</em>.</li>
+      </ul>
+
+      <h3>7.5 Round-1 design-brief er superseded</h3>
+      <ul>
+        <li><code>Sales/Pay by Bank/Assets/Claude-Design-Corrections-Round-1.md</code> linje 41: EU-licensing-framing der nu er forældet (Round 2 strippede licensing-sprog; Whitebit/Maksupay-noter er videre).</li>
+        <li><strong>SEVERITY:</strong> HØJ (afhænger af licensing-virkeligheden)</li>
+        <li><strong>RETTELSE:</strong> Tilføj banner i toppen: <em>"SUPERSEDED by Round 2 (2026-05-13/14). Do not apply EU-licensing framing from this file."</em></li>
+      </ul>
+
+      <h2>DEL 8 — Prioriteret rettelses-roadmap</h2>
+
+      <h3>Akut (denne uge) — kundevendt risiko</h3>
+      <ol>
+        <li><strong>Stop Whitebit Telegram-draft</strong> indtil EU-licensing er afklaret skriftligt. Reconcile Maksupay-noten og Round-1-briefet samtidig.</li>
+        <li><strong>Stop Digital Cash cold-outreach one-pager</strong> indtil "Phase 1 4–6 months" er fjernet og 99.99% uptime + 2.900+ banker er sourced/strippet.</li>
+        <li><strong>Stop Crypto Pizza Day blog v4 + landing v2</strong> indtil $RYZE-issuer er afklaret og legal entity er bekræftet. Legal review før 22. maj.</li>
+        <li><strong>Reviewer Maksupay-decket</strong> (12. maj) for scope-overskridelser. Forbered korrektion til næste Alekos-interaktion hvis fejl findes.</li>
+        <li><strong>Ret BridgerPay-reply</strong> — afsender/signatur-mismatch.</li>
+      </ol>
+
+      <h3>Næste uge — substans og strukturel hygiejne</h3>
+      <ol start="6">
+        <li><strong>Afgør v4 vs v5</strong> i Documents/Analyser/ og propagér én sandhed.</li>
+        <li><strong>Afklar sandbox-status</strong> for Stablecoin Factory og update ICP/VPC/Product-Description hvis ikke live.</li>
+        <li><strong>Slet <code>assistant/SALES.md</code></strong> eller erstat med pointer til <code>Brain/Personas/Sales/</code>.</li>
+        <li><strong>Opret <code>Documents/Reports/Post-Mortems/</code></strong> og skriv press-release-rollback-postmortem.</li>
+        <li><strong>Slet <code>_TIL-SLETNING/</code></strong> fra Finder.</li>
+        <li><strong>Slet press-release-tombstones</strong> i Writer-Workspace/Published og /Drafts. Opdater _INDEX.md.</li>
+        <li><strong>Tilføj Writer-Workspace/ til master folder map.</strong></li>
+        <li><strong>Ret Brand/CLAUDE.md</strong> — fjern Rabii-duplikat.</li>
+        <li><strong>Omdøb 4 Internal/HR-PDF'er</strong> fra "ARYZE" til "Aryze".</li>
+        <li><strong>Bekræft Telegram-handle</strong> mixed-case mulighed og opdater hvis ja.</li>
+      </ol>
+
+      <h3>Strategisk (kræver leadership-beslutning)</h3>
+      <ol start="16">
+        <li><strong>Licensing-position skal være entydig</strong> og dokumenteret centralt (Brain/Personas/Sales-Pay-by-Bank/CLAUDE.md §6 eller separat licensing-status-fil). Alle case-noter og drafts skal trække fra den centrale kilde.</li>
+        <li><strong>$RYZE-issuer position</strong> — er det Aryze, en tredjepart, eller noget tredje? Hvis Aryze: hele "infrastructure-not-issuer"-positionen skal genovervejes.</li>
+        <li><strong>Mastercard-cross-product disciplin</strong> — afgør hvor partnerskabet legitimt kan citeres som credibility-anchor (kun Pay by Bank?) og clean op i Stablecoin Factory/Digital Cash-filer.</li>
+        <li><strong>Sprog-regime for Documents/Analyser/</strong> — translate til engelsk i en koordineret sprint, eller dokumentér dansk-by-design eksplicit.</li>
+      </ol>
+
+      <h3>Hygiejne — internt</h3>
+      <ol start="20">
+        <li>Konsolider Brand/Logos/ — dedupliker, slet legacy-PNG'er.</li>
+        <li>Eksporter <code>Documents/Plans/*.pages</code> til PDF.</li>
+        <li>Omdøb <code>Marketing/Events/SBC/Edited(ready) /</code> (trailing space).</li>
+        <li>Omdøb <code>Marketing/Events/FIBE 2026/[hash]/</code> til <code>Photos/</code>.</li>
+        <li>Opret <code>Marketing/Content/{Blog,Whitepapers,Social,Email,Press,Case-Studies}/</code> stubs.</li>
+        <li>Flyt <code>Marketing/Content/Random Tweets/</code> indhold til <code>Content/Social/</code>.</li>
+        <li>Flyt 10 loose JPG'er i <code>Sales/Digital Cash/</code> til <code>Assets/Reference-Imagery/</code>.</li>
+        <li>Standardisér Documents/Reports/ sub-mapper i Title Case + engelsk.</li>
+        <li>Verificér <code>Internal/Aryze-Team.pdf</code> outstanding fixes (kendt siden 13. maj).</li>
+      </ol>
+
+      <h2>Verifikationsnoter</h2>
+      <ul>
+        <li>Audit baseret på direkte læsning af 80 markdown-filer plus selektiv inspektion af PDFs/JPGs/.pages-filer via filnavn og listing.</li>
+        <li>Brand voice-overtrædelser er crosschecked mod master <code>CLAUDE.md</code> "Forbidden phrases" + Brand Guide v1.0 voice-dialer.</li>
+        <li>Kapacitetsclaims er crosschecked mod <code>Documents/Analyser/[Product]/Product-Description.md</code> for hver af de tre produkter.</li>
+        <li>Tidligere audits (13. og 14. maj) er inkorporeret som baseline — kun nye/uafsluttede findings rapporteres som "outstanding".</li>
+        <li>Six parallelle audit-agents leverede findings; alle specifikke citationer er verificeret stikprøvevis af forfatter (Rabii-duplikat, assistant/SALES.md <code>&lt;FILL IN&gt;</code>, Stablecoin-Factory sandbox-claim).</li>
+      </ul>
+
+      <h2>Kilder</h2>
+      <ul class="sources">
+        <li>Master <code>CLAUDE.md</code> (2026-05-14)</li>
+        <li><code>Documents/Analyser/Pay-by-Bank/Product-Description.md</code></li>
+        <li><code>Documents/Analyser/Stablecoin-Factory/Product-Description.md</code></li>
+        <li><code>Documents/Analyser/Digital-Cash/Product-Description.md</code></li>
+        <li><code>Brand/Brand-Guide-2026.pdf</code> (v1.0) — via master CLAUDE.md</li>
+        <li><code>Documents/Reports/Audit-Modsigelser-2026-05-13.md</code></li>
+        <li><code>Documents/Reports/Audit-Follow-Up-2026-05-14.md</code></li>
+        <li><code>Documents/Reports/Production-Restructure-2026-05-14.md</code></li>
+        <li>Direkte fil-inspektion af 80 markdown-filer + listing af 579 filer på tværs af workspace</li>
+      </ul>
+
+      <nav class="doc-links" style="margin-top:28px;border-top:1px solid var(--line);padding-top:16px">
+        <a href="audit-follow-up-2026-05-14.html">← Audit follow-up (14 May)</a>
+        <a href="index.html">Analyses</a>
+        <a href="restrukturering-2026-05-13.html">Restructure record (13 May) →</a>
+      </nav>
+    </div>
+  </article>
+
+  <footer><p>Aryze &middot; Board &amp; Management Reports &middot; Audit — Fuld revision &middot; Confidential &middot; 16 May 2026</p></footer>
+</main>
+</body>
+</html>

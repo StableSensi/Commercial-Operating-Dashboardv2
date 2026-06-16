@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI sales workflow — system architecture | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/cod.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">Aryze<small>Sales &amp; Marketing</small></span>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#reports">Reports</a>
+    <a href="../../index.html#reference">Reference</a>
+    <a href="../../index.html#tools">Tools</a>
+  </nav>
+</header>
+<p class="crumb"><a href="../../index.html">Home</a> / <a href="../../index.html#reference">Reference</a> / <a href="index.html">Strategies &amp; plans</a> / AI sales workflow architecture</p>
+
+<main class="wrap">
+  <article class="doc">
+    <header class="doc-head">
+      <p class="eyebrow">Proposal · System architecture</p>
+      <h1>AI-powered sales workflow — system architecture</h1>
+      <p class="lede">How the CRM, Outlook, meeting-transcript tool and dashboard talk to each other and to Claude — four integrated workflows, one orchestration layer, human-in-the-loop on every write for the first month.</p>
+      <p class="meta">Author: Rabii + Claude · 23 May 2026 · Status: Proposal for review · Confidential</p>
+      <div class="doc-links">
+        <a href="index.html">↩ Strategies &amp; plans</a>
+        <a href="automations-plan.html">Companion: Automations plan →</a>
+      </div>
+    </header>
+
+    <div class="doc-body">
+      <div class="callout"><span>Status</span>
+        <p style="margin:0">Proposal for review. Two key unknowns marked <code>&lt;NEEDS CONFIRMATION&gt;</code> — answer those and the build plan can be locked. Companion to the <a href="automations-plan.html">Automations plan</a>: that document covered file-based automations <em>inside</em> the StableSensei tree; this one specifies how the CRM, Outlook, meeting-transcript tool and dashboard talk to each other and to Claude. The two are designed to coexist — file-based tooling stays for narrative work (drafts, account plans, post-mortems); CRM is system-of-record for pipeline state.</p>
+      </div>
+
+      <h2>1. Summary</h2>
+      <p>Four integrated workflows, one orchestration layer, human-in-the-loop on every write for the first month.</p>
+      <p>The proposal is to use Microsoft Graph for Outlook, the CRM's own REST/GraphQL API for lead and activity sync, and a transcript-tool webhook (<code>&lt;NEEDS CONFIRMATION: Fireflies / Gong / Granola / Teams Premium&gt;</code>) for meeting capture. The orchestrator that glues them together is the smallest piece that works — for the first phase that means n8n (self-hostable, open source, predictable) with Claude API doing the language-heavy lifting. The dashboard is a Cowork live artifact that reads from the CRM, so it never holds state itself and stays consistent with what the CRM says.</p>
+      <p>The non-obvious design choices are: never auto-delete email, never let Claude write to the CRM without a 48-hour human-review window for the first month, and treat the CRM's status fields as the only authoritative pipeline view. Files under <code>Sales/[Product]/Cases/</code> remain the place where prose lives; CRM is where status and ownership live. Mixing the two has caused enough confusion for other teams that it's worth being explicit up front.</p>
+
+      <h2>2. Architecture overview</h2>
+      <pre class="small">
+                      ┌─────────────────────────────┐
+                      │      Claude API             │
+                      │  (Sonnet for classify,      │
+                      │   Opus for synthesis)       │
+                      └──────────────┬──────────────┘
+                                     │
+                                     ▼
+┌─────────────┐    ┌──────────────────────────────┐    ┌─────────────┐
+│  Outlook    │◄──►│                              │◄──►│  CRM        │
+│  (M365 /    │    │      n8n Orchestrator        │    │  &lt;CRM TBC&gt;  │
+│  MS Graph)  │    │  (workflows, queues, logs)   │    │  (REST API) │
+└─────────────┘    └──────────────────────────────┘    └─────────────┘
+                                     ▲
+                                     │
+            ┌────────────────────────┼────────────────────────┐
+            │                        │                        │
+            ▼                        ▼                        ▼
+  ┌──────────────────┐   ┌──────────────────┐   ┌───────────────────┐
+  │ Transcript tool  │   │  StableSensei    │   │  Cowork artifact  │
+  │ &lt;TBC&gt;            │   │  file tree       │   │  (live dashboard) │
+  │ (webhook)        │   │  (markdown SoT   │   │  reads CRM API    │
+  │                  │   │  for narrative)  │   │  every load       │
+  └──────────────────┘   └──────────────────┘   └───────────────────┘</pre>
+      <p>Three rules govern the diagram:</p>
+      <p><strong>The orchestrator never holds canonical data.</strong> It moves messages, applies rules, calls Claude, and writes results to the CRM or the file tree. If n8n crashes, nothing is lost — sources of truth are upstream (Outlook, transcript tool) and downstream (CRM, files).</p>
+      <p><strong>Claude API is the language layer.</strong> It classifies, synthesises, and drafts. It does not decide. Decisions (delete, send, change stage) happen either in n8n via deterministic rules, or by a human action on a Claude-prepared draft.</p>
+      <p><strong>The dashboard reads, it does not write.</strong> A live Cowork artifact loads the CRM's current state on every open. That keeps it cheap to build, impossible to drift, and easy to throw away if the CRM's native dashboard improves.</p>
+
+      <h2>3. Tool stack</h2>
+      <table class="content">
+        <thead><tr><th>Component</th><th>Choice</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Email</td><td>Outlook via Microsoft Graph API</td><td>You already use Outlook. Graph is the modern, well-documented API; delegated permissions give us least-privilege per scope.</td></tr>
+          <tr><td>Calendar</td><td>Microsoft Graph (same auth as email)</td><td>Free with the Outlook integration; no separate connector.</td></tr>
+          <tr><td>CRM</td><td>&lt;NEEDS CONFIRMATION&gt; — REST or GraphQL API</td><td>Architecture is the same regardless; specifics of the field-mapping change. Confirm which CRM and whether the API supports webhooks (push) or only polling.</td></tr>
+          <tr><td>Transcripts</td><td>&lt;NEEDS CONFIRMATION&gt; — Fireflies / Gong / Granola / Teams Premium</td><td>Choose one with webhook support so we don't have to poll. If Teams Premium, transcripts are already in M365 Graph (one less integration).</td></tr>
+          <tr><td>Orchestrator</td><td>n8n (self-hosted, open source) — fallback Make.com</td><td>n8n is free, runs on a small VM, has nodes for Graph and most CRMs, and logs every step for audit. Make.com is faster to start but subscription-based and harder to audit.</td></tr>
+          <tr><td>AI inference</td><td>Claude API directly</td><td>Sonnet 4.6 for inbox classification (cheap, fast). Opus 4.6 for transcript synthesis and CRM-note drafting (high quality, only on substantive content).</td></tr>
+          <tr><td>Dashboard</td><td>Cowork live artifact reading CRM API</td><td>No separate dashboard tool to license. Refreshes on open, no drift, easy to iterate.</td></tr>
+          <tr><td>Secrets / auth</td><td>n8n credentials store + Azure AD app registration for Graph</td><td>Single place to rotate keys; service-principal auth keeps user accounts out of automation paths.</td></tr>
+          <tr><td>State / queues</td><td>n8n's built-in execution log + a small Postgres for human-review queue</td><td>Postgres holds the "drafts awaiting review" so nothing is lost if the orchestrator restarts.</td></tr>
+          <tr><td>Monitoring</td><td>n8n native + a daily digest email to Rabii</td><td>Catches silent failures (a webhook stops firing, an API rate-limits us) without needing a separate observability tool.</td></tr>
+        </tbody>
+      </table>
+      <p>A note on n8n vs Make.com: if Aryze prefers no self-hosting, Make.com gets us live faster. The trade-offs are: ~EUR 20–40/month per active scenario, weaker audit trail, and vendor lock-in. For a Compliance-branded company the self-hosted route is the cleaner long-term answer.</p>
+
+      <h2>4. CRM data model</h2>
+      <p>This is the minimum field set. Names will adapt to the CRM's conventions; the concepts are what matter.</p>
+      <h3>Standard objects (assume the CRM already has these)</h3>
+      <p>Contact, Account, Lead, Opportunity, Activity. Use them as-is. Don't create parallel "Aryze Lead" objects.</p>
+      <h3>Custom fields on Lead / Opportunity</h3>
+      <table class="content">
+        <thead><tr><th>Field</th><th>Type</th><th>Purpose</th><th>Values</th></tr></thead>
+        <tbody>
+          <tr><td>Aryze Product</td><td>Picklist (required)</td><td>Which product is this deal for</td><td>Pay by Bank / Stablecoin Factory / Digital Cash / Multi-product</td></tr>
+          <tr><td>Stage</td><td>Picklist (required)</td><td>Where we are in the cycle</td><td>discovery / scoping / commercial / legal / pilot / live / parked / lost</td></tr>
+          <tr><td>Priority</td><td>Picklist (auto-computed)</td><td>What needs attention today</td><td>P1 (today) / P2 (this week) / P3 (this month) / P4 (background)</td></tr>
+          <tr><td>Last Touch Date</td><td>Date (auto)</td><td>When did Aryze last contact them</td><td>Set by automation on email send / meeting / CRM-note write</td></tr>
+          <tr><td>Days Since Touch</td><td>Number (computed)</td><td>Drives the stale-case detector</td><td><code>today() - Last Touch Date</code></td></tr>
+          <tr><td>Next Action</td><td>Text (required)</td><td>The single next concrete step</td><td>Free text, 100 chars</td></tr>
+          <tr><td>Next Action Deadline</td><td>Date (required)</td><td>When that step is due</td><td>YYYY-MM-DD</td></tr>
+          <tr><td>Buyer Committee Status</td><td>Multi-select</td><td>Which seats on the committee we've reached</td><td>exec-sponsor / champion / technical / finance / compliance / procurement</td></tr>
+          <tr><td>Trigger Event</td><td>Picklist</td><td>What's making this a 2026 conversation</td><td>From <code>Brain/Frameworks/Trigger-Event-Catalogue.md</code></td></tr>
+          <tr><td>VPC Pain (primary)</td><td>Picklist</td><td>Primary pain we're solving</td><td>From <code>Documents/Analyser/[Product]/VPC.md</code></td></tr>
+          <tr><td>Capability Confirmation Status</td><td>Picklist</td><td>Has product confirmed capability for this deal</td><td>not-needed / pending / confirmed / declined</td></tr>
+          <tr><td>File Folder Path</td><td>URL/text</td><td>Pointer to <code>Sales/[Product]/Cases/[Customer]/</code></td><td>For the dashboard to deep-link</td></tr>
+          <tr><td>AI Confidence</td><td>Number (0–100)</td><td>How confident the last AI update was</td><td>&lt;70 = flag for human review</td></tr>
+          <tr><td>AI Last Action</td><td>Text</td><td>What the AI last did to this record</td><td>"Updated next-action from email of 2026-05-23"</td></tr>
+          <tr><td>Source</td><td>Picklist</td><td>Where did the lead come from</td><td>inbound-email / outbound / event-[name] / referral / partner</td></tr>
+        </tbody>
+      </table>
+      <h3>Priority is a rule, not a guess</h3>
+      <pre>
+P1 = (Stage in [commercial, legal, pilot]) AND (Days Since Touch >= 3)
+     OR (Next Action Deadline &lt;= today)
+     OR (manually flagged by Rabii)
+
+P2 = (Stage in [discovery, scoping]) AND (Days Since Touch >= 5)
+     OR (Next Action Deadline within 7 days)
+     OR (high-value account: see Account.Tier = A)
+
+P3 = everything else with an open Next Action
+
+P4 = parked / no next action</pre>
+      <p>Priority is recomputed nightly by the orchestrator. Rabii can override manually; the override sticks for 7 days then re-evaluates.</p>
+      <h3>Activity records</h3>
+      <p>Every CRM-note becomes an Activity attached to the Lead/Opportunity. Activity types: <code>email-in</code>, <code>email-out</code>, <code>meeting</code>, <code>crm-note</code>, <code>ai-summary</code>. Each activity carries the source (e.g. <code>meeting:2026-05-22:fireflies-recording-id</code>) so we can always trace back.</p>
+
+      <h2>5. The four workflows</h2>
+
+      <h3>5.1 CRM integration</h3>
+      <p><strong>Trigger sources:</strong> new email from an unknown sender at a domain we recognise; transcript-tool webhook; manual command from Rabii.</p>
+      <p><strong>Flow for a new lead from email:</strong></p>
+      <ol>
+        <li>Inbound email lands in Outlook. Microsoft Graph subscription fires a webhook to n8n.</li>
+        <li>n8n extracts sender, domain, subject, body. Calls Claude (Sonnet) to classify intent: is this commercial outreach to Aryze, a customer service question, a marketing/newsletter mail, or noise?</li>
+        <li>If commercial: n8n queries CRM for a Contact matching the sender's email. If none exists, query for an Account matching the sender's domain.</li>
+        <li>If neither exists, n8n drafts a new Lead record (Claude produces the One-line Summary, picks the Aryze Product based on email content, picks Trigger Event from the catalogue). Confidence score is attached.</li>
+        <li>Draft is held in the review queue. Rabii sees it in the dashboard the next morning (or sooner via push). One click to approve → it's written to CRM.</li>
+        <li>Existing Lead/Contact: n8n appends an Activity record (<code>email-in</code>), and if the email contains a concrete next step (Claude extracts), it proposes an update to <code>Next Action</code>. Held for review if confidence &lt;70.</li>
+      </ol>
+      <p><strong>Flow for transcript-driven updates:</strong> see §5.3.</p>
+      <p><strong>Idempotency:</strong> every external event gets a deterministic ID (<code>outlook-message-id</code>, <code>fireflies-recording-id</code>, etc.) stored on the Activity. Reprocessing the same event is a no-op.</p>
+
+      <h3>5.2 Outlook inbox management</h3>
+      <p>This is where the biggest risks live. Email is irreversible; a wrongly-deleted message is gone and not recoverable in a meaningful way after 30 days. The design below is deliberately cautious.</p>
+      <p><strong>What runs automatically without human review:</strong></p>
+      <p>Categorisation only. n8n applies Outlook Categories to incoming mail based on Claude's classification:</p>
+      <ul>
+        <li><code>Aryze: Customer</code> — known customer/prospect domain</li>
+        <li><code>Aryze: Internal</code> — @aryze.io sender</li>
+        <li><code>Aryze: Vendor</code> — known vendor domain (Volt, Mastercard, etc.)</li>
+        <li><code>Aryze: Newsletter</code> — Claude classified as newsletter/promotional</li>
+        <li><code>Aryze: Likely-Spam</code> — Claude classified as spam-like, low confidence</li>
+        <li><code>Aryze: Needs Reply</code> — Claude detected a question or request directed at Rabii</li>
+      </ul>
+      <p>Outlook surfaces these as coloured tags. A view filter sorted by category puts "Needs Reply" at the top.</p>
+      <p><strong>What runs automatically with a <em>human-built</em> allow/block list:</strong></p>
+      <p>Auto-move to subfolders only for senders Rabii has explicitly approved. The dashboard surfaces "candidates to add to your block list" (senders flagged as Newsletter 3+ times) — Rabii approves; n8n then moves future mail from that sender to <code>\Newsletters</code> automatically. <em>No deletes.</em></p>
+      <p><strong>What never runs automatically:</strong></p>
+      <p>Auto-delete. Auto-reply. Auto-forward. Auto-unsubscribe (clicking unsubscribe links is a known attack vector — bad senders use unsubscribe clicks as confirmation that the mailbox is live).</p>
+      <p><strong>Senders to "block":</strong></p>
+      <p>Outlook's native block-sender rule moves mail to Junk. n8n proposes additions to the block list weekly; Rabii approves a batch. No silent additions.</p>
+      <p><strong>Flag for follow-up:</strong></p>
+      <p>Claude flags emails that need a reply. n8n applies Outlook's red flag and the <code>Aryze: Needs Reply</code> category. Anything not flagged stays unflagged — better to have Rabii glance over an unflagged email than to over-flag and lose signal.</p>
+      <p><strong>Confidence thresholds:</strong> classify-only ≥60. Move to subfolder ≥85. Delete: never auto.</p>
+
+      <h3>5.3 Meeting transcript workflow</h3>
+      <p><strong>Meeting selection — opt-in by design.</strong> Not every meeting is a sales meeting. Internal team syncs, HR conversations, partner check-ins, vendor admin calls, personal events — none of these should be recorded or processed by the AI listener. Over-capture creates noise in the CRM-note pipeline, costs money per minute transcribed, and makes the system feel like surveillance to people who didn't sign up to be transcribed. For a Compliance-branded company the right default is the cautious one.</p>
+      <p>The principle: <strong>the AI listener never auto-joins. Rabii decides per meeting.</strong> How that decision is registered depends on the tool:</p>
+      <table class="content">
+        <thead><tr><th>Tool</th><th>Opt-in mechanism</th><th>Visibility to other attendees</th><th>Recommended setting</th></tr></thead>
+        <tbody>
+          <tr><td>Granola</td><td>Runs locally on Rabii's Mac; Rabii starts it manually</td><td>None — no bot, no avatar, nothing visible</td><td>Already opt-in by construction. Nothing to disable.</td></tr>
+          <tr><td>Fireflies</td><td>Bot (e.g. <code>fred@fireflies.ai</code>) added as calendar attendee</td><td>Bot appears in attendee list and joins as a visible participant</td><td>Disable "auto-join all meetings on my calendar" in user settings. Bot only joins when explicitly invited.</td></tr>
+          <tr><td>Gong</td><td>Admin-level rules, typically auto-record external meetings</td><td>No bot, recording is server-side on Zoom/Teams/Meet</td><td>Disable "auto-record all external meetings". Record only when Rabii explicitly tags the meeting or invites the Gong bot.</td></tr>
+          <tr><td>Teams Premium</td><td>Meeting organiser clicks record per meeting</td><td>Native Teams record indicator</td><td>Opt-in by default. No configuration change needed.</td></tr>
+        </tbody>
+      </table>
+      <p>Whatever tool we land on, the rule is the same: no recording without an explicit per-meeting signal from Rabii.</p>
+      <p><strong>Belt and braces — second filter at the orchestrator.</strong> Even when a recording arrives at n8n, the workflow validates before calling Claude. Three checks:</p>
+      <ol>
+        <li>Was there at least one external attendee (non-<code>@aryze.io</code> email) on the calendar invite?</li>
+        <li>Was the meeting at least 5 minutes long?</li>
+        <li>Does the meeting title, description, or attendee list match an Aryze commercial context (known customer/prospect name, an existing case folder under <code>Sales/[Product]/Cases/</code>, or an explicit <code>[Sales]</code> / <code>[Aryze]</code> tag in the title)?</li>
+      </ol>
+      <p>If two of the three are no, the recording is logged but not processed. It appears in a "Skipped" list in the dashboard. Rabii can promote it to processing with one click if the note is wanted anyway — e.g. an internal strategy call where the action items should be extracted but not posted to a customer CRM record.</p>
+      <p>This handles the two failure modes that opt-in alone doesn't: the bot was invited to a meeting that turned out not to be commercial, and a recording exists but the conversation wasn't sales-relevant.</p>
+      <p><strong>A note on tool choice in light of opt-in.</strong> Granola has the strongest opt-in posture (local, no visible bot, customer never sees an AI participant) which matches Aryze's brand voice — discreet, operational, compliance-first. Fireflies has better out-of-the-box CRM integrations but the visible bot can change the dynamic of a meeting, particularly with regulated counter-parties (banks, FCA-supervised customers) who may object to a third-party recorder on the call. Gong is over-configured for Aryze's stage. Teams Premium is the safest from a vendor-concentration angle but its CRM-side automation is the weakest of the four. Recommendation lean: <strong>Granola or Teams Premium</strong> for opt-in cleanliness, with Granola preferred if its API maturity is enough for the n8n integration. Confirm in the decision checklist below.</p>
+      <p><strong>Trigger:</strong> transcript tool posts a webhook (or, for Teams Premium, a Graph subscription on <code>callRecords</code> fires) — but only for meetings that passed the opt-in step at the source.</p>
+      <p><strong>Flow:</strong></p>
+      <ol>
+        <li>Webhook hits n8n with recording ID + transcript URL.</li>
+        <li>n8n fetches the transcript and meeting metadata (attendees, duration, calendar invite).</li>
+        <li>n8n calls Claude (Opus) with a structured prompt anchored on <code>Brain/Templates/CRM-Note.md</code> and the relevant Sales persona. Output is a strict JSON object with these fields: <code>customer</code>; <code>aryze_product</code> (Pay by Bank | Stablecoin Factory | Digital Cash | unclear); <code>summary_1_line</code> (≤200 chars); <code>latest</code> (≤3 lines); <code>open_questions</code>; <code>next_action</code>; <code>next_action_deadline</code>; <code>customer_numbers</code> (any volumes, average order values (AOVs), or specifics they cited — use <em>their</em> numbers, don't approximate, per the CRM-Note rule); <code>decision_makers_mentioned</code> (name, title, role on buyer committee); <code>timeline</code>; <code>potential_value</code> (qualitative, no fabricated revenue figures); <code>risks_or_objections</code>; <code>confidence</code> (0–100).</li>
+        <li>n8n then runs two writes in parallel: a <strong>file tree write</strong> — save as <code>Sales/[Product]/Cases/[Customer]/CRM-Notes/[YYYY-MM-DD].md</code> formatted per the template (if <code>[Product]</code> or <code>[Customer]</code> is ambiguous, save to a <code>_inbox/</code> folder and flag for Rabii) — and a <strong>CRM write</strong> — create or update the Lead/Opportunity, append an Activity (<code>meeting</code>), update <code>Last Touch Date</code>, propose <code>Next Action</code> and <code>Next Action Deadline</code>.</li>
+        <li>CRM and file writes are held in the review queue if confidence &lt; 80. Held for 48 hours during the first month; after the first month, auto-apply at ≥80 and queue only the &lt;80 ones.</li>
+        <li>On approval, the dashboard reflects the new state on next load.</li>
+      </ol>
+      <p><strong>Brand voice guard:</strong> the synthesis prompt includes the forbidden-phrases list from the master CLAUDE.md ("revolutionising", "seamless", "future of money", etc.) and the voice dialer (mature / sophisticated / economical / literal / contemporary). The CRM-note draft is screened against the list before being queued. The screen is a simple regex over the forbidden list — not Claude self-checking.</p>
+      <p><strong>Capability discipline guard:</strong> if the transcript surfaces a capability claim that hasn't been verified (e.g. "they want AIS", "they want global coverage", "they want real-time payouts"), the AI flags it as an <code>Open Question</code> rather than committing it to the CRM as a confirmed need. The Product-Description files (<code>Documents/Analyser/[Product]/Product-Description.md</code>) are loaded into the synthesis prompt as ground truth on what Aryze actually does today.</p>
+
+      <h3>5.4 Follow-up and prioritisation</h3>
+      <p>The morning brief is the user-facing surface for this workflow.</p>
+      <p><strong>Daily 07:00 CEST (weekdays):</strong></p>
+      <ol>
+        <li>n8n queries the CRM for all P1 and P2 leads with <code>Next Action Deadline</code> today or overdue.</li>
+        <li>Queries Microsoft Graph for the day's calendar.</li>
+        <li>Queries Outlook for emails in <code>Aryze: Needs Reply</code> from the last 24 hours.</li>
+        <li>Queries the file tree for stale cases (Days Since Touch ≥ 14).</li>
+        <li>Claude (Sonnet) assembles a one-page brief in Rabii's voice: today's calls (with prep links), emails needing reply (with one-line context per email), top three deals at risk this week, top three actions to take today.</li>
+        <li>Brief is saved to <code>Documents/Reports/Daily-Briefs/[date].md</code> and (optional) sent as an Outlook calendar attachment at 07:00.</li>
+      </ol>
+      <p><strong>Sunday 17:30 CEST:</strong> the weekly-update auto-draft already specified in the previous plan. Pulls from the same CRM Activity stream now that we have it.</p>
+      <p><strong>Dashboard "needs action today" view:</strong> a live Cowork artifact. Filters CRM for <code>Priority IN (P1, P2)</code> AND <code>Next Action Deadline &lt;= today + 2</code>. Each row links to the case folder and the CRM record.</p>
+
+      <h2>6. Phased implementation plan</h2>
+      <p>The principle is to make every phase land working software with no regressions before adding the next surface area.</p>
+      <p><strong>Phase 0 — Discovery and access (week 1).</strong> Confirm the CRM and transcript tool. Register an Azure AD application for Microsoft Graph (delegated permissions: <code>Mail.Read</code>, <code>Mail.ReadWrite</code>, <code>MailboxSettings.ReadWrite</code>, <code>Calendars.Read</code>, <code>User.Read</code>). Obtain CRM API credentials and confirm webhook capability. Stand up an n8n instance (small Hetzner VM, EU region, ~EUR 10/month). Stand up a small Postgres for the review queue.</p>
+      <p><strong>Phase 1 — Read-only path (week 2).</strong> n8n subscribes to Outlook inbox. Claude classifies every inbound email. n8n applies Categories <em>only</em> — no moves, no deletes, no flags. A daily summary email lands in Rabii's inbox at 18:00 showing what was classified and how. Goal: validate the classifier against a real week of mail. Adjust prompts until accuracy on a held-out sample ≥ 90% on commercial vs. newsletter, ≥ 80% on "needs reply".</p>
+      <p><strong>Phase 2 — Transcript path read-only (week 3).</strong> Transcript webhook activates. n8n calls Claude, produces draft CRM-notes, writes to file tree only (no CRM write yet). Rabii reviews each draft against what would have been written manually. Adjust the synthesis prompt until drafts need &lt;20% editing for a representative week.</p>
+      <p><strong>Phase 3 — Selective writes (week 4).</strong> Inbox: turn on the red flag for "Needs Reply" category. CRM: enable Activity-record writes (append-only, never overwrite). Transcript: write to CRM as a <code>meeting</code> Activity with status "draft, pending review". Rabii approves each in the dashboard. Still no auto-stage changes, no auto-Next-Action commits.</p>
+      <p><strong>Phase 4 — Auto-fields with thresholds (week 5).</strong> Auto-update <code>Last Touch Date</code> and <code>Days Since Touch</code>. Auto-set <code>Next Action</code> and <code>Next Action Deadline</code> for confidence ≥80 transcripts; queue the rest. Priority computation goes live.</p>
+      <p><strong>Phase 5 — Dashboard (week 6).</strong> Live Cowork artifact reading the CRM. Filters for P1/P2 today, stale cases, "needs reply" inbox. Replaces manual scanning of the file tree.</p>
+      <p><strong>Phase 6 — Inbox actions (week 7).</strong> Auto-move to <code>\Newsletters</code> for senders on the Rabii-approved subfolder list. Block-sender list reviewed weekly. Still no deletes.</p>
+      <p><strong>Phase 7 — Morning and weekly briefs (week 8).</strong> Daily 07:00 brief turns on after one week of dry-run output. Sunday 17:30 weekly auto-draft turns on.</p>
+      <p><strong>Phase 8 — Iterate and harden (week 9+).</strong> Tune confidence thresholds, add the second priority of fields (VPC Pain, Buyer Committee, Trigger Event auto-population), expand to outbound email tracking, consider Outreach.io / Apollo as outbound add-ons if needed.</p>
+      <p>The schedule assumes ~10 hours/week of build effort. It can compress if Phase 0 access is granted quickly.</p>
+
+      <h2>7. Risks, permissions, security</h2>
+      <p><strong>The most important risk is irreversible automated actions on email.</strong> Auto-delete is excluded entirely from this design. Auto-reply is excluded. Auto-forward is excluded. Block-sender additions require Rabii's approval each week. If those rules feel restrictive in six months, they can be relaxed deliberately — far easier than recovering from a wrongly-deleted contract.</p>
+      <p><strong>The second-most important risk is the CRM becoming wrong without Rabii noticing.</strong> Mitigations are the AI Confidence field (visible in the dashboard, low scores get flagged), the 48-hour human-review window for the first month, and append-only Activity records (so even a wrong update never overwrites history — the prior state is recoverable from the Activity log).</p>
+      <p><strong>Permissions, principle of least privilege.</strong> Microsoft Graph delegated permissions: read mail, read/write categories and flags, read calendar, read user profile. <em>Not</em> <code>Mail.Send</code> until Phase 8 (and only if we decide to enable AI-drafted send-from-Rabii). Not <code>Mail.ReadWrite.Shared</code>. CRM API: a dedicated service-account user with role limited to Lead/Opportunity/Activity read+write — not admin. Azure AD app registration uses certificate-based auth, not client secret. All credentials in n8n's encrypted credential store; backups of n8n's database are encrypted at rest.</p>
+      <p><strong>GDPR and data residency.</strong> Aryze is EU-based; the CRM presumably holds EU personal data. Three actions: (1) execute Anthropic's DPA so AI processing is covered (already standard for Claude API customers; double-check it's signed). (2) Pin n8n and Postgres to an EU region. (3) Log every AI call's input/output to the n8n execution log for at least 90 days — this is necessary for DSAR responses (data-subject access requests) which Aryze, as infrastructure, will need to be able to support.</p>
+      <p><strong>Recording consent.</strong> Linked to the opt-in design in §5.3 but worth calling out separately: in several EU jurisdictions (Germany, France, Denmark to a lesser extent) recording a meeting without all parties' explicit consent is unlawful, not just impolite. The opt-in mechanism handles the <em>technical</em> side; the conversational side is Rabii's responsibility — open the meeting with "I'm recording this for note-taking, any objections?" The visible-bot tools (Fireflies, Gong) make consent natural because the bot is on the attendee list; Granola's invisibility means Rabii must remember to state it out loud. Either way: never record without consent, and never process a recording where consent was refused or unclear.</p>
+      <p><strong>Brand and capability discipline.</strong> This is an Aryze-specific risk: AI-drafted CRM notes or emails that promise things Aryze can't deliver, or that use forbidden phrases. Mitigations: the synthesis prompt loads the Product-Description files as ground truth and the forbidden-phrases list as a regex screen. Anything flagged is held for Rabii review. The 13 May audit report (<code>Documents/Reports/Audit-Modsigelser-2026-05-13.md</code>) is the reason this is non-negotiable.</p>
+      <p><strong>Vendor concentration.</strong> Microsoft Graph + Claude API + one CRM + one transcript tool + n8n is five vendors. If Claude API goes down, classification stops; if Graph goes down, inbox stops. Mitigation: every workflow is designed to degrade gracefully (n8n queues retries, no critical path requires synchronous AI). Outages are detectable in the n8n monitor; we are not building a system that fails silently.</p>
+      <p><strong>Cost.</strong> Claude API costs scale with email volume and transcript length. Order-of-magnitude estimate (to be verified): Sonnet at EUR 3 per million input tokens + EUR 15 per million output tokens; 200 emails/day × ~500 tokens average input = 100,000 tokens/day = EUR 0.30/day on classification. Transcripts at 5,000–15,000 tokens each, 4–6 per week, on Opus = ~EUR 5–10/week. n8n VM ~EUR 10/month. Total marginal cost: under EUR 100/month at current volumes. CRM API costs depend on the CRM's pricing.</p>
+      <p><strong>Audit trail.</strong> Every AI call has its prompt, input, output, and decision logged in the n8n execution log. Every CRM write has an Activity record. Every classification has the Outlook Category as the artefact. The system is fully traceable — important both for debugging and for Compliance.</p>
+      <p><strong>Human-in-the-loop sunset.</strong> The 48-hour review window for the first month is deliberate. After month one, review at ≥80 confidence is automated and only &lt;80 is queued. Rabii can extend or shorten this; it's a configuration not a structural choice.</p>
+
+      <h2>8. Open questions before we build</h2>
+      <ol>
+        <li><strong>Which CRM?</strong> And does its API support webhooks (push) or only polling? Webhook capability decides whether dashboard updates are real-time or 5-minute-delayed.</li>
+        <li><strong>Which transcript tool?</strong> Fireflies, Gong, Granola, and Teams Premium are all possible. The decision now has two axes: (a) integration effort, and (b) opt-in posture — see §5.3. Granola and Teams Premium are the cleanest from an opt-in standpoint; Fireflies has a visible bot; Gong is too heavy for Aryze's stage. If Teams Premium, transcripts are inside M365 and we save one connector.
+          <br><br><strong>2a. What opt-in signal do you want to use?</strong> Three options, not mutually exclusive: (i) explicit per-meeting action by Rabii (click record in Granola / invite Fireflies bot / click record in Teams), (ii) a title tag like <code>[Sales]</code> or <code>[Aryze]</code> that the orchestrator looks for, (iii) a dedicated "Aryze Sales" calendar that the bot watches. Recommendation: (i) as the primary, with (iii) as backup for cases you keep on a separate sales calendar already.</li>
+        <li><strong>Are there existing CRM custom fields we should map to, or are we adding the entire field set from §4?</strong> Field additions need CRM admin time.</li>
+        <li><strong>Self-host n8n or use Make.com?</strong> Self-host is cheaper and more auditable; Make is faster to start. Recommendation: self-host, but if there's no appetite to run a small VM, Make.com is acceptable for Phases 1–4.</li>
+        <li><strong>Who manages the Azure AD app registration?</strong> This needs an admin on the Aryze M365 tenant. Identify the right person early — this is often the slowest piece in Phase 0.</li>
+        <li><strong>DPA with Anthropic signed?</strong> If not, raise with legal before Phase 2 (transcript content includes customer PII).</li>
+        <li><strong>Inbox volume.</strong> Roughly how many emails/day does Rabii receive? Determines whether Sonnet costs are EUR 0.30/day or EUR 3/day. Doesn't change architecture.</li>
+        <li><strong>Outbound emails (sent by Rabii) — should they also create Activity records?</strong> If yes, we need Graph <code>Mail.Send</code>-shaped subscription on the Sent Items folder (read, not send). Recommended yes; it gives a complete picture.</li>
+        <li><strong>Multi-user from the start, or just Rabii?</strong> Architecture is the same; permission scoping changes if other Aryze sellers come on later.</li>
+        <li><strong>Naming.</strong> What should we call this internally? Suggest: "Aryze Sales OS" (operational; not "AI platform" which would conflict with brand voice). Open to alternatives.</li>
+      </ol>
+
+      <h2>9. What we're explicitly not building (and why)</h2>
+      <ul>
+        <li><strong>Auto-send of customer emails.</strong> Brand and capability discipline make this too risky for a small team. AI drafts; humans send.</li>
+        <li><strong>Auto-stage transitions.</strong> A stage change is a meaningful event. Letting AI move a deal from <code>discovery</code> to <code>scoping</code> based on email tone strips that meaning. The AI proposes; Rabii confirms.</li>
+        <li><strong>Lead scoring beyond P1–P4.</strong> A 0–100 score is precision theatre. Four bands map to "today / this week / this month / background" — that's how humans actually plan.</li>
+        <li><strong>Native dashboard build.</strong> The Cowork artifact reading the CRM gets us 80% of the value for 10% of the build effort. If a real BI tool becomes necessary in 12 months, we can move to it then.</li>
+        <li><strong>Account-level intelligence pulls (Common Room, Apollo signals).</strong> Plugins exist but aren't authenticated yet, and the value is unclear until basic workflows are in. Revisit at Phase 8.</li>
+      </ul>
+
+      <h2>10. Decision checklist for Rabii</h2>
+      <p>Before we start Phase 0, confirm:</p>
+      <ul>
+        <li>☐ CRM name and API credentials available</li>
+        <li>☐ Transcript tool name and webhook capability</li>
+        <li>☐ Opt-in mechanism confirmed (per-meeting action / title tag / dedicated calendar) — see §5.3 and §8 #2a</li>
+        <li>☐ Auto-record/auto-join settings turned <strong>off</strong> at the tool level before Phase 2</li>
+        <li>☐ M365 admin willing to register Azure AD app</li>
+        <li>☐ Self-host n8n (yes / no — if no, Make.com)</li>
+        <li>☐ DPA with Anthropic verified</li>
+        <li>☐ First-month 48-hour human-review window acceptable</li>
+        <li>☐ Cost ceiling for Claude API (suggest: EUR 200/month soft cap, alert at 80%)</li>
+        <li>☐ Names of any other Aryze users who will use this in next 6 months</li>
+      </ul>
+      <p>Once these are answered, the Phase 0 work is roughly one week of access-and-setup, and we're building on Phase 1 from week 2.</p>
+
+      <hr>
+      <h3>Companion documents</h3>
+      <ul class="sources">
+        <li><a href="automations-plan.html">Automations plan</a> — file-based Cowork automations (complement, not replacement)</li>
+        <li><code>Brain/Templates/CRM-Note.md</code> — synthesis output target</li>
+        <li><code>Brain/Frameworks/Qualification-Framework.md</code> — drives Priority and Stage rules</li>
+        <li><code>Brain/Frameworks/Buyer-Committee-Map.md</code> — feeds Buyer Committee Status field</li>
+        <li><code>Brain/Frameworks/Trigger-Event-Catalogue.md</code> — feeds Trigger Event picklist</li>
+        <li><code>Documents/Analyser/[Product]/Product-Description.md</code> — ground truth for capability guard</li>
+        <li><code>Documents/Reports/Audit-Modsigelser-2026-05-13.md</code> — why brand and capability discipline is non-negotiable</li>
+      </ul>
+
+      <nav class="doc-links doc-foot">
+        <a href="automations-plan.html">← Automations plan</a>
+        <a href="index.html">Strategies &amp; plans</a>
+        <a href="tech-for-fin-springboard.html">Tech for Fin springboard →</a>
+      </nav>
+    </div>
+  </article>
+
+  <footer><p>Aryze &middot; Sales &amp; Marketing &middot; AI sales workflow architecture &middot; Confidential &middot; 23 May 2026</p></footer>
+</main>
+</body>
+</html>

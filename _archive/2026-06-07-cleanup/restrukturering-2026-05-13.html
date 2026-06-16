@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restrukturering (13 May 2026) | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/cod.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">Aryze<small>Board &amp; Management Reports</small></span>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#reports">Reports</a>
+    <a href="../../index.html#materials">Board materials</a>
+    <a href="../../index.html#onboarding">Onboarding</a>
+    <a href="../../index.html#tools">Tools</a>
+  </nav>
+</header>
+<p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Analyses</a> / Restrukturering · 13 May 2026</p>
+
+<main class="wrap">
+  <article class="doc">
+    <header class="doc-head">
+      <p class="eyebrow">Governance · 13 May 2026</p>
+      <h1>Restrukturering 13. maj 2026 — fra alt-i-én til per-produkt</h1>
+      <p class="lede">The restructure record: from one monolithic doc set to three fully built product stacks with dedicated specialist personas — and the cleanup of the retired "Digital Assets &amp; RWA Factory" name.</p>
+      <p class="meta">13 May 2026 · Confidential</p>
+      <div class="doc-links">
+        <a href="index.html">↩ Analyses</a>
+        <a href="../../../../Documents/Reports/Restrukturering-2026-05-13.md">Source .md</a>
+      </div>
+    </header>
+
+    <div class="doc-body">
+      <h2>Hvad blev gjort</h2>
+      <p>Aryze's sales-foundation blev restruktureret fra <strong>ét sæt monolitiske docs</strong> (alt-i-én ICP/VPC/Product-Description med Pay by Bank dybt + Stablecoin Factory/Digital Cash kort) til <strong>tre fuldt udfoldede produkt-stacks</strong> med dedikerede specialist-personaer.</p>
+      <p>Cleanup af forældet "Digital Assets &amp; RWA Factory"-produktnavn blev kørt parallelt (auditten 13. maj 2026 havde flagget det som fjerde produktnavn der ikke matchede v4-taxonomien).</p>
+
+      <h2>Ny struktur</h2>
+
+      <h3>Documents/Analyser/ — per-produkt strategisk foundation</h3>
+      <pre style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;font-size:12.5px;line-height:1.5;overflow-x:auto;color:var(--slate)">Documents/Analyser/
+├── README.md                                   (opdateret)
+├── Ideal-Customer-Profiles-v4.md               (slank routing-doc, v5)
+├── Value-Proposition-Canvas-v4.md              (slank routing-doc, v5)
+├── Product-Suite-Master-Description-v4.md      (slank suite-narrativ, v5)
+├── Archive/                                    (v3-ChatGPT-drafts, urørt)
+├── Pay-by-Bank/
+│   ├── ICP.md                                  (fuld dybde)
+│   ├── VPC.md                                  (fuld dybde)
+│   └── Product-Description.md                  (fuld dybde)
+├── Stablecoin-Factory/
+│   ├── ICP.md                                  (NY — udfyldt fra kort v4)
+│   ├── VPC.md                                  (NY — udfyldt fra kort v4)
+│   └── Product-Description.md                  (NY — udfyldt fra v4)
+└── Digital-Cash/
+    ├── ICP.md                                  (NY — udfyldt fra kort v4)
+    ├── VPC.md                                  (NY — udfyldt fra kort v4)
+    └── Product-Description.md                  (NY — udfyldt fra v4)</pre>
+
+      <h3>Brain/Personas/ — sales-specialister per produkt</h3>
+      <pre style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;font-size:12.5px;line-height:1.5;overflow-x:auto;color:var(--slate)">Brain/Personas/
+├── Forfatter/CLAUDE.md                         (urørt)
+├── Marketing-specialist/CLAUDE.md              (urørt)
+├── Sælger/CLAUDE.md                            (opdateret v4 — peger til specialister)
+├── Sælger-Pay-by-Bank/CLAUDE.md                (NY)
+├── Sælger-Stablecoin-Factory/CLAUDE.md         (NY)
+└── Sælger-Digital-Cash/CLAUDE.md               (NY)</pre>
+      <p>Hver specialist-persona indeholder: customer language, top-5 objections + svar, competitor positioning, proof points, must-never-promise, buyer-specific pitch angles, motion-specific guidance, og discovery questions.</p>
+
+      <h3>Sales/ — projekter rebuildt og renset</h3>
+      <pre style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;font-size:12.5px;line-height:1.5;overflow-x:auto;color:var(--slate)">Sales/
+├── Pay by Bank/CLAUDE.md                       (opdateret v2 — slank, peger til specialist)
+├── Stablecoin Factory/CLAUDE.md                (omdøbt fra Digital Assets &amp; RWA Factory, rebuilt v2)
+└── Digital Cash/CLAUDE.md                      (opdateret v2 — slank, peger til specialist)</pre>
+
+      <h3>Documents/Programs/ — eksterne programmer (NY)</h3>
+      <pre style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;font-size:12.5px;line-height:1.5;overflow-x:auto;color:var(--slate)">Documents/Programs/
+└── Tech-for-Fin-Digital-Assets/                (NY mappe)
+    ├── 2026_Market opportunities_Digital assets.pdf
+    ├── Aryze - Tech for Fin Mentor Agenda.pdf
+    ├── Aryze-Mentor-Preread.pdf
+    ├── De minimis declaration RFPRO-25-0132.pdf
+    └── Erklaering om LV-status.pdf</pre>
+      <p>Tech for Fin – Digital Assets er Copenhagen Fintech's mentor-program (Aryze deltager). Det er <strong>ikke</strong> et produkt. Flyttet ud af Sales/ til Documents/Programs/.</p>
+
+      <h3>_TIL-SLETNING/ — slettes manuelt fra Finder</h3>
+      <pre style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;font-size:12.5px;line-height:1.5;overflow-x:auto;color:var(--slate)">_TIL-SLETNING/
+├── README.md                                   (instruktioner)
+├── Old-Digital-Assets-Onepagers/               (3 PDFs med Lorem ipsum)
+├── Old-Agent-Materials/                        (3 decks med Lorem ipsum + modsigelser)
+└── Empty-Old-Folders/
+    ├── Tech-for-Fin/                           (tom)
+    ├── Agent-Materials/                        (tom)
+    └── Old-One-Pagers-Subfolder/               (tom)</pre>
+      <p>Claude kunne ikke slette filer pga. macOS sandbox-restriktioner. Indholdet er flyttet til denne mappe. <strong>Slet hele <code>_TIL-SLETNING/</code> fra Finder.</strong></p>
+
+      <h2>Lag-systemet — sådan loades persona + viden nu</h2>
+      <p>For sales-arbejde på et specifikt produkt:</p>
+      <ol>
+        <li><strong>Master</strong> (<code>StableSensei/CLAUDE.md</code>) — brand, mission, mappestruktur</li>
+        <li><strong>Generic Sælger</strong> (<code>Brain/Personas/Sælger/CLAUDE.md</code>) — universel sales-disciplin</li>
+        <li><strong>Specialist Sælger</strong> (<code>Brain/Personas/Sælger-[Produkt]/CLAUDE.md</code>) — produkt-specifik customer-viden</li>
+        <li><strong>Project-CLAUDE</strong> (<code>Sales/[Produkt]/CLAUDE.md</code>) — case-level kontekst, resources, output-placering</li>
+      </ol>
+      <p>For dyb produkt-viden (capabilities, ICP, VPC):</p>
+      <ol start="5">
+        <li><strong>Per-produkt analyser-mappe</strong> (<code>Documents/Analyser/[Produkt]/</code>) — ICP.md, VPC.md, Product-Description.md</li>
+      </ol>
+
+      <h2>Hvad gør hver fil</h2>
+      <table class="content">
+        <thead><tr><th>Fil-type</th><th>Indhold</th></tr></thead>
+        <tbody>
+          <tr><td>Specialist-persona</td><td>Customer language, top-objections, buyer-specific pitches, competitor positioning, proof points, must-never-promise</td></tr>
+          <tr><td>Per-produkt ICP</td><td>Hvem vi sælger til, qualification, buyer titles, poor-fit signals, industri-kontekst</td></tr>
+          <tr><td>Per-produkt VPC</td><td>Jobs / pains / gains, products &amp; services, pain relievers, gain creators, hvad vi ikke leverer</td></tr>
+          <tr><td>Per-produkt Product Description</td><td>Capabilities, commercial motion, pricing-ramme, konkurrent-kontekst, industri-triggere</td></tr>
+          <tr><td>Project-CLAUDE (Sales/[Produkt]/)</td><td>Resources (links), aktive cases, output-placering, kort discipliner-summary</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Hvorfor</h2>
+      <p><strong>Før restruktureringen:</strong></p>
+      <ul>
+        <li>Pay by Bank var dyb, Stablecoin Factory + Digital Cash var kort sammendrag → sælgere kunne ikke arbejde på de to sidste produkter uden at læse på tværs af mange filer</li>
+        <li>"Digital Assets &amp; RWA Factory" var et fjerde produktnavn der ikke matchede v4-taxonomien → produkt-historien var slørret</li>
+        <li>Tech for Fin lå under Sales/ men er ikke salgsarbejde → forvirrede mappestrukturen</li>
+        <li>Én Sælger-persona prøvede at dække tre meget forskellige customer-bases (merchants, builders, institutional) → ingen specialisering</li>
+      </ul>
+      <p><strong>Efter restruktureringen:</strong></p>
+      <ul>
+        <li>Hvert af de tre produkter har fuld strategisk dybde (ICP + VPC + Product Description) i sin egen mappe</li>
+        <li>Hvert produkt har en specialist-sælger-persona med customer language og objection handling</li>
+        <li>Forældet "Digital Assets &amp; RWA Factory"-content er væk</li>
+        <li>Tech for Fin er flyttet til Documents/Programs/ (det er et eksternt mentor-program, ikke en sales-pipeline)</li>
+        <li>Master ICP/VPC/Suite-Description er slanket til cross-product routing-rolle</li>
+      </ul>
+
+      <h2>Backward compatibility</h2>
+      <p>Master cross-product docs (<code>Ideal-Customer-Profiles-v4.md</code>, <code>Value-Proposition-Canvas-v4.md</code>, <code>Product-Suite-Master-Description-v4.md</code>) er <strong>bevaret som filer på samme paths</strong> — slanket til routing-rolle. Alt eksisterende der peger til dem fungerer stadig.</p>
+      <p>Den oprindelige Sælger-persona er <strong>opdateret in-place</strong> (samme filsti, ny v4-version) — peger nu til specialisterne.</p>
+
+      <h2>Hvad du skal gøre manuelt</h2>
+      <ol>
+        <li><strong>Slet <code>_TIL-SLETNING/</code></strong> fra Finder når du er klar (Finder → ~/Desktop/StableSensei/_TIL-SLETNING/ → flyt til papirkurv)</li>
+        <li><strong>Verificér resources i Stablecoin Factory project-CLAUDE</strong> — sandbox/booking-links skal afklares når produktet har dem</li>
+        <li><strong>Verificér booking-link i Digital Cash project-CLAUDE</strong> — om der er separat institutional booking-link</li>
+        <li><strong>Producér nye one-pagers til Stablecoin Factory</strong> — de gamle var Lorem ipsum og er slettet (motion-one-pagers for Own Programme, Partner-Led, White-Label)</li>
+      </ol>
+
+      <h2>Filer skabt eller ændret (samlet liste)</h2>
+      <p><strong>Skabt:</strong></p>
+      <ul>
+        <li><code>Documents/Analyser/Pay-by-Bank/ICP.md</code></li>
+        <li><code>Documents/Analyser/Pay-by-Bank/VPC.md</code></li>
+        <li><code>Documents/Analyser/Pay-by-Bank/Product-Description.md</code></li>
+        <li><code>Documents/Analyser/Stablecoin-Factory/ICP.md</code></li>
+        <li><code>Documents/Analyser/Stablecoin-Factory/VPC.md</code></li>
+        <li><code>Documents/Analyser/Stablecoin-Factory/Product-Description.md</code></li>
+        <li><code>Documents/Analyser/Digital-Cash/ICP.md</code></li>
+        <li><code>Documents/Analyser/Digital-Cash/VPC.md</code></li>
+        <li><code>Documents/Analyser/Digital-Cash/Product-Description.md</code></li>
+        <li><code>Documents/Programs/Tech-for-Fin-Digital-Assets/</code> (mappe + 5 PDFs flyttet hertil)</li>
+        <li><code>Brain/Personas/Sælger-Pay-by-Bank/CLAUDE.md</code></li>
+        <li><code>Brain/Personas/Sælger-Stablecoin-Factory/CLAUDE.md</code></li>
+        <li><code>Brain/Personas/Sælger-Digital-Cash/CLAUDE.md</code></li>
+        <li><code>_TIL-SLETNING/</code> (med README + 6 outdated PDFs + 3 empty folders)</li>
+        <li><code>Documents/Reports/Restrukturering-2026-05-13.md</code> (denne fil)</li>
+      </ul>
+      <p><strong>Opdateret:</strong></p>
+      <ul>
+        <li><code>StableSensei/CLAUDE.md</code> (mappestruktur-diagram + persona-system + sub-projekt-regler)</li>
+        <li><code>Brain/Personas/Sælger/CLAUDE.md</code> (v4 — peger til specialister)</li>
+        <li><code>Documents/Analyser/README.md</code> (ny struktur-forklaring)</li>
+        <li><code>Documents/Analyser/Ideal-Customer-Profiles-v4.md</code> (v5 routing-doc)</li>
+        <li><code>Documents/Analyser/Value-Proposition-Canvas-v4.md</code> (v5 routing-doc)</li>
+        <li><code>Documents/Analyser/Product-Suite-Master-Description-v4.md</code> (v5 suite-narrativ)</li>
+        <li><code>Sales/Pay by Bank/CLAUDE.md</code> (v2 — slank, peger til specialist)</li>
+        <li><code>Sales/Digital Cash/CLAUDE.md</code> (v2 — slank, peger til specialist)</li>
+        <li><code>Sales/Stablecoin Factory/CLAUDE.md</code> (rebuilt fra "Digital Assets &amp; RWA Factory")</li>
+      </ul>
+      <p><strong>Flyttet:</strong></p>
+      <ul>
+        <li><code>Sales/Digital Assets &amp; RWA Factory/</code> → <code>Sales/Stablecoin Factory/</code></li>
+        <li><code>Sales/Tech for Fin/*.pdf</code> → <code>Documents/Programs/Tech-for-Fin-Digital-Assets/</code></li>
+        <li><code>Sales/Digital Assets &amp; RWA Factory/2026_Market opportunities_Digital assets.pdf</code> → <code>Documents/Programs/Tech-for-Fin-Digital-Assets/</code></li>
+        <li>3 outdated one-pagers → <code>_TIL-SLETNING/Old-Digital-Assets-Onepagers/</code></li>
+        <li>3 outdated decks → <code>_TIL-SLETNING/Old-Agent-Materials/</code></li>
+        <li>Tomme mapper (Tech for Fin, Agent Materials, gammel One pagers-subfolder) → <code>_TIL-SLETNING/Empty-Old-Folders/</code></li>
+      </ul>
+
+      <nav class="doc-links" style="margin-top:28px;border-top:1px solid var(--line);padding-top:16px">
+        <a href="audit-fuld-revision-2026-05-16.html">← Full revision audit (16 May)</a>
+        <a href="index.html">Analyses</a>
+        <a href="production-restructure-2026-05-14.html">Production restructure (14 May) →</a>
+      </nav>
+    </div>
+  </article>
+
+  <footer><p>Aryze &middot; Board &amp; Management Reports &middot; Restrukturering &middot; Confidential &middot; 13 May 2026</p></footer>
+</main>
+</body>
+</html>

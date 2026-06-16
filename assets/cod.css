@@ -1,0 +1,504 @@
+/* ============================================================
+   Aryze · Sales & Marketing — Design System
+   One stylesheet for the home, every report, and the materials.
+   Edit here once; every page updates. Tokens from Brand Guide v1.0.
+   v2.2 · 2026-06-08 — visual audit: stacked tables on phones,
+   AA contrast on small text, larger touch targets.
+   ============================================================ */
+
+/* ---------- 1. Tokens ---------- */
+:root{
+  /* surfaces / ink */
+  --bg:#f7f9fa; --surface:#fff; --soft:#e3e8eb;
+  --ink:#001e2b; --slate:#274454; --muted:#52636d; --faint:#6b7889; /* faint passes AA 4.5:1 on white */
+  --line:rgba(0,30,43,.14);
+  /* brand accent */
+  --navy:#001e2b; --accent:#007599; --teal:#007599; --blue:#007599; --gold:#bfd9ef;
+  /* RAG — used ONLY for status, nowhere else */
+  --green:#167a4d; --amber:#9a6a00; --red:#b3261e;
+  /* shape */
+  --radius:10px; --shadow:0 14px 36px rgba(0,30,43,.08);
+  --shadow-hi:0 18px 44px rgba(0,30,43,.14);
+  --maxw:1100px;
+  --font:Geist,Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+
+/* ---------- 2. Base ---------- */
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  background:linear-gradient(90deg,rgba(191,217,239,.40),transparent 30rem),
+             linear-gradient(180deg,#fff,var(--bg) 100%);
+  font-family:var(--font);-webkit-font-smoothing:antialiased;line-height:1.5;
+  font-variant-numeric:tabular-nums; /* aligned figures */
+}
+.wrap{width:min(100%,var(--maxw));margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+h1,h2,h3{margin:0;line-height:1.14}
+p{margin:0;color:var(--muted)}
+a{color:var(--accent)}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* ---------- 3. Global top bar (navigation) ---------- */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  width:min(100%,var(--maxw));margin:18px auto 0;padding:12px 18px;
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:rgba(255,255,255,.92);box-shadow:var(--shadow);
+  position:sticky;top:8px;z-index:10;backdrop-filter:blur(6px);
+}
+.brand{font-weight:800;color:var(--ink)}
+.brand small{display:block;font-size:.66rem;font-weight:700;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.topbar nav{font-size:.8rem;font-weight:700;display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
+.topbar nav a{padding:6px 9px;border-radius:7px;color:var(--slate);text-decoration:none}
+.topbar nav a:hover{background:var(--soft)}
+.topbar nav a.active{background:var(--ink);color:#fff}
+
+/* in-report anchor sub-bar */
+.subnav{
+  position:sticky;top:74px;z-index:9;width:min(100%,var(--maxw));margin:8px auto 0;
+  display:flex;flex-wrap:wrap;gap:2px;padding:6px 8px;
+  border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.85)
+}
+.subnav a{font-size:.72rem;font-weight:700;color:var(--slate);text-decoration:none;padding:5px 8px;border-radius:6px}
+.subnav a:hover{background:var(--soft)}
+
+.crumb{width:min(100%,var(--maxw));margin:14px auto 0;color:var(--faint);font-size:12px;font-weight:600}
+.crumb a{color:var(--faint);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+
+/* ---------- 4. Sections & headers ---------- */
+.section{padding:clamp(30px,5vw,52px) 0;border-bottom:1px solid var(--line)}
+.eyebrow{margin:0 0 10px;color:var(--accent);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.section-title{margin-bottom:22px}
+.section-title h2{font-size:clamp(1.4rem,2.2vw,1.8rem);font-weight:800} /* claim, not label */
+.section-title p{margin-top:8px;max-width:820px}
+
+/* ---------- 5. Cover / verdict ---------- */
+.cover h1{font-size:clamp(2rem,4vw,2.7rem);font-weight:800}
+.verdict{max-width:820px;margin:16px 0 0;color:var(--slate);font-size:clamp(17px,2vw,21px);font-weight:600}
+.meta{margin:14px 0 0;color:var(--faint);font-size:13px;font-weight:600}
+.copy{max-width:920px;margin:24px 0 0;color:var(--slate);font-size:16px;line-height:1.6}
+
+/* executive summary callout */
+.exec{
+  margin:22px 0 0;padding:20px 22px;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);max-width:920px
+}
+.exec p{color:var(--slate);font-size:16px;line-height:1.6}
+.exec .ask{margin-top:12px;color:var(--ink);font-weight:600}
+
+/* ---------- 6. Scorecard (KPI tiles) ---------- */
+.kpi-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.kpi-tile{padding:18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+.kpi-tile .label{display:block;color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.kpi-tile .value{display:block;margin:10px 0 8px;font-size:2.1rem;font-weight:800;line-height:1;color:var(--ink)}
+.kpi-tile .delta{display:block;font-size:.78rem;font-weight:600;line-height:1.35;color:var(--muted)}
+.delta-up{color:var(--green)} .delta-down{color:var(--red)} .delta-flat{color:var(--muted)}
+
+/* ---------- 7. Stage funnel ---------- */
+.stages{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:16px}
+.stage{padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.stage b{display:block;font-size:1.4rem;color:var(--ink);line-height:1}
+.stage span{display:block;margin-top:5px;color:var(--muted);font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+/* horizontal funnel bars (optional richer view) */
+.funnel{margin-top:16px;display:flex;flex-direction:column;gap:6px}
+.funnel .bar{display:grid;grid-template-columns:130px 1fr 36px;align-items:center;gap:10px;font-size:12.5px}
+.funnel .bar span{color:var(--muted);font-weight:700}
+.funnel .bar .track{height:14px;border-radius:7px;background:var(--soft);overflow:hidden}
+.funnel .bar .fill{height:100%;background:var(--accent);border-radius:7px}
+.funnel .bar b{color:var(--ink);text-align:right}
+
+/* ---------- 8. Matrix (deal / event tables) ---------- */
+.grp-title{margin:22px 0 10px;font-size:.95rem;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:10px}
+.matrix{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+.row{display:grid;border-top:1px solid var(--line);min-width:720px}
+.row:first-child{border-top:0}
+.row.header{background:var(--soft);color:var(--navy);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.row.deals{grid-template-columns:minmax(150px,.85fr) minmax(140px,.75fr) minmax(240px,1.3fr) minmax(180px,.95fr)}
+.row.events{grid-template-columns:minmax(150px,.8fr) minmax(160px,.9fr) minmax(260px,1.5fr) minmax(160px,.85fr)}
+.row.deals.cols-3{grid-template-columns:minmax(150px,.85fr) minmax(140px,.75fr) minmax(380px,2.1fr)}
+.row.events.cols-3{grid-template-columns:minmax(150px,.8fr) minmax(160px,.9fr) minmax(380px,2.2fr)}
+.row.tools{grid-template-columns:minmax(170px,1fr) minmax(260px,1.5fr) minmax(150px,.9fr) minmax(110px,.6fr)}
+.cell{padding:14px 15px;border-left:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.45}
+.cell:first-child{border-left:0}
+.cell strong{display:block;color:var(--ink);font-size:14px}
+.cell em{display:block;margin-top:3px;color:var(--faint);font-style:normal;font-size:11.5px}
+.cell a.open{display:inline-flex;align-items:center;gap:5px;font-weight:700;text-decoration:none;font-size:13px}
+.cell a.open:hover{text-decoration:underline}
+
+/* ---------- 9. Cards (movement / standouts / findings) ---------- */
+.cards-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);position:relative;overflow:hidden;text-decoration:none;display:block;color:inherit}
+a.card:hover{box-shadow:var(--shadow-hi);transform:translateY(-1px);transition:.15s}
+.card[data-accent]::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--accent)}
+.card.blue::before{background:var(--blue)} .card.teal::before{background:var(--teal)} .card.gold::before{background:var(--gold)}
+.card>span.tag{display:inline-flex;margin-bottom:12px;padding:6px 10px;border-radius:999px;background:rgba(0,117,153,.08);color:var(--teal);font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.card h3{font-size:1.05rem}
+.card p{margin-top:10px;font-size:.9rem;line-height:1.55;color:var(--slate)}
+.card .links{margin-top:12px;display:flex;flex-wrap:wrap;gap:7px}
+.card .links a{font-size:12px;font-weight:700;text-decoration:none;padding:5px 9px;border:1px solid var(--line);border-radius:7px;color:var(--slate);background:#fbfdfe}
+.card .links a:hover{background:var(--soft)}
+.card .status{position:absolute;top:14px;right:16px;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--green)}
+
+/* priority card: owner + date */
+.card .owner{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.card .owner b{color:var(--ink)} .card .owner span{color:var(--faint);font-weight:700}
+
+/* ---------- 10. Pills / RAG dots ---------- */
+.pill{display:inline-flex;padding:3px 10px;border-radius:999px;font-size:.7rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.pill.go{background:#dff3e9;color:var(--green)}
+.pill.early{background:#dceff7;color:var(--accent)}
+.pill.park{background:#f3e6df;color:var(--amber)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;vertical-align:middle}
+.dot.g{background:var(--green)} .dot.a{background:var(--amber)} .dot.r{background:var(--red)}
+
+/* ---------- 11. Panels (decision summary) ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.panel{padding:18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+.panel span{display:block;color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.panel strong{display:block;margin:8px 0;font-size:1.05rem;color:var(--ink)}
+.panel p{font-size:.9rem;line-height:1.5;color:var(--slate)}
+
+/* ---------- 12. Appendix (progressive disclosure) ---------- */
+details.appendix{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);padding:0 18px}
+details.appendix>summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:800;color:var(--ink);display:flex;align-items:center;justify-content:space-between}
+details.appendix>summary::-webkit-details-marker{display:none}
+details.appendix>summary::after{content:"▾";color:var(--accent)}
+details.appendix[open]>summary::after{content:"▴"}
+details.appendix .body{padding:0 0 20px}
+.appendix-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
+.appendix-table th,.appendix-table td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);color:var(--slate)}
+.appendix-table th{color:var(--navy);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.snapshot{margin-top:14px;max-width:100%;border:1px solid var(--line);border-radius:var(--radius)}
+.note{margin-top:14px;padding:12px 14px;border:1px dashed var(--line);border-radius:var(--radius);background:rgba(255,255,255,.6);color:var(--slate);font-size:13px;line-height:1.5}
+
+/* ---------- 13. Hub extras ---------- */
+.trend-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
+.trend{padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+.trend .label{color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.trend .big{display:block;margin:8px 0 4px;font-size:1.7rem;font-weight:800;color:var(--ink)}
+.hero{padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+
+/* ---------- 14. Footer ---------- */
+footer{padding:22px 0 40px}
+footer p{color:var(--faint);font-size:13px;font-weight:600}
+
+/* ---------- 15. Responsive ---------- */
+@media(max-width:880px){
+  .kpi-grid,.stages,.trend-strip{grid-template-columns:repeat(2,1fr)}
+  .cards-3,.cards-2,.grid-3{grid-template-columns:1fr}
+  .subnav{display:none}
+}
+/* ---------- 15a. Tablet & phone tables ---------- */
+@media(max-width:760px){
+  /* matrix tables become stacked cards: no horizontal scrolling, every row reads top-to-bottom */
+  .row,.row.deals,.row.events,.row.tools,.row.deals.cols-3,.row.events.cols-3{grid-template-columns:1fr;min-width:0}
+  .row.header{display:none}
+  .cell{border-left:0;padding:5px 16px;font-size:13.5px}
+  .row .cell:first-child{padding-top:14px}
+  .row .cell:last-child{padding-bottom:14px}
+  /* document tables: keep text wrapping, scroll only when genuinely wide */
+  .doc-body table.content{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .doc-body table.content th,.doc-body table.content td{min-width:110px}
+  details.appendix .body{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .doc-body figure img,.snapshot{border-radius:var(--radius)}
+}
+
+/* phones */
+@media(max-width:600px){
+  .topbar{position:static;margin:10px auto 0;padding:10px 12px;flex-wrap:wrap;gap:8px;backdrop-filter:none}
+  .topbar nav{justify-content:flex-start;font-size:.8rem;gap:2px}
+  .topbar nav a{padding:9px 11px} /* comfortable touch targets */
+  .doc-links a{padding:9px 12px}
+  .card .links a{padding:8px 11px;font-size:12.5px}
+  .cell a.open{padding:6px 0;display:inline-block}
+  .wrap{padding:0 16px}
+  .section{padding:26px 0}
+  .cover h1{font-size:1.7rem}
+  .verdict{font-size:16px}
+  .copy{font-size:15px;margin-top:16px}
+  .kpi-grid,.kpi-grid.cols-3,.kpi-grid.cols-4,.stages,.stages.cols-4,.trend-strip{grid-template-columns:repeat(2,1fr)}
+  .kpi-tile{padding:14px}
+  .kpi-tile .value{font-size:1.6rem}
+  .stamp{flex-wrap:wrap;align-items:flex-start;border-radius:12px}
+  .stamp::before{margin-top:5px}
+  .doc-head h1{font-size:1.5rem}
+  .doc-body h2{font-size:1.15rem}
+  .doc-body p,.doc-body ul,.doc-body ol{font-size:15px}
+  .hero{padding:18px}
+  .card{padding:16px}
+  .exec{padding:16px}
+  .section-title h2{font-size:1.3rem}
+  footer{padding:18px 0 30px}
+}
+
+/* ---------- 15b. v2 components ---------- */
+/* Point-in-time stamp — every report page carries one, directly under the title.
+   Makes the snapshot nature unmistakable for a reader two weeks later. */
+.stamp{display:inline-flex;align-items:center;gap:9px;margin:16px 0 0;padding:8px 14px;
+  border:1px solid rgba(0,117,153,.28);border-radius:999px;background:rgba(0,117,153,.06)}
+.stamp::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.stamp b{color:var(--ink);font-size:12.5px;font-weight:800;letter-spacing:.02em}
+.stamp span{color:var(--muted);font-size:12.5px;font-weight:600}
+
+/* Format badges — tells the reader what opens before they click */
+.fmt{display:inline-flex;align-items:center;padding:2px 8px;border-radius:6px;
+  font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  border:1px solid var(--line);color:var(--slate);background:#fbfdfe;white-space:nowrap}
+.fmt.page{color:var(--accent);border-color:rgba(0,117,153,.3);background:rgba(0,117,153,.05)}
+.fmt.pdf{color:var(--amber);border-color:rgba(154,106,0,.25);background:rgba(154,106,0,.05)}
+.fmt.record{color:var(--muted)}
+
+/* Slot card — an honest, designed placeholder for undocumented flows.
+   Dashed, quiet, never pretends to be content. */
+.card.slot{border-style:dashed;background:rgba(255,255,255,.55);box-shadow:none;cursor:default}
+.card.slot:hover{transform:none;box-shadow:none}
+.card.slot>span.tag{background:transparent;border:1px dashed var(--line);color:var(--muted)}
+.card.slot h3{color:var(--slate)}
+.card.slot .status{color:var(--amber)}
+
+/* Net-effect line — the paragraph that follows a card row */
+.netline{margin-top:18px;color:var(--slate);font-size:15px;max-width:840px;line-height:1.6}
+
+/* Contact line on people cards */
+.card .contactline{font-size:12.5px;color:var(--muted);font-weight:600;word-break:break-word}
+
+/* Card call-to-action row */
+.card .cta{display:inline-block;margin-top:12px;font-weight:800;color:var(--accent);font-size:.9rem}
+
+/* Stacked card rows inside one section */
+.section .cards-3+.cards-3,.section .cards-2+.cards-2,
+.section .cards-3+.cards-2,.section .cards-2+.cards-3{margin-top:14px}
+.section .cards-3+.matrix,.section .matrix+.cards-3,.section .matrix+.cards-2{margin-top:18px}
+.section .cards-3+.grid-3,.section .cards-2+.grid-3,.section .netline+.grid-3{margin-top:14px}
+.section .cards-3+.grp-title{margin-top:26px}
+
+/* Grid variants (replace inline grid-template overrides) */
+.kpi-grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kpi-grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.stages.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+/* Hero is a link */
+a.hero{display:block;text-decoration:none;color:inherit}
+a.hero:hover{box-shadow:var(--shadow-hi);transform:translateY(-1px);transition:.15s}
+.hero h3{font-size:1.3rem;margin-top:10px}
+.hero p{margin-top:10px;color:var(--slate);line-height:1.55;max-width:760px}
+
+/* Secondary filed-record link (PDF of record next to a page link) */
+.filedlink{font-size:12px;color:var(--faint);font-weight:600;align-self:center}
+.filedlink a{color:var(--faint)}
+
+/* Bottom prev/next navigation on document pages */
+.doc-foot{margin-top:28px;border-top:1px solid var(--line);padding-top:16px}
+
+/* Code blocks in document pages */
+.doc-body pre{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;overflow-x:auto;font-size:12.5px;line-height:1.5;color:var(--slate);margin:0 0 18px}
+.doc-body pre.small{font-size:11.5px;line-height:1.4}
+
+/* Inline review flag */
+em.warn{color:var(--amber);font-style:normal}
+
+/* Contextual spacing */
+.section .matrix+.grp-title{margin-top:34px}
+.section .kpi-grid+.stages{margin-top:12px}
+.netline.small{font-size:13px}
+
+/* Keyboard focus */
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+/* Last section before the footer carries no rule */
+main.wrap>.section:last-of-type{border-bottom:0}
+
+/* ---------- 16. Print / PDF ---------- */
+@media print{
+  :root{--shadow:none;--shadow-hi:none}
+  body{background:#fff}
+  .topbar,.subnav,.crumb{display:none !important}
+  .section{break-inside:avoid;border-bottom:1px solid var(--line);padding:18px 0}
+  .card,.kpi-tile,.matrix,.panel,.exec{box-shadow:none;break-inside:avoid}
+  details.appendix{box-shadow:none}
+  details.appendix[open]>summary::after,details.appendix>summary::after{content:""}
+  details.appendix>summary{cursor:auto}
+  /* force appendix open for print */
+  details.appendix{border:1px solid var(--line)}
+  a{color:var(--ink);text-decoration:none}
+  .stamp{background:#fff;border:1px solid var(--line)}
+  .fmt{background:#fff}
+  @page{size:A4;margin:16mm}
+  .page-break{break-before:page}
+  .doc table{break-inside:auto} .doc tr{break-inside:avoid} .doc figure{break-inside:avoid}
+}
+
+/* ---------- 17. Document / article pages (materials) ---------- */
+.doc{max-width:840px;margin:0 auto}
+.doc-head{padding:clamp(28px,5vw,48px) 0 0}
+.doc-head .eyebrow{margin-bottom:10px}
+.doc-head h1{font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:800;line-height:1.12}
+.doc-head .lede{margin:14px 0 0;color:var(--slate);font-size:clamp(16px,1.8vw,19px);font-weight:500;line-height:1.5}
+.doc-head .meta{margin:14px 0 0;color:var(--faint);font-size:13px;font-weight:600}
+.doc-body{padding:clamp(24px,4vw,36px) 0 40px}
+.doc-body h2{margin:34px 0 12px;font-size:1.3rem;font-weight:800;color:var(--ink);line-height:1.18}
+.doc-body h2:first-child{margin-top:6px}
+.doc-body h3{margin:24px 0 8px;font-size:1.02rem;font-weight:800;color:var(--slate)}
+.doc-body h4{margin:20px 0 8px;font-size:.95rem;font-weight:800;color:var(--ink)}
+.doc-body p{margin:0 0 14px;color:var(--slate);font-size:15.5px;line-height:1.65}
+.doc-body strong{color:var(--ink)}
+.doc-body ul,.doc-body ol{margin:0 0 16px;padding-left:20px;color:var(--slate);font-size:15.5px;line-height:1.6}
+.doc-body li{margin:6px 0}
+.doc-body blockquote{margin:0 0 16px;padding:12px 18px;border-left:4px solid var(--accent);background:var(--surface);border-radius:0 var(--radius) var(--radius) 0;color:var(--slate)}
+.doc-body table.content{width:100%;border-collapse:collapse;margin:8px 0 20px;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.doc-body table.content th,.doc-body table.content td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);color:var(--slate);vertical-align:top}
+.doc-body table.content th{background:var(--soft);color:var(--navy);font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:800}
+.doc-body table.content tr:last-child td{border-bottom:0}
+.doc-body table.content td:first-child{color:var(--ink);font-weight:600}
+.doc-body figure{margin:18px 0;padding:0}
+.doc-body figure img{width:100%;border:1px solid var(--line);border-radius:var(--radius)}
+.doc-body figcaption{margin-top:8px;color:var(--faint);font-size:12.5px;line-height:1.5}
+.doc-body .callout{padding:16px 18px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;background:var(--surface);box-shadow:var(--shadow);margin:0 0 18px}
+.doc-body .callout span{display:block;color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.doc-body hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+.doc-body .sources{font-size:13px;line-height:1.6;color:var(--muted)}
+.doc-body .sources li{margin:4px 0}
+/* source-doc links row */
+.doc-links{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.doc-links a{font-size:12.5px;font-weight:700;text-decoration:none;padding:7px 11px;border:1px solid var(--line);border-radius:8px;color:var(--slate);background:#fbfdfe}
+.doc-links a:hover{background:var(--soft)}
+
+/* ===== v2.3 — quiet motion + reading rhythm ===== */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.js .reveal.in-view{opacity:1;transform:none}
+.card{transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,30,43,.10)}
+a.card:focus-visible{outline:2px solid #007599;outline-offset:2px}
+.kpi-tile,.stage{transition:transform .25s ease}
+.kpi-tile:hover,.stage:hover{transform:translateY(-2px)}
+.doc-body h2{margin-top:2.6rem;padding-top:1.1rem;position:relative}
+.doc-body h2::before{content:"";position:absolute;top:0;left:0;width:34px;height:3px;background:#007599;border-radius:2px}
+.doc-body>p,.doc-body>ul,.doc-body>ol{max-width:72ch}
+.doc-body ul>li{margin:.45rem 0}
+.doc-body ul>li::marker{color:#007599}
+.doc-body ol>li{margin:.45rem 0}
+.doc-body ol>li::marker{color:#007599;font-weight:600}
+
+/* ===== v2.4 — long-page anchors: part dividers, quote + limits blocks ===== */
+.doc-body h2[id]{font-size:1.42em;border-top:1px solid #e3e8eb;padding-top:2.1rem;margin-top:3.2rem}
+.doc-body blockquote{margin:1.1rem 0;padding:16px 20px;background:#f2f7f9;border-left:3px solid #007599;border-radius:0 8px 8px 0;font-size:1.06em;max-width:72ch}
+.doc-body ul.limits{border-left:3px solid #001e2b;background:#f6f8f9;padding:14px 18px 14px 32px;border-radius:0 8px 8px 0}
+.doc-body ul.limits>li::marker{color:#001e2b}
+.doc-body .grid-3{margin:1.2rem 0 .4rem}
+
+/* ===== v2.5 — last touch ===== */
+.js .reveal{transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.card .cta{display:inline-block;transition:transform .25s ease}
+.card:hover .cta{transform:translateX(4px)}
+table.content tr:hover td{background:#f4f7f9}
+.matrix .row:not(.header):hover{background:#f4f7f9}
+::selection{background:#007599;color:#fff}
+@media print{.js .reveal{opacity:1!important;transform:none!important;transition:none!important}}
+
+/* ============================================================
+   18. Reference / analyser component library (v3.0 · 2026-06-16)
+   Reusable across the materials pages. Brand tokens only.
+   Static-safe: the final state is the CSS default; the .js + .in-view
+   classes only add the quiet intro, so no-JS / reduced-motion shows
+   the finished state (full bars, visible content).
+   ============================================================ */
+
+/* 18.1 At-a-glance — the 5-second read under the hero */
+.ataglance{margin:16px 0 6px;padding:16px 20px;border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+.ataglance .agk{display:block;color:var(--muted);font-size:.66rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;margin-bottom:7px}
+.ataglance .oneline{margin:0;color:var(--ink);font-size:clamp(15px,1.7vw,17.5px);font-weight:600;line-height:1.5}
+.ataglance .oneline strong{color:var(--accent)}
+
+/* 18.2 Spec strip — 3-up label / value / note */
+.specs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 6px}
+.spec{padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+.spec .k{display:block;color:var(--muted);font-size:.7rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.spec .v{display:block;margin:8px 0 5px;color:var(--ink);font-size:1.02rem;font-weight:800;line-height:1.2;letter-spacing:-.01em}
+.spec .s{display:block;color:var(--slate);font-size:.82rem;line-height:1.45}
+
+/* 18.3 Box split — In the box / Deliberately not in the box (signature) */
+.boxsplit{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:8px 0 6px}
+.boxcol{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);overflow:hidden}
+.boxcol>h4{margin:0;padding:13px 16px;font-size:.86rem;font-weight:800;letter-spacing:.02em;border-bottom:1px solid var(--line)}
+.boxcol.in>h4{color:var(--green);background:rgba(22,122,77,.06)}
+.boxcol.out>h4{color:var(--muted);background:rgba(0,30,43,.03)}
+.boxcol ul{list-style:none;margin:0;padding:6px 16px 12px}
+.boxcol li{position:relative;padding:9px 0 9px 26px;font-size:13px;line-height:1.5;color:var(--slate);border-top:1px solid var(--line)}
+.boxcol li:first-child{border-top:0}
+.boxcol li strong{color:var(--ink)}
+.boxcol.in li::before{content:"";position:absolute;left:3px;top:13px;width:10px;height:5px;border-left:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(-45deg)}
+.boxcol.out li::before{content:"";position:absolute;left:4px;top:17px;width:9px;height:0;border-top:2px solid var(--muted)}
+
+/* 18.4 Rank — ordered list with weight bars */
+figure.rank{margin:14px 0;display:flex;flex-direction:column;gap:10px;padding:0}
+.rank .row{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:start}
+.rank .n{width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px;flex:none}
+.rank .row:nth-child(n+3) .n{background:var(--slate)}
+.rank .bd{min-width:0}
+.rank .ttl{color:var(--ink);font-weight:700;font-size:14px}
+.rank .bar{height:7px;border-radius:5px;background:var(--soft);margin:7px 0 6px;overflow:hidden}
+.rank .bar>i{display:block;height:100%;width:var(--w);background:var(--accent);border-radius:5px}
+.rank .row:nth-child(n+3) .bar>i{background:var(--slate)}
+.rank .desc{color:var(--slate);font-size:13px;line-height:1.5;display:block}
+.js figure.rank .bar>i{width:0;transition:width .9s cubic-bezier(.16,1,.3,1)}
+.js figure.rank.in-view .bar>i{width:var(--w)}
+
+/* 18.5 Flow map — pain → relief / X → Y mapping rows */
+figure.flowmap{margin:14px 0;display:flex;flex-direction:column;gap:10px;padding:0}
+.flowmap .map{display:grid;grid-template-columns:1fr 28px 1fr;align-items:stretch;gap:6px}
+.flowmap .from,.flowmap .to{padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);font-size:13px;line-height:1.5}
+.flowmap .from{color:var(--slate)} .flowmap .from b{color:var(--ink)}
+.flowmap .to{border-left:3px solid var(--accent)} .flowmap .to b{color:var(--ink)}
+.flowmap .arr{color:var(--accent);align-self:center;text-align:center;font-size:16px;font-weight:800}
+@media(max-width:600px){.flowmap .map{grid-template-columns:1fr;gap:4px}.flowmap .arr{transform:rotate(90deg);justify-self:start;padding-left:8px}}
+
+/* 18.6 Chips — signal tags (positive / negative) */
+ul.chips{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 4px;padding:0;list-style:none}
+ul.chips>li{margin:0;padding:6px 11px;border-radius:999px;font-size:12.5px;font-weight:600;line-height:1.3;border:1px solid var(--line)}
+ul.chips.pos>li{background:rgba(22,122,77,.07);border-color:rgba(22,122,77,.22);color:#10623c}
+ul.chips.pos>li::marker,ul.chips.neg>li::marker{content:""}
+ul.chips.neg>li{background:rgba(0,30,43,.03);color:var(--slate)}
+ul.chips>li strong{font-weight:800;color:inherit}
+
+/* 18.7 Progressive disclosure — "show more" */
+details.more{margin:10px 0 4px;border-top:1px solid var(--line);padding-top:4px}
+details.more>summary{cursor:pointer;list-style:none;color:var(--accent);font-weight:700;font-size:13px;padding:8px 0;display:inline-flex;align-items:center;gap:7px}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::after{content:"▾";font-size:11px}
+details.more[open]>summary::after{content:"▴"}
+details.more>h4:first-of-type{margin-top:6px}
+
+/* 18.8 Mini bars — small honest comparison chart */
+figure.minibars{margin:18px 0;padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+.minibars .cap{display:block;color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.minibars .b{display:grid;grid-template-columns:130px 1fr auto;align-items:center;gap:12px;margin:9px 0;font-size:13px}
+.minibars .b .lab{color:var(--slate);font-weight:600}
+.minibars .b .track{height:16px;background:var(--soft);border-radius:6px;overflow:hidden}
+.minibars .b .fill{display:block;height:100%;width:var(--w);border-radius:6px;background:var(--accent)}
+.minibars .b.alt .fill{background:var(--gold)}
+.minibars .b .val{color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums}
+.js figure.minibars .fill{width:0;transition:width 1s cubic-bezier(.16,1,.3,1)}
+.js figure.minibars.in-view .fill{width:var(--w)}
+figure.minibars figcaption{margin-top:10px;color:var(--faint);font-size:12px;line-height:1.55}
+
+/* 18.9 Source footer — Original document links (every page) */
+footer.doc-source{margin-top:30px;padding:18px 0 0;border-top:1px solid var(--line)}
+footer.doc-source .lab{display:block;color:var(--muted);font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+footer.doc-source .srcs{display:flex;flex-wrap:wrap;gap:8px}
+footer.doc-source a.src{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;text-decoration:none;
+  padding:8px 12px;border:1px solid var(--line);border-radius:8px;color:var(--slate);background:#fbfdfe}
+footer.doc-source a.src:hover{background:var(--soft)}
+footer.doc-source a.src::before{content:"";width:8px;height:10px;border:1.5px solid var(--accent);border-radius:1px;flex:none}
+footer.doc-source .meta{margin-top:12px;color:var(--faint);font-size:12px}
+footer.doc-source code{font-size:11.5px;background:var(--soft);padding:1px 5px;border-radius:4px}
+
+@media(max-width:760px){
+  .specs{grid-template-columns:1fr}
+  .boxsplit{grid-template-columns:1fr}
+}

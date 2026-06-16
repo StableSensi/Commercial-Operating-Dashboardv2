@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Production Restructure (14 May 2026) | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/cod.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">Aryze<small>Board &amp; Management Reports</small></span>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#reports">Reports</a>
+    <a href="../../index.html#materials">Board materials</a>
+    <a href="../../index.html#onboarding">Onboarding</a>
+    <a href="../../index.html#tools">Tools</a>
+  </nav>
+</header>
+<p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Analyses</a> / Production restructure · 14 May 2026</p>
+
+<main class="wrap">
+  <article class="doc">
+    <header class="doc-head">
+      <p class="eyebrow">Governance · 14 May 2026</p>
+      <h1>Production restructure — 14 May 2026</h1>
+      <p class="lede">Single comprehensive sweep across the StableSensei workspace: cleanup, persona rewrite to English at FT-grade, structural CLAUDE.md coverage across every folder — plus a brutal navigation test.</p>
+      <p class="meta">Last updated: 14 May 2026 · Confidential</p>
+      <div class="doc-links">
+        <a href="index.html">↩ Analyses</a>
+        <a href="../../../../Documents/Reports/Production-Restructure-2026-05-14.md">Source .md</a>
+      </div>
+    </header>
+
+    <div class="doc-body">
+      <blockquote>Single comprehensive sweep across the StableSensei workspace: cleanup, persona rewrite to English at FT-grade, structural CLAUDE.md coverage across every folder. This document records what was done, what's still outstanding, and a brutal navigation test for new users.</blockquote>
+
+      <h2>Phase 1 — Cleanup</h2>
+
+      <h3>Done</h3>
+      <table class="content">
+        <thead><tr><th>#</th><th>Action</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Archive Forfatter persona (Danish, long-form)</td><td>Moved to <code>_archive/Personas-Pre-2026-05-14/Forfatter/</code></td></tr>
+          <tr><td>2</td><td>Archive first Writer draft</td><td>Moved to <code>_archive/Personas-Pre-2026-05-14/Writer/</code></td></tr>
+          <tr><td>3</td><td>Archive Skribent (Danish merged persona)</td><td>Moved to <code>_archive/Personas-Pre-2026-05-14/Skribent/</code></td></tr>
+          <tr><td>4</td><td>Archive four Danish Sælger personas</td><td>All four (generic + 3 specialists) moved to <code>_archive/Personas-Pre-2026-05-14/</code></td></tr>
+          <tr><td>5</td><td>Archive Danish Marketing-specialist</td><td>Moved to <code>_archive/Personas-Pre-2026-05-14/Marketing-specialist/</code></td></tr>
+          <tr><td>6</td><td>Move <code>_TIL-SLETNING/</code> contents to <code>_archive/</code></td><td>Three Old-Digital-Assets-Onepagers, three Old-Agent-Materials, three Empty-Old-Folders — all relocated</td></tr>
+          <tr><td>7</td><td>Move loose root files</td><td><code>Aryze-x-Mastercard.pdf</code> and <code>Pay-by-Bank-General-Deck-2026.pptx</code> moved into <code>Sales/Pay by Bank/Assets/</code></td></tr>
+          <tr><td>8</td><td>Add <code>_archive/README.md</code></td><td>Documents the archive's purpose and retention policy</td></tr>
+          <tr><td>9</td><td>Fix NBC Stockholm date</td><td><code>Marketing/Events/NBC Stockholm/Aryze_NBC_Stockholm_Marketing_Plan_1.docx</code> updated from "May 2025" to "May 2026" (3 instances). Matches the NBC26 sponsorship agreement.</td></tr>
+          <tr><td>10</td><td>Rename Q1 sales report file</td><td><code>Sales Update Q1 - 2026 .pdf</code> → <code>Sales-Update-Q1-2026.pdf</code> (trailing-space fix)</td></tr>
+          <tr><td>11</td><td>Add Documents/Expenses/_INDEX.md</td><td>Trip-by-trip navigation with outstanding cleanup notes</td></tr>
+          <tr><td>12</td><td>Add Documents/Reports/Audit-Follow-Up-2026-05-14.md</td><td>Status check on all 20 audit roadmap items</td></tr>
+          <tr><td>13</td><td>Add this restructure record</td><td>Documents/Reports/Production-Restructure-2026-05-14.md</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Outstanding (manual cleanup needed)</h3>
+      <table class="content">
+        <thead><tr><th>#</th><th>Item</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Delete <code>_TIL-SLETNING/</code> folder (now empty except for <code>.DS_Store</code>)</td><td>macOS <code>.DS_Store</code> is owned by another user and can't be removed from the sandbox. <strong>Action:</strong> delete from Finder.</td></tr>
+          <tr><td>2</td><td>Verify and update <code>Internal/Aryze-Team.pdf</code></td><td>The audit report flagged: section "MARKETING &amp; STABLECOIN" → should be "MARKETING &amp; STABLECOIN FACTORY"; "stablecoin-salg" → "Stablecoin Factory-salg"; Digital Cash team owner missing. PDF source needs regeneration.</td></tr>
+          <tr><td>3</td><td>Verify Pay by Bank PDF one-pagers</td><td>The <code>.md</code> version is on-voice. The two PDF versions (<code>Pay-by-Bank-ICP1-Onepager.pdf</code>, <code>Pay By Bank Aryze Deck.pdf</code>) need PDF-extract verification or regeneration from the canonical <code>.md</code>.</td></tr>
+          <tr><td>4</td><td>Verify Casino-deck slide 7 vs slide 8</td><td>Binary <code>.pptx</code>; cannot verify from sandbox. v4 canon is <strong>19 markets total</strong>, UK + 18 EU/EEA. Open <code>Aryze-Pay-by-Bank-Casino-Deck.pptx</code> and check slide consistency.</td></tr>
+          <tr><td>5</td><td>Flag <code>Workshop-Aryze-Mastercard.pptx</code> as internal-only</td><td>Currently in <code>Sales/Pay by Bank/Assets/</code>. Recommend renaming with <code>Internal-</code> prefix or adding <code>Sales/Pay by Bank/Assets/_INTERNAL.md</code> index.</td></tr>
+          <tr><td>6</td><td>Standardise Rabii's title across documents</td><td>Audit flagged inconsistency: "Sales &amp; Marketing Director" (SBC) vs "Sales Director" (Tink/Visa). Recommend canonical: <strong>Director Sales &amp; Marketing</strong> (matches OneTok break-up email, most recent customer-facing artifact).</td></tr>
+          <tr><td>7</td><td>Reconcile Q1 report vs SBC report pipeline narrative</td><td>Outstanding strategic item from audit. Either add cross-product split to next quarterly board pack, or write a reconciliation memo.</td></tr>
+          <tr><td>8</td><td>Verify legal declarations</td><td><code>Documents/Programs/Tech-for-Fin-Digital-Assets/De minimis declaration RFPRO-25-0132.pdf</code> and <code>Erklaering om LV-status.pdf</code> — confirm filled in (company name, CVR, P-nummer, beløb, dato, signatory).</td></tr>
+          <tr><td>9</td><td>Resolve <code>Documents/Expenses/hotelbooking_2436836316.pdf</code></td><td>Loose at root; file into matching trip folder or rename with trip purpose.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Phase 2 — Personas rewritten to English at FT-grade</h2>
+      <p>Six new personas under <code>Brain/Personas/</code> following a consistent 9-section template (§0 Identity, §1 Audience, §2 Aryze's angle, §3 Voice &amp; discipline, §4 Format modes, §5 Forbidden phrases, §6 Capability discipline, §7 Source-of-truth pointers, §8 Plays, §9 Open questions).</p>
+      <table class="content">
+        <thead><tr><th>Persona</th><th>File</th><th>Word count</th><th>Replaces</th></tr></thead>
+        <tbody>
+          <tr><td>Sales (generic)</td><td><code>Brain/Personas/Sales/CLAUDE.md</code></td><td>3,316</td><td>Sælger (v4 Danish)</td></tr>
+          <tr><td>Sales — Pay by Bank</td><td><code>Brain/Personas/Sales-Pay-by-Bank/CLAUDE.md</code></td><td>3,564</td><td>Sælger-Pay-by-Bank (v1 Danish)</td></tr>
+          <tr><td>Sales — Stablecoin Factory</td><td><code>Brain/Personas/Sales-Stablecoin-Factory/CLAUDE.md</code></td><td>3,374</td><td>Sælger-Stablecoin-Factory (v1 Danish)</td></tr>
+          <tr><td>Sales — Digital Cash</td><td><code>Brain/Personas/Sales-Digital-Cash/CLAUDE.md</code></td><td>4,109</td><td>Sælger-Digital-Cash (v1 Danish)</td></tr>
+          <tr><td>Marketing</td><td><code>Brain/Personas/Marketing/CLAUDE.md</code></td><td>3,119</td><td>Marketing-specialist (v1 Danish)</td></tr>
+          <tr><td>Writer</td><td><code>Brain/Personas/Writer/CLAUDE.md</code></td><td>5,070</td><td>Forfatter + Writer (draft) + Skribent (Danish merged)</td></tr>
+        </tbody>
+      </table>
+      <p>Every persona:</p>
+      <ul>
+        <li>English throughout. Danish only in cited quotes or model documents.</li>
+        <li>Anchored in Brand Guide v1.0's voice dialer (mature / sophisticated / economical / literal / contemporary) and three brand values (Transparency / Compliance / Excellence).</li>
+        <li>Embeds <strong>concrete verbatim Aryze examples</strong> — Pay by Bank one-pager phrases, OneTok break-up email, Mission and brand-purpose lines, three product taglines, Mastercard partnership facts.</li>
+        <li>Spells out <strong>forbidden phrases</strong> including audit-caught ones ("stronger control", "Built for serious deployment", "No third-party dependencies", "Aryze Factory").</li>
+        <li>Lists <strong>capability limits</strong> per product (PIS-only, customer-to-merchant only, 19 markets via Mastercard; Stablecoin Factory = infrastructure not issuer; Digital Cash = 6–18 months, not "plug-and-play").</li>
+        <li>Carries an <strong>open questions section (§9)</strong> with each gap specific enough to be resolved with one sentence.</li>
+      </ul>
+
+      <h2>Phase 3 — Workspace structure</h2>
+      <p>Every top-level folder now has its own <code>CLAUDE.md</code> explaining its purpose, contents, and special rules.</p>
+      <table class="content">
+        <thead><tr><th>Folder</th><th>CLAUDE.md</th><th>Word count</th></tr></thead>
+        <tbody>
+          <tr><td><code>/</code> (master)</td><td><code>CLAUDE.md</code></td><td>2,041</td></tr>
+          <tr><td><code>Brain/</code></td><td><code>Brain/CLAUDE.md</code></td><td>429</td></tr>
+          <tr><td><code>Brain/Frameworks/</code></td><td><code>Brain/Frameworks/CLAUDE.md</code></td><td>(governance index)</td></tr>
+          <tr><td><code>Brain/Personas/</code></td><td><code>Brain/Personas/CLAUDE.md</code></td><td>(persona index)</td></tr>
+          <tr><td><code>Brain/Templates/</code></td><td><code>Brain/Templates/CLAUDE.md</code></td><td>(template index)</td></tr>
+          <tr><td><code>Brand/</code></td><td><code>Brand/CLAUDE.md</code></td><td>598</td></tr>
+          <tr><td><code>Documents/</code></td><td><code>Documents/CLAUDE.md</code></td><td>637</td></tr>
+          <tr><td><code>Documents/Analyser/Pay-by-Bank/</code></td><td><code>CLAUDE.md</code></td><td>(foundation index)</td></tr>
+          <tr><td><code>Documents/Analyser/Stablecoin-Factory/</code></td><td><code>CLAUDE.md</code></td><td>(foundation index)</td></tr>
+          <tr><td><code>Documents/Analyser/Digital-Cash/</code></td><td><code>CLAUDE.md</code></td><td>(foundation index)</td></tr>
+          <tr><td><code>Marketing/</code></td><td><code>Marketing/CLAUDE.md</code></td><td>695</td></tr>
+          <tr><td><code>Sales/</code></td><td><code>Sales/CLAUDE.md</code></td><td>470</td></tr>
+          <tr><td><code>Sales/Pay by Bank/</code></td><td>(existing, updated to reference English personas)</td><td>–</td></tr>
+          <tr><td><code>Sales/Stablecoin Factory/</code></td><td>(existing, updated to reference English personas)</td><td>–</td></tr>
+          <tr><td><code>Sales/Digital Cash/</code></td><td>(existing, updated to reference English personas)</td><td>–</td></tr>
+          <tr><td><code>Internal/</code></td><td><code>Internal/CLAUDE.md</code></td><td>381</td></tr>
+          <tr><td><code>References/</code></td><td><code>References/CLAUDE.md</code></td><td>272</td></tr>
+          <tr><td><code>Dev/</code></td><td><code>Dev/CLAUDE.md</code></td><td>243</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Frameworks added under Brain/Frameworks/</h3>
+      <ul>
+        <li><code>Qualification-Framework.md</code> — five-question gate before any pitch</li>
+        <li><code>VPC-Method.md</code> — how to apply the Value Proposition Canvas at Aryze</li>
+        <li><code>Buyer-Committee-Map.md</code> — institutional buying-committee roles and priorities</li>
+        <li><code>Trigger-Event-Catalogue.md</code> — external and internal "why now" triggers</li>
+      </ul>
+
+      <h3>Templates added under Brain/Templates/</h3>
+      <ul>
+        <li><code>Discovery-Call.md</code> — first-call structure</li>
+        <li><code>CRM-Note.md</code> — canonical CRM-note format</li>
+        <li><code>Account-Plan.md</code> — active-deal account-planning structure</li>
+        <li><code>Post-Mortem.md</code> — lost-deal learning structure</li>
+      </ul>
+
+      <h3>Master CLAUDE.md rewritten</h3>
+      <ul>
+        <li>English throughout</li>
+        <li>"If you are Claude and just walked in" section — 4 steps + 3 override rules</li>
+        <li>Three product positions with buyer / cycle table</li>
+        <li>Complete top-level folder map</li>
+        <li>Persona table with paths</li>
+        <li>Brand voice rules centralised here (forbidden phrases, capability discipline) so subfolder CLAUDE.md files don't need to repeat them</li>
+        <li>File-placement table for sales / marketing / business / brand / internal / references / code</li>
+      </ul>
+
+      <h2>Phase 4 — Final audit</h2>
+
+      <h3>Grep results</h3>
+      <table class="content">
+        <thead><tr><th>Search</th><th>Result</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><code>Lorem ipsum</code></td><td>Only appears in the audit report, the archive README, and persona warnings <em>about</em> Lorem ipsum (correctly flagged as an anti-pattern). Zero actual placeholder text.</td><td>✅ Clean</td></tr>
+          <tr><td><code>TODO</code> / <code>FIXME</code> outside <code>_archive/</code></td><td>Zero matches</td><td>✅ Clean</td></tr>
+          <tr><td><code>&lt;FILL IN&gt;</code> outside <code>_archive/</code></td><td>Zero matches</td><td>✅ Clean</td></tr>
+          <tr><td><code>&lt;NEEDS REVIEW&gt;</code> / <code>&lt;NEEDS SOURCE&gt;</code> / <code>&lt;NEEDS VERIFICATION&gt;</code></td><td>Only in persona instructional patterns (how to flag uncertain claims)</td><td>✅ Intentional</td></tr>
+          <tr><td>Danish persona references in active files</td><td>All updated to English paths. Inline Danish prose remains in <code>Documents/Analyser/</code> v1.0 files (intentional; these documents are still in Danish per their v1.0 status)</td><td>✅ Acceptable</td></tr>
+          <tr><td>Internal link integrity</td><td>Master CLAUDE.md links checked: all persona paths, framework paths, template paths exist</td><td>✅ Verified</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Note from the 16 May 2026 audit: the "<code>&lt;FILL IN&gt;</code> — zero matches" claim above was later found to be incorrect — the grep missed <code>assistant/SALES.md</code>. See <a href="audit-fuld-revision-2026-05-16.html">Audit — Fuld revision (16 May)</a> §2.3.</p>
+
+      <h3>Persona status</h3>
+      <table class="content">
+        <thead><tr><th>Persona</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Sales (generic)</td><td>Ready. §9 has 7 open questions for Stablesensei.</td></tr>
+          <tr><td>Sales — Pay by Bank</td><td>Ready. §9 has 6 open questions (Mastercard reference language, pricing tiers, approved customer references, sandbox workflow, refunds clarification, VAMP service).</td></tr>
+          <tr><td>Sales — Stablecoin Factory</td><td>Ready. §9 has 8 open questions (sandbox URL, public docs, booking link, supported networks list, motion one-pagers replacement timeline, RWA capability matrix, pricing models, MiCA EMT/ART path).</td></tr>
+          <tr><td>Sales — Digital Cash</td><td>Ready. §9 has 9 open questions (architecture diagram template, compliance pack, reference architectures, anonymous peer comparisons, MiCA Title III/IV walk-through, wCBDC pilot positioning, sandbox/demo for institutions, framework agreement template, CFO settlement calculator).</td></tr>
+          <tr><td>Marketing</td><td>Ready. §9 has 10 open questions (newsletter, X presence, EVP, approved testimonials, exec LinkedIn voice models, compliance disclosures, MQL handoff cadence, analytics stack, design partners, Marketing-specialist archive).</td></tr>
+          <tr><td>Writer</td><td>Ready. §9 has 9 open questions (newsletter cadence, X presence, EVP, approved testimonials, exec voice models, paid-promo disclosures, lost-deal transcripts location, press boilerplate, Skribent archive).</td></tr>
+        </tbody>
+      </table>
+      <p>All personas are operationally usable today. Open questions are tracked precisely — each is a one-sentence resolution away from a 100% complete persona.</p>
+
+      <h3>CLAUDE.md / README.md created or updated</h3>
+      <p><strong>Created (16 new files):</strong></p>
+      <ol>
+        <li><code>_archive/README.md</code></li>
+        <li><code>Brain/CLAUDE.md</code></li>
+        <li><code>Brain/Frameworks/CLAUDE.md</code> (+ 4 framework files)</li>
+        <li><code>Brain/Personas/CLAUDE.md</code></li>
+        <li><code>Brain/Templates/CLAUDE.md</code> (+ 4 template files)</li>
+        <li><code>Brand/CLAUDE.md</code></li>
+        <li><code>Documents/CLAUDE.md</code></li>
+        <li><code>Documents/Analyser/Pay-by-Bank/CLAUDE.md</code></li>
+        <li><code>Documents/Analyser/Stablecoin-Factory/CLAUDE.md</code></li>
+        <li><code>Documents/Analyser/Digital-Cash/CLAUDE.md</code></li>
+        <li><code>Documents/Expenses/_INDEX.md</code></li>
+        <li><code>Documents/Reports/Audit-Follow-Up-2026-05-14.md</code></li>
+        <li><code>Documents/Reports/Production-Restructure-2026-05-14.md</code> (this file)</li>
+        <li><code>Internal/CLAUDE.md</code></li>
+        <li><code>Marketing/CLAUDE.md</code></li>
+        <li><code>Sales/CLAUDE.md</code></li>
+        <li><code>References/CLAUDE.md</code></li>
+        <li><code>Dev/CLAUDE.md</code></li>
+      </ol>
+      <p><strong>Updated:</strong></p>
+      <ul>
+        <li>Master <code>CLAUDE.md</code> (rewritten in English, restructured)</li>
+        <li><code>Sales/Pay by Bank/CLAUDE.md</code> (persona path references updated)</li>
+        <li><code>Sales/Stablecoin Factory/CLAUDE.md</code> (same)</li>
+        <li><code>Sales/Digital Cash/CLAUDE.md</code> (same)</li>
+        <li><code>Documents/Analyser/README.md</code> (persona path references updated)</li>
+        <li><code>Marketing/Events/NBC Stockholm/Aryze_NBC_Stockholm_Marketing_Plan_1.docx</code> (date 2025 → 2026)</li>
+        <li>Renamed: <code>Sales Update Q1 - 2026 .pdf</code> → <code>Sales-Update-Q1-2026.pdf</code></li>
+      </ul>
+      <p><strong>Six new English personas:</strong></p>
+      <ul>
+        <li><code>Brain/Personas/Sales/CLAUDE.md</code></li>
+        <li><code>Brain/Personas/Sales-Pay-by-Bank/CLAUDE.md</code></li>
+        <li><code>Brain/Personas/Sales-Stablecoin-Factory/CLAUDE.md</code></li>
+        <li><code>Brain/Personas/Sales-Digital-Cash/CLAUDE.md</code></li>
+        <li><code>Brain/Personas/Marketing/CLAUDE.md</code></li>
+        <li><code>Brain/Personas/Writer/CLAUDE.md</code></li>
+      </ul>
+
+      <h2>Brutal navigation test</h2>
+      <blockquote><em>"If a new Aryze employee opened the workspace today, could they navigate it independently within 20 minutes?"</em></blockquote>
+      <h3>Answer: Yes, with two caveats.</h3>
+      <p><strong>Why yes:</strong></p>
+      <ol>
+        <li><strong>Master <code>CLAUDE.md</code> opens with an "If you are Claude and just walked in" section</strong> that gives a 4-step reading order plus 3 override rules. A new human follows the same path.</li>
+        <li><strong>Every top-level folder has its own <code>CLAUDE.md</code></strong> explaining contents, structure, and naming conventions.</li>
+        <li><strong>Personas, frameworks, and templates are clearly separated</strong> in <code>Brain/</code>. Each sub-folder has an index.</li>
+        <li><strong>Products are consistently mapped</strong> across the workspace — Pay by Bank / Stablecoin Factory / Digital Cash mentioned by canonical name in master CLAUDE, persona files, foundation docs, and project CLAUDE files. The audit-flagged wrong product names ("Aryze Factory", "Digital Currency") no longer appear in active material.</li>
+        <li><strong>Frameworks and templates cross-reference correctly</strong> — Discovery-Call.md points to specialist personas; Qualification-Framework.md points to per-product analyses; VPC-Method.md points to per-product VPC files.</li>
+        <li><strong>Open questions are visible</strong> — each persona's §9 lists what's not yet decided. A new employee can see at a glance which boundaries are firm and which are still ambiguous.</li>
+      </ol>
+      <p><strong>Caveat 1: The Analyser/ files are still in Danish.</strong></p>
+      <p><code>Documents/Analyser/Pay-by-Bank/ICP.md</code>, <code>VPC.md</code>, <code>Product-Description.md</code> (and the equivalents for Stablecoin Factory and Digital Cash) remain in Danish. A new English-only employee can still navigate the workspace because the master CLAUDE.md, all personas, all frameworks, all templates, all folder CLAUDE.md files, and the per-product CLAUDE.md indexes are in English — and these point to the Danish source documents. But the source documents themselves haven't been translated.</p>
+      <p>This is a <strong>deliberate scope choice</strong> — translating the Analyser/ files was outside this restructure's scope. Recommend translating in a separate sprint when capacity allows.</p>
+      <p><strong>Caveat 2: Open questions need Stablesensei input.</strong></p>
+      <p>Each persona has a §9 with precise open questions. Without Stablesensei's input on those, the personas operate at 85–90% — not 100%. The remaining 10–15% is real ambiguity (newsletter status, X presence, approved testimonials, exec voice models, pricing tier table, supported networks list, compliance pack location, etc.).</p>
+      <p>These don't block navigation, but they will surface during actual sales / marketing work. Recommend Stablesensei does a single 90-minute review covering all six persona §9 sections to close them.</p>
+
+      <h2>Next steps in priority order</h2>
+      <h3>This week</h3>
+      <ol>
+        <li><strong>Delete <code>_TIL-SLETNING/</code> from Finder</strong> (sandbox can't remove the macOS <code>.DS_Store</code> inside)</li>
+        <li><strong>Verify NBC Stockholm print collateral</strong> uses canonical product names (Stablecoin Factory, Digital Cash) before printer cutoff</li>
+        <li><strong>Flag <code>Workshop-Aryze-Mastercard.pptx</code></strong> as internal-only (rename or add <code>_INTERNAL.md</code> index in <code>Sales/Pay by Bank/Assets/</code>)</li>
+      </ol>
+      <h3>Next two weeks</h3>
+      <ol start="4">
+        <li><strong>Resolve persona §9 open questions</strong> — 90-minute Stablesensei review per the caveat above</li>
+        <li><strong>Verify Pay by Bank one-pager PDFs</strong> — regenerate from canonical <code>.md</code> if "UK licensed" hero or "up to 3.5%" claim is still there</li>
+        <li><strong>Verify Casino-deck slide 7 vs 8</strong> market count (19 vs 20)</li>
+        <li><strong>Update <code>Internal/Aryze-Team.pdf</code></strong> with corrected product names and Digital Cash owner</li>
+      </ol>
+      <h3>This quarter</h3>
+      <ol start="8">
+        <li><strong>Translate Analyser/ files to English</strong> — Pay by Bank, Stablecoin Factory, Digital Cash ICP / VPC / Product-Description</li>
+        <li><strong>Resolve Rabii title standardisation</strong> — settle on "Director Sales &amp; Marketing" and apply retroactively</li>
+        <li><strong>Reconcile Q1 vs SBC report</strong> pipeline narrative — add cross-product split to next quarterly board pack</li>
+        <li><strong>Produce new Stablecoin Factory motion one-pagers</strong> (replacing the three archived in <code>_archive/</code>)</li>
+        <li><strong>Build a compliance pack</strong> under <code>Internal/Compliance/</code> — SOC 2, ISO 27001 status, AML programme summary, GDPR posture</li>
+      </ol>
+
+      <h2>Closing observation</h2>
+      <p>The workspace is now structurally sound. Voice discipline is centralised. Product boundaries are explicit. Capability limits are clear. The audit roadmap from 13 May is half-resolved; the other half has named owners.</p>
+      <p>The biggest residual risk is <strong>persona §9 ambiguity</strong> — until Stablesensei resolves the 49 total open questions across the six personas, sellers and marketers will occasionally hit "I don't know what we promise here." That's fine for now (the personas tell them what to do when they hit it: mark <code>&lt;NEEDS REVIEW&gt;</code> and raise) but it should be a 90-minute sprint to close.</p>
+      <p class="meta"><strong>Last updated:</strong> 14 May 2026</p>
+
+      <nav class="doc-links" style="margin-top:28px;border-top:1px solid var(--line);padding-top:16px">
+        <a href="restrukturering-2026-05-13.html">← Restructure record (13 May)</a>
+        <a href="index.html">Analyses</a>
+      </nav>
+    </div>
+  </article>
+
+  <footer><p>Aryze &middot; Board &amp; Management Reports &middot; Production restructure &middot; Confidential &middot; 14 May 2026</p></footer>
+</main>
+</body>
+</html>

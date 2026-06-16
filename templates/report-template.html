@@ -1,0 +1,180 @@
+<!doctype html>
+<!--
+  Aryze · Board & Management Reports — MONTHLY REPORT TEMPLATE
+  HOW TO USE:
+  1. Copy this file to  reports/YYYY-MM/index.html
+  2. Replace every {{PLACEHOLDER}} and fill the example rows/cards.
+  3. Follow docs/Reporting-System-Design.md (§5 spine) and docs/Metric-Definitions.md.
+  4. Thin section? Replace its body with ONE honest line. Never pad.
+  5. Export PDF (browser print) -> Documents/Reports/Commercial-Report-YYYY-MM.pdf
+  6. THE TWO-WEEKS-LATER TEST (stale-proofing — mandatory):
+     Write every line so it still reads correctly two weeks after publication.
+     · Dated facts only. Never relative time: no "next week", "upcoming",
+       "we are about to", "tomorrow", "currently".
+     · NO per-deal next-step columns. The report records WHAT HAPPENED;
+       pending to-dos live in the CRM, not in the archive. The only
+       forward-looking block is Priorities: a few month-level commitments
+       with owner + date.
+     · A published report is closed. Corrections happen as restatements in the
+       next report's appendix — not by editing this file.
+  Paths assume this file lives at reports/YYYY-MM/index.html (css = ../../assets/cod.css).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{MONTH}} {{YEAR}} Commercial Report | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/cod.css">
+</head>
+<body>
+
+<!-- ===== Global navigation (identical on every page) ===== -->
+<header class="topbar">
+  <span class="brand">Aryze<small>Sales &amp; Marketing</small></span>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#reports">Reports</a>
+    <a href="../../index.html#reference">Reference</a>
+    <a href="../../index.html#tools">Tools</a>
+  </nav>
+</header>
+<nav class="subnav">
+  <a href="#summary">Summary</a><a href="#scorecard">Scorecard</a><a href="#pipeline">Pipeline</a>
+  <a href="#marketing">Marketing</a><a href="#partnerships">Partnerships</a>
+  <a href="#findings">Findings</a><a href="#priorities">Priorities</a><a href="#appendix">Appendix</a>
+</nav>
+<p class="crumb"><a href="../../index.html">Home</a> / <a href="../../index.html#reports">Reports</a> / {{MONTH}} {{YEAR}}</p>
+
+<main class="wrap">
+
+  <!-- ===== TIER 1 — EXECUTIVE ===== -->
+
+  <!-- 1. Cover + verdict -->
+  <section class="section cover" id="summary">
+    <p class="eyebrow">Monthly commercial report</p>
+    <h1>{{MONTH}} commercial report</h1>
+    <p class="verdict">{{ONE_LINE_VERDICT}}</p>
+    <p class="meta">Owner: Sales &middot; Written {{DATE_WRITTEN}} &middot; Data as of {{SNAPSHOT_DATE}} &middot; Confidential</p>
+
+    <!-- 2. Executive summary -->
+    <div class="exec">
+      <p>{{THREE_SENTENCE_SUMMARY}}</p>
+      <p class="ask"><strong>Decision needed:</strong> {{1_TO_3_ASKS_FOR_LEADERSHIP}}</p>
+    </div>
+  </section>
+
+  <!-- 3. Scorecard -->
+  <section class="section" id="scorecard">
+    <div class="section-title"><h2>{{SCORECARD_CLAIM_HEADER}}</h2>
+      <p>From the CRM board as of {{SNAPSHOT_DATE}}. Change from {{PRIOR_MONTH}}. Definitions: <a href="../../docs/metric-definitions.html">Metric Definitions</a>.</p></div>
+    <div class="kpi-grid">
+      <div class="kpi-tile"><span class="label">Opportunities</span><strong class="value">{{N}}</strong><em class="delta delta-up">▲ from {{PREV}}</em></div>
+      <div class="kpi-tile"><span class="label">Active (working)</span><strong class="value">{{N}}</strong><em class="delta delta-up">▲ from {{PREV}}</em></div>
+      <div class="kpi-tile"><span class="label">New-stage</span><strong class="value">{{N}}</strong><em class="delta delta-flat">{{NOTE}}</em></div>
+      <div class="kpi-tile"><span class="label">Advancing</span><strong class="value">{{N}}</strong><em class="delta delta-up">{{NOTE}}</em></div>
+      <div class="kpi-tile"><span class="label">Partnerships advanced</span><strong class="value">{{N}}</strong><em class="delta delta-up">{{NOTE}}</em></div>
+    </div>
+    <!-- stage funnel -->
+    <div class="stages">
+      <div class="stage"><b>{{N}}</b><span>Partnerships</span></div>
+      <div class="stage"><b>{{N}}</b><span>New</span></div>
+      <div class="stage"><b>{{N}}</b><span>Screening</span></div>
+      <div class="stage"><b>{{N}}</b><span>First Meeting</span></div>
+      <div class="stage"><b>{{N}}</b><span>Qualification</span></div>
+      <div class="stage"><b>{{N}}</b><span>Onboarding</span></div>
+      <div class="stage"><b>{{N}}</b><span>Strategic long-term</span></div>
+      <div class="stage"><b>{{N}}</b><span>Backlog</span></div>
+      <div class="stage"><b>{{N}}</b><span>Not interested</span></div>
+      <div class="stage"><b>{{N}}</b><span>Active total</span></div>
+    </div>
+  </section>
+
+  <!-- ===== TIER 2 — OPERATING DETAIL ===== -->
+
+  <!-- 4. Pipeline -->
+  <section class="section" id="pipeline">
+    <div class="section-title"><h2>{{PIPELINE_CLAIM_HEADER}}</h2><p>{{PIPELINE_SUBHEAD}}</p></div>
+    <div class="cards-3">
+      <div class="card blue" data-accent><span class="tag">Carried &amp; advanced</span><h3>{{CLAIM}}</h3><p>{{TEXT}}</p></div>
+      <div class="card gold" data-accent><span class="tag">Reviewed &amp; cleaned</span><h3>{{CLAIM}}</h3><p>{{TEXT}}</p></div>
+      <div class="card teal" data-accent><span class="tag">Created</span><h3>{{CLAIM}}</h3><p>{{TEXT}}</p></div>
+    </div>
+    <h3 class="grp-title"><span class="pill go">Advancing</span> meeting held or stage moved in {{MONTH}}</h3>
+    <div class="matrix">
+      <div class="row deals cols-3 header"><div class="cell">Account</div><div class="cell">Product · stage</div><div class="cell">What moved in {{MONTH}}</div></div>
+      <div class="row deals cols-3"><div class="cell"><strong>{{ACCOUNT}}</strong><em>{{CONTACT}}</em></div><div class="cell">{{PRODUCT}} · {{STAGE}}</div><div class="cell">{{MOVED}}</div></div>
+      <!-- repeat rows · no next-step column: the report records what happened, the CRM holds the to-dos -->
+    </div>
+  </section>
+
+  <!-- 5. Marketing & events  (Marketing owns this block; if none: one honest line) -->
+  <section class="section" id="marketing">
+    <div class="section-title"><h2>{{MARKETING_CLAIM_HEADER}}</h2><p>{{MARKETING_SUBHEAD}}</p></div>
+    <div class="matrix">
+      <div class="row events cols-3 header"><div class="cell">Event / campaign</div><div class="cell">Aryze on the ground</div><div class="cell">What it produced</div></div>
+      <div class="row events cols-3"><div class="cell"><strong>{{EVENT}}</strong><em>{{WHEN}}</em></div><div class="cell">{{WHO}}</div><div class="cell">{{PRODUCED}}</div></div>
+      <!-- repeat rows; OR replace whole matrix with: <p class="note">No marketing input this month.</p> -->
+    </div>
+  </section>
+
+  <!-- 6. Partnerships -->
+  <section class="section" id="partnerships">
+    <div class="section-title"><h2>{{PARTNERSHIPS_CLAIM_HEADER}}</h2><p>{{SUBHEAD}}</p></div>
+    <div class="cards-2">
+      <div class="card teal" data-accent><span class="tag">{{PARTNER}}</span><h3>{{CLAIM}}</h3><p>{{TEXT}}</p>
+        <div class="owner"><b>Next: {{NEXT}}</b><span>{{OWNER}}</span></div></div>
+      <!-- repeat -->
+    </div>
+  </section>
+
+  <!-- 7. Findings (up to three; never pad) -->
+  <section class="section" id="findings">
+    <div class="section-title"><h2>What changed.</h2><p>Observations that should shape {{NEXT_MONTH}}.</p></div>
+    <div class="cards-3">
+      <div class="card"><span class="tag">Finding 1</span><h3>{{CLAIM}}</h3><p>{{TEXT}}</p></div>
+      <div class="card"><span class="tag">Finding 2</span><h3>{{CLAIM}}</h3><p>{{TEXT}}</p></div>
+      <div class="card"><span class="tag">Finding 3</span><h3>{{CLAIM}}</h3><p>{{TEXT}}</p></div>
+    </div>
+  </section>
+
+  <!-- 8. Priorities & decisions -->
+  <section class="section" id="priorities">
+    <div class="section-title"><h2>What {{MONTH}} set up for {{NEXT_MONTH}}.</h2><p>The commitments made at month close — owner and date on every item.</p></div>
+    <div class="cards-3">
+      <div class="card"><span class="tag">{{THEME}}</span><h3>{{CLAIM}}</h3><p>{{TEXT}}</p>
+        <div class="owner"><b>{{OWNER}}</b><span>By {{DATE}}</span></div></div>
+      <!-- repeat -->
+    </div>
+    <div class="grid-3">
+      <div class="panel"><span>Decision</span><strong>{{DECISION}}</strong><p>{{TEXT}}</p></div>
+      <div class="panel"><span>Owner</span><strong>{{OWNER}}</strong><p>{{TEXT}}</p></div>
+      <div class="panel"><span>Target</span><strong>{{TARGET}}</strong><p>{{TEXT}}</p></div>
+    </div>
+  </section>
+
+  <!-- ===== TIER 3 — APPENDIX (collapsed; expands for print) ===== -->
+  <section class="section" id="appendix">
+    <div class="section-title"><h2>Appendix — full analysis.</h2><p>Everything behind the report: full pipeline, sources, definitions.</p></div>
+    <details class="appendix">
+      <summary>Open full analysis</summary>
+      <div class="body">
+        <h3 class="grp-title">Full pipeline — all stages</h3>
+        <table class="appendix-table">
+          <tr><th>Account</th><th>Product</th><th>Stage</th><th>Status / next</th></tr>
+          <tr><td>{{ACCOUNT}}</td><td>{{PRODUCT}}</td><td>{{STAGE}}</td><td>{{STATUS}}</td></tr>
+          <!-- repeat for every opportunity -->
+        </table>
+        <h3 class="grp-title">CRM snapshot</h3>
+        <img class="snapshot" src="crm-snapshot.png" alt="CRM opportunities board as of {{SNAPSHOT_DATE}}">
+        <p class="note">Sources: CRM opportunities board (as of {{SNAPSHOT_DATE}}); CRM notes; event reports; weekly updates. Definitions: <a href="../../docs/metric-definitions.html">Metric Definitions</a>. Restatements (if any): {{RESTATEMENT_OR_NONE}}.</p>
+      </div>
+    </details>
+  </section>
+
+  <footer><p>Aryze &middot; Sales &amp; Marketing &middot; {{MONTH}} {{YEAR}} &middot; Confidential &middot; Owner: Sales</p></footer>
+
+</main>
+<script src="../assets/cod.js" defer></script>
+</body>
+</html>

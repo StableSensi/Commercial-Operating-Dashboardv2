@@ -1,0 +1,85 @@
+<!doctype html>
+<!-- Aryze · Board & Management Reports — metric definitions (page version; the editable source is docs/Metric-Definitions.md) -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Definitions &amp; Method | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/cod.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">Aryze<small>Sales &amp; Marketing</small></span>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../index.html#reports">Reports</a>
+    <a href="../index.html#reference">Reference</a>
+    <a href="../index.html#tools">Tools</a>
+  </nav>
+</header>
+<p class="crumb"><a href="../index.html">Home</a> / <a href="../index.html#reports">Reports</a> / Definitions &amp; method</p>
+
+<main class="wrap">
+  <div class="doc">
+    <div class="doc-head">
+      <p class="eyebrow">Definitions &amp; method &middot; canonical</p>
+      <h1>Definitions &amp; method</h1>
+      <p class="lede">The standard behind every report, in one page: how reports are written so they stay correct over time, and what every number means. If a figure can't be defined here, it doesn't ship.</p>
+      <p class="meta">Owner: Sales &amp; Marketing &middot; Confidential</p>
+    </div>
+
+    <div class="doc-body">
+      <h2>The method, in short</h2>
+      <p>This is a <strong>point-in-time archive</strong>, not a live dashboard. Every item is dated; figures live inside each dated report, never on the home page. A published report is closed at publication — corrections appear as restatements in the next report's appendix, never as edits to a published page.</p>
+      <div class="callout"><span>The two-weeks-later test</span>
+        <p style="margin:0">Every page must read correctly two weeks after publication without being touched. Dated facts only — never "next week" or "upcoming". Reports record what happened; pending to-dos stay in the CRM. The only forward-looking block is the priorities section: a few month-level commitments with owner and date.</p>
+      </div>
+      <p>Every monthly report follows the same three-tier spine — executive read (verdict, summary, scorecard), operating detail (pipeline, events, partnerships, findings, priorities), and a collapsed appendix (full deal book, CRM snapshot, sources). A thin month gets one honest line, never filler. Scorecards show value + month-over-month delta only; targets and RAG status switch on once monthly targets are set.</p>
+
+      <h2>The pipeline stages — canonical list</h2>
+      <p>These names match the CRM board and never change without updating this page.</p>
+      <table class="content">
+        <tr><th>Stage</th><th>In "Active"?</th><th>What it holds</th></tr>
+        <tr><td>Partnerships</td><td>Yes</td><td>Strategic partner relationships being worked</td></tr>
+        <tr><td>New</td><td>Yes</td><td>Added to the board, not yet prioritised</td></tr>
+        <tr><td>Screening</td><td>Yes</td><td>Active first check: reach the lead, confirm fit</td></tr>
+        <tr><td>First Meeting</td><td>Yes</td><td>First meeting held or booked</td></tr>
+        <tr><td>Qualification</td><td>Yes</td><td>Need, timing, decision path being assessed</td></tr>
+        <tr><td>Onboarding</td><td>Yes</td><td>Qualified for KYB, technical and commercial setup</td></tr>
+        <tr><td>Strategic long-term</td><td>No</td><td>Important relationships that move slowly</td></tr>
+        <tr><td>Backlog</td><td>No</td><td>Worth keeping, not active focus</td></tr>
+        <tr><td>Not interested</td><td>No</td><td>Stopped unless timing or relevance changes</td></tr>
+      </table>
+
+      <h2>Headline metrics</h2>
+      <p><strong>Opportunities in CRM (total).</strong> Every opportunity record on the board across all stages, including Backlog, Strategic long-term and Not interested.</p>
+      <p><strong>Active (working).</strong> The sum of the stages where a deal is actively being worked: Partnerships + New + Screening + First Meeting + Qualification + Onboarding. Excludes Strategic long-term, Backlog and Not interested. Always reconciles: active + inactive = total.</p>
+      <p><strong>New-stage opps.</strong> The count in the New stage at the snapshot date.</p>
+      <p><strong>Advancing.</strong> The subset of active deals where a meeting was held or the stage moved in the period. This is the conversion-quality metric, identified each month from CRM notes.</p>
+      <p><strong>Partnerships advanced.</strong> Strategic partner relationships that moved materially in the period (a concrete offer or commitment made) — not the Partnerships <em>stage</em> count.</p>
+      <p><strong>Marketing-sourced.</strong> An opportunity is attributed to an event or campaign if first contact or re-activation happened through it, recorded in the CRM. Owned by Marketing.</p>
+
+      <h2>Rules</h2>
+      <div class="callout"><span>Delta</span><p style="margin:0">Each KPI shows month-over-month change vs the prior month's figure for the same metric. Direction colour: green up, red down, neutral flat. Delta-only — see targets.</p></div>
+      <div class="callout"><span>Targets / RAG</span><p style="margin:0">Off for now. RAG colours and "vs target" switch on only once monthly commercial targets are set. Until then, no RAG dots on KPIs.</p></div>
+      <div class="callout"><span>Restatement</span><p style="margin:0">If a prior month's number is corrected after a CRM cleanup, it is stated in the current report's appendix ("April active restated 20 → 22 after cleanup"). Trend series always use corrected numbers. Published reports are never edited.</p></div>
+      <div class="callout"><span>"As of" discipline</span><p style="margin:0">Every report's scorecard cites the CRM snapshot date the counts were read from. The snapshot image is archived in the report folder.</p></div>
+      <div class="callout"><span>Honesty</span><p style="margin:0">Stalled and out-of-region deals are stated plainly and moved to Backlog / Not interested — never carried in Active as false hope.</p></div>
+
+      <h2>Source of record</h2>
+      <ul>
+        <li>Counts: the monthly CRM opportunities board snapshot (archived as <code>reports/YYYY-MM/crm-snapshot.png</code>).</li>
+        <li>Named deals, movement, the advancing test: the month's CRM notes, event/trip reports and weekly updates.</li>
+        <li>Marketing metrics: supplied by Marketing each month.</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <footer><p>Aryze &middot; Sales &amp; Marketing &middot; Definitions &amp; method &middot; Confidential</p></footer>
+</main>
+<script src="../assets/cod.js" defer></script>
+</body>
+</html>

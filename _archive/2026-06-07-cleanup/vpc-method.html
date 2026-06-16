@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VPC Method | Aryze</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/cod.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">Aryze<small>Sales &amp; Marketing</small></span>
+  <nav>
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#reports">Reports</a>
+    <a href="../../index.html#reference">Reference</a>
+    <a href="../../index.html#tools">Tools</a>
+  </nav>
+</header>
+<p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Frameworks &amp; templates</a> / VPC method</p>
+
+<main class="wrap">
+  <article class="doc">
+    <header class="doc-head">
+      <p class="eyebrow">Framework · methodology</p>
+      <h1>VPC method — the Value Proposition Canvas applied at Aryze</h1>
+      <p class="lede">How to use the Strategyzer Value Proposition Canvas in Aryze sales conversations. The full canvases per product live in <code>Documents/Analyser/[Product]/VPC.md</code>. This document covers how to apply them in practice.</p>
+      <p class="meta">Owner: Commercial · Confidential</p>
+      <div class="doc-links">
+        <a href="index.html">↩ Frameworks &amp; templates</a>
+        <a href="../../../../Brain/Frameworks/VPC-Method.md">Source .md</a>
+      </div>
+    </header>
+
+    <div class="doc-body">
+      <h2>What a VPC tells you</h2>
+      <p>The canvas splits in half:</p>
+      <p><strong>Customer Profile</strong> (what the buyer experiences):</p>
+      <ul>
+        <li><strong>Jobs</strong> — what they're trying to get done (functional, social, emotional)</li>
+        <li><strong>Pains</strong> — what goes wrong today: cost, operational burden, risk, missed conversion, internal friction</li>
+        <li><strong>Gains</strong> — what they want: required (must-have), expected (table-stakes), desired (would be nice), unexpected (surprise)</li>
+      </ul>
+      <p><strong>Value Map</strong> (what Aryze offers):</p>
+      <ul>
+        <li><strong>Products &amp; Services</strong> — what we actually deliver</li>
+        <li><strong>Pain Relievers</strong> — how each capability addresses each pain</li>
+        <li><strong>Gain Creators</strong> — how each capability delivers each gain category</li>
+      </ul>
+      <p>A good pitch is the <strong>value map mapped to the customer profile</strong> — not the other way round. We don't start with our features and look for matching pains. We start with their pains and ask which of our capabilities relieves them.</p>
+
+      <h2>How to use VPC in a discovery call</h2>
+      <ol>
+        <li>Open with the customer's job: <em>"What are you trying to get done today? What's the outcome that matters?"</em></li>
+        <li>Probe for pains using the customer's language, not yours. If they say "scheme fees are killing us", use "scheme fees" — not "card costs".</li>
+        <li>Quantify when you can: "How much has that gone up? How many transactions a month? What does that cost you per quarter?"</li>
+        <li>Map their pains to your relievers in real time. Don't list features. Pick the one capability that lands on the specific pain they just described.</li>
+        <li>Ask which gain category matters most: required (must-haves), expected (table-stakes), desired (would-love), unexpected (didn't-know-was-possible). Required and desired drive deals.</li>
+      </ol>
+
+      <h2>Anchor every commercial line to a pain or gain</h2>
+      <div class="callout"><span>The rule</span>
+        <p style="margin:0">If a sentence in your outreach, deck, or proposal doesn't trace back to either a Pain Reliever or a Gain Creator from the VPC — cut it.</p>
+      </div>
+      <p>This rule is the single most effective filter for keeping Aryze writing on-voice. It is documented as voice discipline in the Writer persona (<a href="../../../../Brain/Personas/Writer/CLAUDE.md"><code>Brain/Personas/Writer/CLAUDE.md</code></a>, §4.2 <em>Concrete over abstract</em>) and applied in the audit report (<a href="../../../../Documents/Reports/Audit-Modsigelser-2026-05-13.md"><code>Documents/Reports/Audit-Modsigelser-2026-05-13.md</code></a>).</p>
+
+      <h2>Per-product canvases</h2>
+      <table class="content">
+        <thead>
+          <tr><th>Product</th><th>VPC</th><th>Core pain</th><th>Core gain</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pay by Bank</td><td><a href="../../../../Documents/Analyser/Pay-by-Bank/VPC.md">VPC.md</a></td><td>Card cost + chargebacks + operational friction</td><td>Predictable payment economics + operational control</td></tr>
+          <tr><td>Stablecoin Factory</td><td><a href="../../../../Documents/Analyser/Stablecoin-Factory/VPC.md">VPC.md</a></td><td>Path from concept to live is too heavy</td><td>Speed + simplicity + a deployment path that scales</td></tr>
+          <tr><td>Digital Cash</td><td><a href="../../../../Documents/Analyser/Digital-Cash/VPC.md">VPC.md</a></td><td>Issuance ≠ operation</td><td>Full institutional operating layer under your own licence</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Don't blur</h2>
+      <p>Each VPC maps a distinct customer profile to a distinct value map. Pay by Bank's VPC is not Stablecoin Factory's VPC. Mixing them loses the deal: pitching account-to-account (A2A) merchant rails to a builder who wants to deploy a stablecoin, or pitching self-serve deployment to a bank that needs institutional settlement.</p>
+      <p>The discipline is documented in <a href="../../../../Documents/Analyser/README.md"><code>Documents/Analyser/README.md</code></a>:</p>
+      <blockquote><em>"Anchor every commercial line to a pain or gain. If you can't trace a line back to the VPC — cut it. Match the VPC to the buyer role. Don't blur products."</em></blockquote>
+
+      <h2>Match the VPC to the buyer role</h2>
+      <p>The same product is sold differently to different buyers. The VPC stays the same, but the <strong>emphasis</strong> changes:</p>
+      <ul>
+        <li><strong>Payments Operations Lead</strong> (Pay by Bank): operational fit, integration path, exception handling, control</li>
+        <li><strong>CFO / Finance Director</strong> (Pay by Bank): predictable cost, EBITDA impact, cash flow</li>
+        <li><strong>Founder / CTO</strong> (Stablecoin Factory): time-to-live, sandbox quality, technical evaluation</li>
+        <li><strong>Executive Sponsor</strong> (Digital Cash): strategic narrative, board defensibility, peer positioning</li>
+        <li><strong>MLRO / General Counsel</strong> (Digital Cash): regulatory framing, compliance hooks, audit trail</li>
+      </ul>
+      <p>Buyer-specific pitch angles live in each specialist persona under <code>Brain/Personas/Sales-[Product]/</code>.</p>
+
+      <h2>Source of truth</h2>
+      <ul class="sources">
+        <li>Strategyzer VPC method (external reference)</li>
+        <li><a href="../../../../Documents/Analyser/README.md"><code>Documents/Analyser/README.md</code></a> — Aryze cross-product VPC routing</li>
+        <li>Per-product VPC files in <code>Documents/Analyser/[Product]/VPC.md</code></li>
+      </ul>
+
+      <nav class="doc-links doc-foot">
+        <a href="qualification-framework.html">← Qualification framework</a>
+        <a href="index.html">Frameworks &amp; templates</a>
+        <a href="buyer-committee-map.html">Buyer committee map →</a>
+      </nav>
+    </div>
+  </article>
+
+  <footer><p>Aryze &middot; Sales &amp; Marketing &middot; VPC method &middot; Confidential</p></footer>
+</main>
+</body>
+</html>
