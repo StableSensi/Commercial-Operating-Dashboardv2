@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Aryze · Sales & Marketing — Qualification framework. Visual rebuild 2026-06-17 — content preserved verbatim; restructured with progressive disclosure + reference component library (cod.css §18). -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -33,19 +34,46 @@
     </header>
 
     <div class="doc-body">
+
+      <!-- ===== AT A GLANCE — the 5-second read ===== -->
+      <div class="ataglance">
+        <span class="agk">In short</span>
+        <p class="oneline">Five questions decide whether a lead is worth pursuing — and which of the three products fits. Applied before every first discovery call: <strong>four of five</strong> answered with confidence marks a priority fit; fewer does not.</p>
+      </div>
+      <div class="specs">
+        <div class="spec"><span class="k">When applied</span><span class="v">Before first discovery</span><span class="s">Run on every lead ahead of the first call.</span></div>
+        <div class="spec"><span class="k">Priority bar</span><span class="v">4 of 5 yeses</span><span class="s">Four answered with confidence marks a priority fit.</span></div>
+        <div class="spec"><span class="k">Settled first</span><span class="v">Product, then pitch</span><span class="s">The right Aryze product is decided before any pitch.</span></div>
+      </div>
+
       <h2>The five questions</h2>
-      <ol>
-        <li><strong>Does the customer have a clear problem Aryze can solve?</strong><br>
-          A "we're exploring" answer is not a problem. A "card costs are eating margin and we have a quarterly EBITDA target" is a problem.</li>
-        <li><strong>Is the problem severe enough to create urgency, not just interest?</strong><br>
-          Polite interest does not convert. A regulatory deadline, a peer move, a CFO directive, a renewal expiry — these create urgency.</li>
-        <li><strong>Is there an internal owner or buying committee?</strong><br>
-          If no one can name "who owns this initiative internally?", the deal will stall in evaluation.</li>
-        <li><strong>Can the customer actually implement and use the product?</strong><br>
-          Pay by Bank needs dev capacity to integrate a new rail. Stablecoin Factory needs a technical team to use the sandbox. Digital Cash needs a multi-year programme team. No implementation capacity, no deal.</li>
-        <li><strong>Is it the right Aryze product for the actual need?</strong><br>
-          A merchant asking for "stablecoin payments" probably needs Pay by Bank, not Stablecoin Factory. A licensed bank asking for "a quick token deploy" probably needs Digital Cash. The fit comes before the pitch.</li>
-      </ol>
+      <div class="cards-3">
+        <div class="card">
+          <span class="tag">Q1 · Problem</span>
+          <h3>Does the customer have a clear problem Aryze can solve?</h3>
+          <p>A "we're exploring" answer is not a problem. A "card costs are eating margin and we have a quarterly EBITDA target" is a problem.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Q2 · Urgency</span>
+          <h3>Is the problem severe enough to create urgency, not just interest?</h3>
+          <p>Polite interest does not convert. A regulatory deadline, a peer move, a CFO directive, a renewal expiry — these create urgency.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Q3 · Owner</span>
+          <h3>Is there an internal owner or buying committee?</h3>
+          <p>If no one can name "who owns this initiative internally?", the deal will stall in evaluation.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Q4 · Capacity</span>
+          <h3>Can the customer actually implement and use the product?</h3>
+          <p>Pay by Bank needs dev capacity to integrate a new rail. Stablecoin Factory needs a technical team to use the sandbox. Digital Cash needs a multi-year programme team. No implementation capacity, no deal.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Q5 · Fit</span>
+          <h3>Is it the right Aryze product for the actual need?</h3>
+          <p>A merchant asking for "stablecoin payments" probably needs Pay by Bank, not Stablecoin Factory. A licensed bank asking for "a quick token deploy" probably needs Digital Cash. The fit comes before the pitch.</p>
+        </div>
+      </div>
 
       <h2>Scoring</h2>
       <table class="content">
@@ -62,16 +90,31 @@
 
       <h2>Product routing — quick gate</h2>
       <p>The product is settled before any pitch:</p>
-      <ul>
-        <li><strong>Better payment acceptance, recurring deposits, lower card cost, chargeback pressure</strong> → <strong>Pay by Bank</strong> (<a href="../analyser/pay-by-bank.html#icp">customer profile</a>)</li>
-        <li><strong>Concrete stablecoin or tokenised asset use case, builder-led, weeks-to-quarter horizon</strong> → <strong>Stablecoin Factory</strong> (<a href="../analyser/stablecoin-factory.html#icp">customer profile</a>)</li>
-        <li><strong>Already-licensed institution, operating digital cash under own licence, 6–18 month cycle</strong> → <strong>Digital Cash</strong> (<a href="../analyser/digital-cash.html#icp">customer profile</a>)</li>
-      </ul>
+      <div class="cards-3">
+        <a class="card teal" href="../analyser/pay-by-bank.html#icp">
+          <span class="tag">Pay by Bank</span>
+          <h3>Better payment acceptance</h3>
+          <p>Recurring deposits, lower card cost, chargeback pressure → Pay by Bank.</p>
+          <span class="cta">Customer profile →</span>
+        </a>
+        <a class="card teal" href="../analyser/stablecoin-factory.html#icp">
+          <span class="tag">Stablecoin Factory</span>
+          <h3>Concrete stablecoin or tokenised asset use case</h3>
+          <p>Builder-led, weeks-to-quarter horizon → Stablecoin Factory.</p>
+          <span class="cta">Customer profile →</span>
+        </a>
+        <a class="card teal" href="../analyser/digital-cash.html#icp">
+          <span class="tag">Digital Cash</span>
+          <h3>Already-licensed institution</h3>
+          <p>Operating digital cash under own licence, 6–18 month cycle → Digital Cash.</p>
+          <span class="cta">Customer profile →</span>
+        </a>
+      </div>
       <p>Where the buyer's actual need fits a product different from the one they asked about, the deal routes to that product instead. Mixing products mid-deal is the most common way Aryze loses an opportunity.</p>
 
       <h2>Anti-ICP signals</h2>
       <p>These signals mean none of the three products fits, regardless of customer enthusiasm:</p>
-      <ul>
+      <ul class="chips neg">
         <li>Wants Aryze as <strong>issuer</strong> or <strong>regulated operator</strong> — Aryze is infrastructure, not operator</li>
         <li>Needs <strong>AIS features</strong> (Account Information Services) — we are PIS-only (Payment Initiation Services) on Pay by Bank</li>
         <li>Needs <strong>outgoing payments as the primary flow</strong> (player withdrawals, refunds as standalone) — we cover customer-to-merchant only</li>
@@ -87,6 +130,10 @@
     </div>
   </article>
 
+  <footer class="doc-source">
+    <span class="lab">Read it as a document</span>
+    <div class="srcs"><a class="src" href="../../assets/pdf/frameworks-qualification-framework.pdf">Full text — PDF</a></div>
+  </footer>
   <footer><p>Aryze &middot; Sales &amp; Marketing &middot; Qualification framework &middot; Confidential</p></footer>
 </main>
 <script src="../../assets/cod.js" defer></script>

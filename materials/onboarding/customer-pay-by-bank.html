@@ -34,21 +34,26 @@
     </header>
 
     <div class="doc-body">
-      <div class="callout"><span>The principle</span>
-        <p style="margin:0">A go-live timeline is not quoted in a first call. The honest timeline is the sum of four steps measured against the merchant's specific stack, so it is quoted in weeks after step one, not before. No "live in 2 weeks" promises.</p>
+
+      <!-- ===== AT A GLANCE — the 5-second read ===== -->
+      <div class="ataglance">
+        <span class="agk">The flow in one line</span>
+        <p class="oneline">Four steps from first conversation to live volume — <strong>map the payment flow → KYB → integration &amp; test → go live</strong> — with honest timelines quoted in weeks after step one, not before.</p>
+      </div>
+      <div class="specs">
+        <div class="spec"><span class="k">The principle</span><span class="v">Sandbox-first</span><span class="s">Before sandbox is informational; after sandbox is contractual.</span></div>
+        <div class="spec"><span class="k">The boundary</span><span class="v">PIS-only · customer → merchant</span><span class="s">No AIS, no payouts as a standalone flow.</span></div>
+        <div class="spec"><span class="k">Where it runs</span><span class="v">UK live · EU/EEA late Q2 2026</span><span class="s">19 markets on Mastercard Open Banking; UK via Volt.io.</span></div>
       </div>
 
+      <blockquote><strong>A go-live timeline is not quoted in a first call.</strong> The honest timeline is the sum of four steps measured against the merchant's specific stack, so it is quoted in weeks after step one, not before. No "live in 2 weeks" promises.</blockquote>
+
       <h2>The four steps</h2>
-      <h3>1 · Map the payment flow</h3>
-      <p>Before any integration work: what is actually moving. Volumes per market, average ticket per cohort, where friction shows up today, and which payment methods sit alongside what we add. The integration timeline is a function of this map. This step runs during the sales dialogue; the merchant agreement marks the handoff into onboarding proper.</p>
-      <h3>2 + 3 · KYB and integration — in parallel</h3>
-      <p>Once the merchant agreement is sent, both tracks start at the same time:</p>
-      <ul>
-        <li><strong>KYB and approvals.</strong> Know your business (KYB): company verification, documentation, approvals. Optimistic proposals often skip this step, and skipping it slows deals down. Duration depends on jurisdiction, documentation completeness, and how quickly the merchant's team responds to information requests.</li>
-        <li><strong>Integration and test.</strong> Integration against the sandbox, with the merchant's engineering team. Sandbox-first evaluation: the conversation after sandbox is contractual; the conversation before sandbox is informational.</li>
-      </ul>
-      <h3>4 · Go live</h3>
-      <p>KYB approved + integration tested. Monitoring, support, handover. The team that integrates stays for the first weeks of live volume, because that is when the operational questions surface. Go-live is a phase, not a hand-off event.</p>
+      <figure class="flowmap">
+        <div class="map"><div class="from"><b>1 · Map the payment flow</b> — what is actually moving. Volumes per market, average ticket per cohort, where friction shows up today, and which payment methods sit alongside what we add. The integration timeline is a function of this map. Runs during the sales dialogue; the merchant agreement marks the handoff into onboarding proper.</div><div class="arr">→</div><div class="to"><b>2 + 3 · KYB and integration — in parallel</b> — once the merchant agreement is sent, both tracks start at the same time. <strong>KYB and approvals:</strong> company verification, documentation, approvals; duration depends on jurisdiction, documentation completeness and merchant responsiveness. <strong>Integration and test:</strong> against the sandbox, with the merchant's engineering team.</div></div>
+        <div class="map"><div class="from"><b>4 · Go live</b> — KYB approved + integration tested. Monitoring, support, handover.</div><div class="arr">→</div><div class="to"><b>Live volume, supported</b> — the team that integrates stays for the first weeks of live volume, because that is when the operational questions surface. Go-live is a phase, not a hand-off event.</div></div>
+      </figure>
+      <p class="note">Optimistic proposals often skip KYB, and skipping it slows deals down. Sandbox-first evaluation: the conversation after sandbox is contractual; the conversation before sandbox is informational.</p>
 
       <h2>Where this can run today</h2>
       <table class="content">
@@ -58,7 +63,7 @@
       </table>
 
       <h2>Deliberately not in the box</h2>
-      <ul>
+      <ul class="limits">
         <li><strong>PIS-only.</strong> No AIS, account verification, balance checks or aggregation.</li>
         <li><strong>Customer → merchant only.</strong> No payouts as a standalone flow.</li>
         <li><strong>No standalone recurring</strong> under PSD2; recurring only via MPS DK/NO until PSD3 (~2027–28).</li>
@@ -70,6 +75,10 @@
           </div>
   </article>
 
+  <footer class="doc-source">
+    <span class="lab">Read it as a document</span>
+    <div class="srcs"><a class="src" href="../../assets/pdf/onboarding-customer-pay-by-bank.pdf">Full text — PDF</a></div>
+  </footer>
   <footer><p>Aryze &middot; Sales &amp; Marketing &middot; Customer onboarding · Pay by Bank &middot; Confidential</p></footer>
 </main>
 <script src="../../assets/cod.js" defer></script>

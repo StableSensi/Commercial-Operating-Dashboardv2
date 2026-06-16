@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Aryze · Sales & Marketing — Lead pipeline process. Visual rebuild 2026-06-17 — content preserved verbatim; restructured with progressive disclosure + reference component library (cod.css §18). Three broken external screenshot images replaced with inline brand-coloured SVG schematics; figcaptions preserved. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -34,6 +35,18 @@
     </header>
 
     <div class="doc-body">
+
+      <!-- ===== AT A GLANCE — the 5-second read ===== -->
+      <div class="ataglance">
+        <span class="agk">In short</span>
+        <p class="oneline">The pipeline shows where each lead sits, who owns it, which product path it belongs to and what happens next. <strong>The board carries status and movement, not prose.</strong></p>
+      </div>
+      <div class="specs">
+        <div class="spec"><span class="k">Active stages</span><span class="v">New → Onboarding</span><span class="s">Four stages a lead card moves through left to right.</span></div>
+        <div class="spec"><span class="k">The card</span><span class="v">Readable without opening</span><span class="s">Contact, owner, company, product, agent, task.</span></div>
+        <div class="spec"><span class="k">The detail</span><span class="v">Notes · Tasks · Files</span><span class="s">Working context lives inside the lead, not on the board.</span></div>
+      </div>
+
       <div class="callout"><span>Pipeline rule</span>
         <p style="margin:0"><strong>Status, owner and next step must be visible.</strong> If those three things are unclear, the lead card is not ready for review.</p>
       </div>
@@ -41,7 +54,72 @@
       <h2>The board reads from left to right</h2>
       <p>Each column is a stage. A lead card moves right as the lead becomes more concrete. Side stages keep long-term, parked or closed leads out of the active sales flow.</p>
       <figure>
-        <img src="https://commercial-operating-dashboard.vercel.app/assets/lead-pipeline/pipeline-board.png" alt="Full lead pipeline board with stages from New to Backlog">
+        <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Full lead pipeline board with stages from New to Backlog" style="width:100%;height:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)">
+          <!-- columns -->
+          <g font-family="Geist,Inter,sans-serif">
+            <!-- column headers -->
+            <g font-size="13" font-weight="700" fill="#001e2b">
+              <text x="105" y="34" text-anchor="middle">New</text>
+              <text x="290" y="34" text-anchor="middle">Screening</text>
+              <text x="475" y="34" text-anchor="middle">Qualification</text>
+              <text x="660" y="34" text-anchor="middle">Onboarding</text>
+            </g>
+            <!-- column lanes -->
+            <g fill="#f7f9fa" stroke="#e3e8eb">
+              <rect x="20"  y="46" width="170" height="234" rx="8"/>
+              <rect x="205" y="46" width="170" height="234" rx="8"/>
+              <rect x="390" y="46" width="170" height="234" rx="8"/>
+              <rect x="575" y="46" width="170" height="234" rx="8"/>
+            </g>
+            <!-- lead cards: New (2) -->
+            <g>
+              <rect x="34" y="62"  width="142" height="46" rx="6" fill="#fff" stroke="#e3e8eb"/>
+              <rect x="46" y="74"  width="74" height="6" rx="3" fill="#274454"/>
+              <rect x="46" y="88"  width="100" height="5" rx="2.5" fill="#e3e8eb"/>
+              <rect x="34" y="62"  width="4" height="46" rx="2" fill="#007599"/>
+              <rect x="34" y="122" width="142" height="46" rx="6" fill="#fff" stroke="#e3e8eb"/>
+              <rect x="46" y="134" width="60" height="6" rx="3" fill="#274454"/>
+              <rect x="46" y="148" width="92" height="5" rx="2.5" fill="#e3e8eb"/>
+              <rect x="34" y="122" width="4" height="46" rx="2" fill="#007599"/>
+            </g>
+            <!-- Screening (2) -->
+            <g>
+              <rect x="219" y="62"  width="142" height="46" rx="6" fill="#fff" stroke="#e3e8eb"/>
+              <rect x="231" y="74"  width="80" height="6" rx="3" fill="#274454"/>
+              <rect x="231" y="88"  width="96" height="5" rx="2.5" fill="#e3e8eb"/>
+              <rect x="219" y="62"  width="4" height="46" rx="2" fill="#007599"/>
+              <rect x="219" y="122" width="142" height="46" rx="6" fill="#fff" stroke="#e3e8eb"/>
+              <rect x="231" y="134" width="66" height="6" rx="3" fill="#274454"/>
+              <rect x="231" y="148" width="88" height="5" rx="2.5" fill="#e3e8eb"/>
+              <rect x="219" y="122" width="4" height="46" rx="2" fill="#007599"/>
+            </g>
+            <!-- Qualification (1) -->
+            <g>
+              <rect x="404" y="62"  width="142" height="46" rx="6" fill="#fff" stroke="#e3e8eb"/>
+              <rect x="416" y="74"  width="72" height="6" rx="3" fill="#274454"/>
+              <rect x="416" y="88"  width="100" height="5" rx="2.5" fill="#e3e8eb"/>
+              <rect x="404" y="62"  width="4" height="46" rx="2" fill="#007599"/>
+            </g>
+            <!-- Onboarding (1) -->
+            <g>
+              <rect x="589" y="62"  width="142" height="46" rx="6" fill="#fff" stroke="#e3e8eb"/>
+              <rect x="601" y="74"  width="78" height="6" rx="3" fill="#274454"/>
+              <rect x="601" y="88"  width="92" height="5" rx="2.5" fill="#e3e8eb"/>
+              <rect x="589" y="62"  width="4" height="46" rx="2" fill="#bfd9ef"/>
+            </g>
+            <!-- flow arrows between columns -->
+            <g stroke="#007599" stroke-width="2" fill="none">
+              <path d="M190 95 L205 95"/>
+              <path d="M375 95 L390 95"/>
+              <path d="M560 95 L575 95"/>
+            </g>
+            <g fill="#007599">
+              <path d="M205 95 l-7 -4 v8 z"/>
+              <path d="M390 95 l-7 -4 v8 z"/>
+              <path d="M575 95 l-7 -4 v8 z"/>
+            </g>
+          </g>
+        </svg>
         <figcaption><strong>Pipeline view.</strong> Stages show status. Lead cards show the active owner, company, product path and next action.</figcaption>
       </figure>
 
@@ -55,18 +133,55 @@
       </table>
 
       <h3>Side stages</h3>
-      <table class="content">
-        <tr><th>Side stage</th><th>What it holds</th></tr>
-        <tr><td>Strategic Long-Term</td><td>Important relationships that matter, but move slowly.</td></tr>
-        <tr><td>Customer</td><td>Leads that are active, live or close enough to count as customer status.</td></tr>
-        <tr><td>Not Interested</td><td>Leads that should stop unless timing or relevance changes.</td></tr>
-        <tr><td>Backlog</td><td>Leads worth keeping, but not active focus right now.</td></tr>
-      </table>
+      <p>Side stages keep long-term, parked or closed leads out of the active flow:</p>
+      <ul class="chips neg">
+        <li><strong>Strategic Long-Term</strong> — important relationships that matter, but move slowly</li>
+        <li><strong>Customer</strong> — leads that are active, live or close enough to count as customer status</li>
+        <li><strong>Not Interested</strong> — leads that should stop unless timing or relevance changes</li>
+        <li><strong>Backlog</strong> — leads worth keeping, but not active focus right now</li>
+      </ul>
 
       <h2>The lead card is the quick status view</h2>
       <p>A lead card is readable without opening it. It shows who the lead is, who owns it internally, which company it belongs to, the product path, any agent or referral, and the next task.</p>
       <figure>
-        <img src="https://commercial-operating-dashboard.vercel.app/assets/lead-pipeline/lead-cards.png" alt="Lead cards showing owner, company, product, agent and follow-up task">
+        <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lead card showing owner, company, product, agent and follow-up task" style="width:100%;height:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)">
+          <g font-family="Geist,Inter,sans-serif">
+            <!-- card body -->
+            <rect x="220" y="28" width="360" height="264" rx="12" fill="#fff" stroke="#e3e8eb"/>
+            <rect x="220" y="28" width="6" height="264" rx="3" fill="#007599"/>
+            <!-- Contact (header) -->
+            <text x="252" y="62" font-size="15" font-weight="800" fill="#001e2b">Contact</text>
+            <text x="252" y="80" font-size="11" fill="#6b7889">Person or lead name</text>
+            <line x1="252" y1="94" x2="548" y2="94" stroke="#e3e8eb"/>
+            <!-- field rows -->
+            <g font-size="11" font-weight="800" letter-spacing="0.06em" fill="#52636d">
+              <text x="252" y="122">OWNER</text>
+              <text x="252" y="162">COMPANY</text>
+              <text x="252" y="202">PRODUCT</text>
+              <text x="252" y="242">AGENT</text>
+              <text x="252" y="282">TASK</text>
+            </g>
+            <g font-size="13" fill="#274454">
+              <text x="400" y="122">Internal Aryze owner</text>
+              <text x="400" y="162">Organisation</text>
+            </g>
+            <!-- product pill -->
+            <rect x="400" y="190" width="120" height="20" rx="10" fill="#e6f0f4"/>
+            <text x="410" y="204" font-size="11.5" font-weight="700" fill="#007599">Pay by Bank</text>
+            <!-- agent -->
+            <text x="400" y="246" font-size="13" fill="#274454">Referral source</text>
+            <!-- task pill -->
+            <rect x="400" y="270" width="100" height="20" rx="10" fill="#f7f9fa" stroke="#e3e8eb"/>
+            <text x="410" y="284" font-size="11.5" font-weight="700" fill="#274454">Next action</text>
+            <!-- row separators -->
+            <g stroke="#eef2f4">
+              <line x1="252" y1="136" x2="548" y2="136"/>
+              <line x1="252" y1="176" x2="548" y2="176"/>
+              <line x1="252" y1="216" x2="548" y2="216"/>
+              <line x1="252" y1="256" x2="548" y2="256"/>
+            </g>
+          </g>
+        </svg>
         <figcaption><strong>Lead card overview.</strong> The card shows the contact, owner, company, product path, agent and task.</figcaption>
       </figure>
 
@@ -90,12 +205,46 @@
 
       <h2>The board updates as the status changes</h2>
       <figure>
-        <img src="https://commercial-operating-dashboard.vercel.app/assets/lead-pipeline/lead-notes.png" alt="Lead notes panel with activity summary and next action">
+        <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lead notes panel with activity summary and next action" style="width:100%;height:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)">
+          <g font-family="Geist,Inter,sans-serif">
+            <!-- panel -->
+            <rect x="90" y="24" width="620" height="252" rx="12" fill="#fff" stroke="#e3e8eb"/>
+            <!-- tab bar -->
+            <rect x="90" y="24" width="620" height="40" rx="12" fill="#f7f9fa"/>
+            <rect x="90" y="52" width="620" height="12" fill="#f7f9fa"/>
+            <g font-size="12" font-weight="700">
+              <text x="124" y="49" fill="#007599">Notes</text>
+              <text x="196" y="49" fill="#6b7889">Tasks</text>
+              <text x="262" y="49" fill="#6b7889">Files</text>
+            </g>
+            <rect x="116" y="58" width="44" height="3" rx="1.5" fill="#007599"/>
+            <line x1="90" y1="64" x2="710" y2="64" stroke="#e3e8eb"/>
+            <!-- note entry 1 -->
+            <rect x="116" y="84" width="80" height="16" rx="8" fill="#e6f0f4"/>
+            <text x="126" y="96" font-size="10.5" font-weight="700" fill="#007599">Date</text>
+            <text x="208" y="97" font-size="11.5" font-weight="700" fill="#001e2b">Activity summary</text>
+            <rect x="116" y="110" width="478" height="6" rx="3" fill="#e3e8eb"/>
+            <rect x="116" y="122" width="430" height="6" rx="3" fill="#e3e8eb"/>
+            <!-- status line -->
+            <text x="116" y="156" font-size="10.5" font-weight="800" letter-spacing="0.06em" fill="#52636d">CURRENT STATUS</text>
+            <rect x="116" y="166" width="300" height="6" rx="3" fill="#e3e8eb"/>
+            <!-- next action -->
+            <text x="116" y="200" font-size="10.5" font-weight="800" letter-spacing="0.06em" fill="#52636d">NEXT ACTION</text>
+            <rect x="116" y="210" width="40" height="40" rx="8" fill="#e6f0f4"/>
+            <path d="M128 230 l8 8 l14 -16" stroke="#007599" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="170" y="216" width="360" height="6" rx="3" fill="#274454"/>
+            <rect x="170" y="232" width="300" height="6" rx="3" fill="#e3e8eb"/>
+          </g>
+        </svg>
         <figcaption><strong>Note format.</strong> Date, short activity summary, current status and next action — clear enough for another team member to understand the lead without asking the owner.</figcaption>
       </figure>
     </div>
   </article>
 
+  <footer class="doc-source">
+    <span class="lab">Read it as a document</span>
+    <div class="srcs"><a class="src" href="../../assets/pdf/frameworks-lead-pipeline-process.pdf">Full text — PDF</a></div>
+  </footer>
   <footer><p>Aryze &middot; Sales &amp; Marketing &middot; Lead pipeline process &middot; Confidential</p></footer>
 </main>
 <script src="../../assets/cod.js" defer></script>
