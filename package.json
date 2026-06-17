@@ -1,0 +1,10 @@
+{
+  "name": "commercial-operating-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Aryze Sales & Marketing department site — static HTML, with a shared-code access gate (middleware.js).",
+  "dependencies": {
+    "@vercel/functions": "latest"
+  }
+}
