@@ -507,3 +507,22 @@ footer.doc-source code{font-size:11.5px;background:var(--soft);padding:1px 5px;b
   .minibars .b{grid-template-columns:1fr auto;row-gap:5px;column-gap:10px}
   .minibars .b .lab{grid-column:1 / -1}
 }
+
+/* ============================================================
+   19. Fine-detail polish (v3.1 · 2026-06-17)
+   Equal-height boxes, bottom-aligned actions, text always fits.
+   ============================================================ */
+/* Cards in a row are equal height (grid stretch); make each a column so the
+   CTA / owner / links pin to the bottom and align across the row. */
+/* Cards in a row are equal height via the grid's default stretch (no flex margin-auto —
+   it mis-renders and risked the CTA overlapping the text). CTAs sit cleanly below the copy. */
+.cards-2,.cards-3,.grid-3,.specs,.kpi-grid,.stages{align-items:stretch}
+.card .cta{margin-top:14px}
+/* Text always fits its box — long tokens/URLs wrap instead of widening the box. */
+.card p,.card h3,.spec,.spec .v,.panel p,.kpi-tile .delta,.cell,.boxcol li,
+.flowmap .from,.flowmap .to,ul.chips>li,.doc-body td,.doc-body th,
+.appendix-table td,.appendix-table th,.rank .desc,.rank .ttl{overflow-wrap:break-word}
+/* KPI tiles fill the row to the item count — no orphan 6th tile, no left-shifted 3-tile rows.
+   Reports' 10-item stage funnel keeps the fixed 5-wide grid (clean 2×5); 6-step strips use cols-6. */
+.kpi-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.stages.cols-6{grid-template-columns:repeat(auto-fit,minmax(132px,1fr))}
